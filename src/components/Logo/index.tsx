@@ -1,9 +1,14 @@
 import React from 'react';
 import './index.css';
 
-const Logo: React.FC = () => {
+interface IProps {
+  className?: string;
+};
+
+const Logo: React.FC<IProps> = props => {
+  const cLogo = 'Logo' + (props.className ? ' ' + props.className : '');
   return (
-    <div className="Logo"></div>
+    <div className={cLogo}></div>
   );
 };
 
