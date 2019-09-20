@@ -3,6 +3,7 @@ import React from 'react';
 import IUser from './typing/IUser';
 
 import AppHeader from './components/AppHeader';
+import Main from './components/AppMain';
 
 interface IProps {
 
@@ -24,6 +25,7 @@ class App extends React.Component<IProps, IState> {
     return (
       <>
         <AppHeader />
+        <Main />
       </>
     );
   }
