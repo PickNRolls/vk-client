@@ -19,6 +19,7 @@ class App extends React.Component<IProps, IState> {
     this.state = {
       user: {
         id: '00000000',
+        avatar: "https://sun9-41.userapi.com/c846018/v846018774/1964b4/MTv4NbdWX0E.jpg?ava=1",
         fullName: 'Илья Блинков',
         firstName: 'Илья',
         lastName: 'Блинков',

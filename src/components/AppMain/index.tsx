@@ -22,7 +22,9 @@ const AppMain: React.FC<IProps> = props => {
 
         <div className="AppMain-Content">
           <Switch>
-            <Route path="/id:id" component={UserPage} />
+            <Route path="/id:id" render={routeProps => (
+              <UserPage {...routeProps} user={props.user} />
+            )} />
             <Route path="/feed" />
             <Route path="/messages" />
             <Route path="/friends" />
