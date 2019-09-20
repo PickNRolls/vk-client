@@ -2,6 +2,8 @@ import React from 'react';
 
 import IUser from './typing/IUser';
 
+import AppHeader from './components/AppHeader';
+
 interface IProps {
 
 };
@@ -21,7 +23,7 @@ class App extends React.Component<IProps, IState> {
   render() {
     return (
       <div>
-
+        <AppHeader />
       </div>
     );
   }

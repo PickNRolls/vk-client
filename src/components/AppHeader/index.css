@@ -1,0 +1,9 @@
+.AppHeader {
+  height: 42px;
+  background: #4a76a8;
+}
+
+.AppHeader-Container {
+  display: flex;
+  align-items: center;
+}

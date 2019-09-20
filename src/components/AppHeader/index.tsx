@@ -1,5 +1,9 @@
 import React from 'react';
 
+import './index.css';
+
+import Logo from '../Logo';
+
 interface IProps {
 
 };
@@ -19,8 +23,8 @@ class AppHeader extends React.Component<IProps, IState> {
   render() {
     return (
       <header className="AppHeader">
-        <div className="container">
-
+        <div className="container AppHeader-Container">
+          <Logo />
         </div>
       </header>
     );
