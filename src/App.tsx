@@ -10,14 +10,21 @@ interface IProps {
 };
 
 interface IState {
-  user: IUser | null;
+  user: IUser;
 };
 
 class App extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
-      user: null
+      user: {
+        id: '00000000',
+        fullName: 'Илья Блинков',
+        firstName: 'Илья',
+        lastName: 'Блинков',
+        age: 18,
+        gender: true
+      }
     };
   }
 
@@ -25,7 +32,7 @@ class App extends React.Component<IProps, IState> {
     return (
       <>
         <AppHeader />
-        <Main />
+        <Main user={this.state.user} />
       </>
     );
   }
