@@ -22,9 +22,9 @@ class App extends React.Component<IProps, IState> {
 
   render() {
     return (
-      <div>
+      <>
         <AppHeader />
-      </div>
+      </>
     );
   }
 }
