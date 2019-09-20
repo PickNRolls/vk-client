@@ -18,6 +18,15 @@ body {
   margin: 0 auto;
 }
 
+.clearfix::after {
+  content: '';
+  display: table;
+  width: 100%;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+}
+
 .page-column-thin {
   width: 35%;
 }
