@@ -6,7 +6,7 @@ import cn from '../../helpers/cn';
 import './index.css';
 
 interface IProps extends IBaseProps {
-  imageUrl?: string;
+  imageUrl: string;
 };
 
 const UserPageAvatar: React.FC<IProps> = props => {
