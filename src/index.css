@@ -17,3 +17,11 @@ body {
   height: 100%;
   margin: 0 auto;
 }
+
+.page-column-thin {
+  width: 35%;
+}
+
+.page-column-wide {
+  width: 65%;
+}
