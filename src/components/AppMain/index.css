@@ -1,0 +1,9 @@
+.AppMain-SideNav {
+  width: 20%;
+  float: left;
+}
+
+.AppMain-Content {
+  width: 80%;
+  float: left;
+}
