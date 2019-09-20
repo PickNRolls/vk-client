@@ -4,6 +4,8 @@ import IUser from '../../typing/IUser';
 import IBaseProps from '../../typing/IBaseProps';
 import cn from '../../helpers/cn';
 
+import UserInfoField from '../UserInfoField';
+
 interface IProps extends IBaseProps {
   user: IUser;
 };
@@ -44,9 +46,7 @@ class UserPageInfo extends React.Component<IProps, IState> {
         }
 
         <div className="UserPageInfo-AlwaysVisible">
-          <span className="UserPageInfo-Field">
-            
-          </span>
+          <UserInfoField label="birthday" data="26.10.2001" />
         </div>
       </div>
     );

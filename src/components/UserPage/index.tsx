@@ -1,6 +1,7 @@
 import React from 'react';
 
 import UserPageAvatar from '../UserPageAvatar';
+import UserPageInfo from '../UserPageInfo';
 
 import IUser from '../../typing/IUser';
 import IBaseProps from '../../typing/IBaseProps';
@@ -29,7 +30,7 @@ class UserPage extends React.Component<IProps, IState> {
           <UserPageAvatar imageUrl={this.props.user.avatar} />
         </div>
         <div className="page-column-wide">
-
+          <UserPageInfo user={this.props.user} />
         </div>
       </div>
     );
