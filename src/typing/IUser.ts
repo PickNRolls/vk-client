@@ -1,8 +1,7 @@
 type TLanguage = 'Russian' | 'English' | 'German' | 'French';
 
 export interface IUserAdditionalInfo {
-  birthday: Date;
-
+  birthday: string;
   languages?: TLanguage[];
 }
 
