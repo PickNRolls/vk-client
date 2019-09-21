@@ -13,7 +13,7 @@ const UserPageAvatar: React.FC<IProps> = props => {
   const cUserPageAvatar = cn('UserPageAvatar', props.className);
   return (
     <div className={cUserPageAvatar}>
-      <img src={props.imageUrl} className="UserPageAvatar-Image" />
+      <img src={props.imageUrl} alt="user avatar" className="UserPageAvatar-Image" />
     </div>
   );
 };
