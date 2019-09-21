@@ -18,10 +18,26 @@ body {
   margin: 0 auto;
 }
 
+.clearfix::after {
+  content: '';
+  display: table;
+  width: 100%;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+}
+
 .page-column-thin {
-  width: 35%;
+  width: 30%;
+  margin-right: 1%;
+  float: left;
 }
 
 .page-column-wide {
-  width: 65%;
+  width: 69%;
+  float: left;
+}
+
+img {
+  max-width: 100%;
 }
