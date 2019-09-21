@@ -4,9 +4,12 @@ import IUser from '../../typing/IUser';
 import IBaseProps from '../../typing/IBaseProps';
 import cn from '../../helpers/cn';
 import globalKeyset from '../../i18n';
+import localKeyset from './i18n';
 import I18N from '../../helpers/i18n';
 
 import UserInfoField from '../UserInfoField';
+
+import './index.css';
 
 interface IProps extends IBaseProps {
   user: IUser;
@@ -22,6 +25,12 @@ class UserPageInfo extends React.Component<IProps, IState> {
     this.state = {
       expanded: false
     };
+  }
+
+  handleExpandClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    this.setState({
+      expanded: !this.state.expanded
+    });
   }
 
   render() {
@@ -51,8 +60,29 @@ class UserPageInfo extends React.Component<IProps, IState> {
 
 
         <div className="UserPageInfo-AlwaysVisible">
-          <UserInfoField label="birthday" data={`${birthdayDay} ${I18N(globalKeyset, 'march')}`} />
+          <UserInfoField
+            label={'birthday'}
+            data={`${birthdayDay} ${I18N(globalKeyset, 'march')}`}
+          />
         </div>
+
+        <button
+          onClick={this.handleExpandClick}
+          className="UserPageInfo-DetailsButton">
+          {this.state.expanded
+            ? I18N(localKeyset, 'details-button_on')
+            : I18N(localKeyset, 'details-button_off')
+          }
+        </button>
+
+        {this.state.expanded
+          ? (
+          <div className="UserPageInfo-Details">
+            
+          </div>
+          )
+          : null
+        }
       </div>
     );
   }
