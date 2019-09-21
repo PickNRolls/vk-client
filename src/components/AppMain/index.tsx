@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import SideNav from '../SideNav';
 import UserPage from '../UserPage';
+import MessagesPage from '../MessagesPage';
 import {IProps as SideNavProps} from '../SideNav';
 
 import './index.css';
@@ -26,7 +27,9 @@ const AppMain: React.FC<IProps> = props => {
               <UserPage {...routeProps} user={props.user} />
             )} />
             <Route path="/feed" />
-            <Route path="/messages" />
+            <Route path="/messages" render={routeProps => {
+              <MessagesPage {...routeProps} user={props.user} />
+            }} />
             <Route path="/friends" />
             <Route path="/groups" />
           </Switch>
