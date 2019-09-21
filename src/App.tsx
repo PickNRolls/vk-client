@@ -25,7 +25,11 @@ class App extends React.Component<IProps, IState> {
         lastName: 'Блинков',
         age: 18,
         gender: true,
-        online: true
+        online: true,
+        additionalInfo: {
+          birthday: '19.03.2001',
+          languages: ['Russian', 'English']
+        }
       }
     };
   }

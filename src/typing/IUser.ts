@@ -15,4 +15,5 @@ export default interface IUser {
   age: number;
   gender: boolean;
   online: true | Date;
+  additionalInfo: IUserAdditionalInfo;
 };
