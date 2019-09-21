@@ -6,5 +6,21 @@ export default {
   'details-button_on': {
     ru: 'Скрыть подробную информацию',
     en: 'Hide details'
+  },
+  'basic-info': {
+    ru: 'Основная информация',
+    en: 'Basic information'
+  },
+  'education-info': {
+    ru: 'Образование',
+    en: 'Education'
+  },
+  'birthday': {
+    ru: 'День рождения',
+    en: 'Birthday'
+  },
+  'languages': {
+    ru: 'Языки',
+    en: 'Languages'
   }
 };

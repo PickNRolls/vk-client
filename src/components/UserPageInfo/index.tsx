@@ -8,6 +8,7 @@ import localKeyset from './i18n';
 import I18N from '../../helpers/i18n';
 
 import UserInfoField from '../UserInfoField';
+import UserInfoGroup from '../UserInfoGroup';
 
 import './index.css';
 
@@ -35,7 +36,6 @@ class UserPageInfo extends React.Component<IProps, IState> {
 
   render() {
     const { user } = this.props;
-    const birthdayDay = +user.additionalInfo.birthday.slice(0, 2);
     const cUserPageInfo = cn('UserPageInfo', this.props.className);
 
     return (
@@ -60,10 +60,7 @@ class UserPageInfo extends React.Component<IProps, IState> {
 
 
         <div className="UserPageInfo-AlwaysVisible">
-          <UserInfoField
-            label={'birthday'}
-            data={`${birthdayDay} ${I18N(globalKeyset, 'march')}`}
-          />
+          <UserInfoField label={I18N(localKeyset, 'birthday')} value="19.03.2001" />
         </div>
 
         <button
@@ -78,7 +75,15 @@ class UserPageInfo extends React.Component<IProps, IState> {
         {this.state.expanded
           ? (
           <div className="UserPageInfo-Details">
-            
+            <UserInfoGroup title={I18N(localKeyset, 'basic-info')} className="UserPageInfo-Group">
+              <UserInfoField
+                label={I18N(localKeyset, 'languages')}
+                value={user.additionalInfo.languages.map(lang => I18N(globalKeyset, lang)).join(', ')}
+              />
+            </UserInfoGroup>
+
+            <UserInfoGroup title={I18N(localKeyset, 'education-info')} className="UserPageInfo-Group">
+            </UserInfoGroup>
           </div>
           )
           : null
