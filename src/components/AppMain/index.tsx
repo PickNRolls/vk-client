@@ -27,9 +27,9 @@ const AppMain: React.FC<IProps> = props => {
               <UserPage {...routeProps} user={props.user} />
             )} />
             <Route path="/feed" />
-            <Route path="/messages" render={routeProps => {
+            <Route path="/messages" render={routeProps => (
               <MessagesPage {...routeProps} user={props.user} />
-            }} />
+            )} />
             <Route path="/friends" />
             <Route path="/groups" />
           </Switch>

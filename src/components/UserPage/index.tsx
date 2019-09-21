@@ -24,6 +24,8 @@ class UserPage extends React.Component<IProps, IState> {
   render() {
     const propsClass = this.props.className ? this.props.className + ' clearfix' : 'clearfix';
     const cUserPage = cn('UserPage', propsClass);
+    document.title = `${this.props.user.fullName}`;
+
     return (
       <div className={cUserPage}>
         <div className="page-column-thin">
