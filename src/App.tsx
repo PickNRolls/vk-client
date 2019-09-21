@@ -28,7 +28,7 @@ class App extends React.Component<IProps, IState> {
         online: true,
         additionalInfo: {
           birthday: '19.03.2001',
-          languages: ['Russian', 'English']
+          languages: ['russian', 'english']
         }
       }
     };

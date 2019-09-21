@@ -42,3 +42,7 @@
 .UserPageInfo-DetailsButton:hover {
   background-color: #f0f2f5;
 }
+
+.UserPageInfo-Details {
+  padding-top: 20px;
+}
