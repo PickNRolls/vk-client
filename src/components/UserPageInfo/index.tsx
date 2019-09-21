@@ -3,6 +3,8 @@ import React from 'react';
 import IUser from '../../typing/IUser';
 import IBaseProps from '../../typing/IBaseProps';
 import cn from '../../helpers/cn';
+import globalKeyset from '../../i18n';
+import I18N from '../../helpers/i18n';
 
 import UserInfoField from '../UserInfoField';
 
@@ -24,7 +26,9 @@ class UserPageInfo extends React.Component<IProps, IState> {
 
   render() {
     const { user } = this.props;
+    const birthdayDay = +user.additionalInfo.birthday.slice(0, 2);
     const cUserPageInfo = cn('UserPageInfo', this.props.className);
+
     return (
       <div className={cUserPageInfo}>
         <div className="UserPageInfo-Top">
@@ -45,8 +49,9 @@ class UserPageInfo extends React.Component<IProps, IState> {
           : null
         }
 
+
         <div className="UserPageInfo-AlwaysVisible">
-          <UserInfoField label="birthday" data="26.10.2001" />
+          <UserInfoField label="birthday" data={`${birthdayDay} ${I18N(globalKeyset, 'march')}`} />
         </div>
       </div>
     );
