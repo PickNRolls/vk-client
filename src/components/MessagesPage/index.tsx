@@ -23,13 +23,14 @@ class MessagesPage extends React.Component<IProps, IState> {
   }
 
   render() {
-    const cMessagesPage = cn('MessagesPage', this.props.className);
+    const propsClass = this.props.className ? this.props.className + ' clearfix' : 'clearfix';
+    const cMessagesPage = cn('MessagesPage', propsClass);
     document.title = I18N(localKeyset, 'page-title');
 
     return (
       <div className={cMessagesPage}>
         <div className="page-column-wide">
-          <Messages />
+          <Messages user={this.props.user} />
         </div>
         <div className="page-column-thin">
 

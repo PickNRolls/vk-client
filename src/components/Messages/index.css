@@ -1,0 +1,44 @@
+.Messages {
+  position: relative;
+  overflow-y: hidden;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+  padding-top: 50px;
+}
+
+.Messages-Header {
+  width: 554px;
+  height: 65px;
+  border-top: 15px solid #edeef0;
+  border-left: 1px solid #edeef0;
+  border-right: 1px solid #edeef0;
+  margin-left: -1px;
+  position: fixed;
+  top: 42px;
+  left: auto;
+}
+
+.Messages-HeaderWrap {
+  height: 100%;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 0 0 1px #e3e4e8;
+  background: #fff;
+}
+
+.Messages-Dialogs {
+  background: #fff;
+  height: 4000px;
+}
+
+.Messages-Dialog {
+  height: 71px;
+  padding-left: 20px;
+}
+
+.Messages-Footer {
+  width: 552px;
+  height: 46px;
+  background: #fff;
+  box-shadow: 0 0 0 1px #e3e4e8;
+  position: fixed;
+  bottom: 0;
+}
