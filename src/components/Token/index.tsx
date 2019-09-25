@@ -12,6 +12,7 @@ interface IProps extends IBaseProps {
   goToPage?: boolean | {
     target?: '_blank'
   };
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
 interface IState {
@@ -24,6 +25,11 @@ class Token extends React.Component<IProps, IState> {
     this.state = {};
   }
 
+  handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const { onClick } = this.props
+    onClick && onClick(event);
+  }
+
   render() {
     const { user, goToPage } = this.props;
     const cToken = cn('Token', this.props.className, {
@@ -33,7 +39,12 @@ class Token extends React.Component<IProps, IState> {
     let target = typeof goToPage === 'object' ? goToPage.target : undefined;
 
     return (
-      <Link className={cToken} to={`/id${user.id}`} target={target} >
+      <Link
+        onClick={this.handleClick}
+        to={`/id${user.id}`}
+        target={target}
+        className={cToken}
+        >
         <img
           src={user.avatar}
           alt={user.fullName}

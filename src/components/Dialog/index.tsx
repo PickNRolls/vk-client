@@ -19,6 +19,7 @@ interface IProps extends IBaseProps {
   userOfToken: IUser;
   lastMessage: IMessage;
 
+  onOpen(uid: IUser['id']): void;
   onRemove(uid: IUser['id']): void;
 };
 
@@ -32,7 +33,16 @@ class Dialog extends React.Component<IProps, IState> {
     this.state = {};
   }
 
-  handleRemove = () => {
+  handleTokenClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.stopPropagation();
+  }
+
+  handleOpen = () => {
+    this.props.onOpen(this.props.userOfToken.id);
+  }
+
+  handleRemove = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
     this.props.onRemove(this.props.userOfToken.id);
   }
 
@@ -46,8 +56,9 @@ class Dialog extends React.Component<IProps, IState> {
     const { fullName } = userOfToken;
 
     return (
-      <div className={cDialog}>
+      <div className={cDialog} onClick={this.handleOpen}>
         <Token
+          onClick={this.handleTokenClick}
           goToPage={{ target: '_blank'}}
           user={userOfToken}
           className="Dialog-Photo"

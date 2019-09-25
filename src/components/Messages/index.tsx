@@ -87,7 +87,11 @@ class Messages extends React.Component<IProps, IState> {
             }
           ].map(props => (
             <li className="Messages-DialogsItem">
-              <Dialog {...props} onRemove={uid => console.log(uid)} />
+              <Dialog
+                {...props}
+                onOpen={uid => console.log('opened ' + uid)}
+                onRemove={uid => console.log('closed ' + uid)}
+              />
             </li>
           ))
           }
