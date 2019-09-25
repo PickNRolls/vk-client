@@ -25,9 +25,13 @@ class Dialog extends React.Component<IProps, IState> {
 
     return (
       <div className={cDialog}>
-        <Token className="Dialog-Photo" user={this.props.user} />
+        <Token
+          goToPage
+          user={this.props.user}
+          className="Dialog-Photo"
+        />
         <div className="Dialog-Content">
-        
+
         </div>
       </div>
     );

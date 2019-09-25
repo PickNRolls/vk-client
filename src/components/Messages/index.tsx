@@ -33,8 +33,11 @@ class Messages extends React.Component<IProps, IState> {
           </div>
         </header>
         <ul className="Messages-Dialogs">
-          <li className="Messages-Dialog">
-            Dialog
+          <li className="Messages-DialogsItem">
+            <Dialog
+              user={this.props.user}
+              className="Messages-Dialog"
+            />
           </li>
         </ul>
         <footer className="Messages-Footer">

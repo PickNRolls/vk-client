@@ -1,0 +1,17 @@
+.Token {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.Token_disable {
+  pointer-events: none;
+  cursor: default;
+}
+
+.Token-Image {
+  width: 100%;
+  border-radius: 50%;
+}
