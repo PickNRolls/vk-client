@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Dialog from '../Dialog';
+import HeaderContent from './-Header';
 
 import IBaseProps from '../../typing/IBaseProps';
 import IUser from '../../typing/IUser';
@@ -13,23 +14,46 @@ interface IProps extends IBaseProps {
 };
 
 interface IState {
-
+  inDialog: boolean;
+  interlocutor?: IUser;
 };
 
 class Messages extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      inDialog: false,
+      interlocutor: undefined
+    };
+  }
+
+  handleDialogOpen = (uid: string) => {
+    this.setState({
+      inDialog: true,
+      interlocutor: this.props.user
+    });
+  }
+
+  handleDialogExit = () => {
+    this.setState({
+      inDialog: false,
+      interlocutor: undefined
+    });
   }
 
   render() {
     const cMessages = cn('Messages', this.props.className);
+    const { inDialog, interlocutor } = this.state;
 
     return (
       <div className={cMessages}>
         <header className="Messages-Header">
           <div className="Messages-HeaderWrap">
-            Search
+            <HeaderContent
+              state={inDialog ? 'in dialog' : 'default'}
+              interlocutor={interlocutor}
+              onBack={this.handleDialogExit}
+            />
           </div>
         </header>
         <ul className="Messages-Dialogs">
@@ -89,7 +113,7 @@ class Messages extends React.Component<IProps, IState> {
             <li className="Messages-DialogsItem">
               <Dialog
                 {...props}
-                onOpen={uid => console.log('opened ' + uid)}
+                onOpen={this.handleDialogOpen}
                 onRemove={uid => console.log('closed ' + uid)}
               />
             </li>
