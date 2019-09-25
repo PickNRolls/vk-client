@@ -9,7 +9,9 @@ import './index.css';
 
 interface IProps extends IBaseProps {
   user: IUser;
-  goToPage?: boolean;
+  goToPage?: boolean | {
+    target?: '_blank'
+  };
 };
 
 interface IState {
@@ -25,11 +27,13 @@ class Token extends React.Component<IProps, IState> {
   render() {
     const { user, goToPage } = this.props;
     const cToken = cn('Token', this.props.className, {
-      'disable': Boolean(!goToPage)
+      'disable': !goToPage
     });
 
+    let target = typeof goToPage === 'object' ? goToPage.target : undefined;
+
     return (
-      <Link className={cToken} to={`/id${user.id}`}>
+      <Link className={cToken} to={`/id${user.id}`} target={target} >
         <img
           src={user.avatar}
           alt={user.fullName}

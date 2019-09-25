@@ -6,8 +6,20 @@ import IBaseProps from '../../typing/IBaseProps';
 import IUser from '../../typing/IUser';
 import cn from '../../helpers/cn';
 
+import './index.css';
+
+interface IMessage {
+  user: IUser;
+  content: string;
+  date: Date;
+};
+
 interface IProps extends IBaseProps {
   user: IUser;
+  userOfToken: IUser;
+  lastMessage: IMessage;
+
+  onRemove(uid: IUser['id']): void;
 };
 
 interface IState {
@@ -20,18 +32,58 @@ class Dialog extends React.Component<IProps, IState> {
     this.state = {};
   }
 
+  handleRemove = () => {
+    this.props.onRemove(this.props.userOfToken.id);
+  }
+
   render() {
     const cDialog = cn('Dialog', this.props.className);
+    const {
+      user,
+      userOfToken,
+      lastMessage
+    } = this.props;
+    const { fullName } = userOfToken;
 
     return (
       <div className={cDialog}>
         <Token
-          goToPage
-          user={this.props.user}
+          goToPage={{ target: '_blank'}}
+          user={userOfToken}
           className="Dialog-Photo"
         />
         <div className="Dialog-Content">
+          <div className="Dialog-Top">
+            <div className="Dialog-FullName">
+              {fullName}
+            </div>
+            <div className="Dialog-Date">
+              {
+                lastMessage.date.toLocaleTimeString(navigator.language, {
+                  hour: '2-digit',
+                  minute: '2-digit'
+                })
+              }
+            </div>
+            <button className="Dialog-Remove" onClick={this.handleRemove}>
+              &#215;
+            </button>
+          </div>
 
+          <div className="Dialog-LastMessage">
+            {lastMessage.user.id === user.id
+              ? <>
+                <Token
+                  user={user}
+                  className="Dialog-UserPhoto"
+                />
+              </>
+              : null
+            }
+            <div className="Dialog-LastMessageContent">
+              {lastMessage.content}
+            </div>
+          </div>
         </div>
       </div>
     );

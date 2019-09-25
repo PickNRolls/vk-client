@@ -33,12 +33,64 @@ class Messages extends React.Component<IProps, IState> {
           </div>
         </header>
         <ul className="Messages-Dialogs">
-          <li className="Messages-DialogsItem">
-            <Dialog
-              user={this.props.user}
-              className="Messages-Dialog"
-            />
-          </li>
+          {
+          [
+            {
+              user: this.props.user,
+              userOfToken: this.props.user,
+              lastMessage: {
+                user: this.props.user,
+                content: 'Привет гандонище',
+                date: new Date()
+              },
+              className: "Messages-Dialog"
+            },
+            {
+              user: this.props.user,
+              userOfToken: this.props.user,
+              lastMessage: {
+                user: this.props.user,
+                content: 'Привет гандонище',
+                date: new Date()
+              },
+              className: "Messages-Dialog"
+            },
+            {
+              user: this.props.user,
+              userOfToken: this.props.user,
+              lastMessage: {
+                user: this.props.user,
+                content: 'Привет гандонище',
+                date: new Date()
+              },
+              className: "Messages-Dialog"
+            },
+            {
+              user: this.props.user,
+              userOfToken: this.props.user,
+              lastMessage: {
+                user: this.props.user,
+                content: 'Привет гандонище',
+                date: new Date()
+              },
+              className: "Messages-Dialog"
+            },
+            {
+              user: this.props.user,
+              userOfToken: this.props.user,
+              lastMessage: {
+                user: this.props.user,
+                content: 'Привет гандонище',
+                date: new Date()
+              },
+              className: "Messages-Dialog"
+            }
+          ].map(props => (
+            <li className="Messages-DialogsItem">
+              <Dialog {...props} onRemove={uid => console.log(uid)} />
+            </li>
+          ))
+          }
         </ul>
         <footer className="Messages-Footer">
           Footer

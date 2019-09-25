@@ -34,6 +34,26 @@
   padding-left: 20px;
 }
 
+.Messages-DialogsItem {
+  overflow: hidden;
+}
+
+.Messages-DialogsItem:hover {
+  border-top: 1px solid #e7e8ec;
+}
+
+.Messages-DialogsItem:hover + .Messages-DialogsItem {
+  border-top: 1px solid #e7e8ec;
+}
+
+.Messages-DialogsItem:hover .Dialog {
+  margin-top: -1px;
+}
+
+.Messages-DialogsItem:hover + .Messages-DialogsItem .Dialog {
+  margin-top: -1px;
+}
+
 .Messages-Footer {
   width: 552px;
   height: 46px;
