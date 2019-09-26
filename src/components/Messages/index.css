@@ -124,6 +124,10 @@
   background: #fff;
 }
 
+.Messages-List {
+  padding-top: 15px;
+}
+
 .Messages-Footer {
   width: 552px;
   height: 46px;

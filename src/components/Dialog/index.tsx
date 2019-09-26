@@ -4,15 +4,10 @@ import Token from '../Token';
 
 import IBaseProps from '../../typing/IBaseProps';
 import IUser from '../../typing/IUser';
+import IMessage from '../../typing/IMessage';
 import cn from '../../helpers/cn';
 
 import './index.css';
-
-interface IMessage {
-  user: IUser;
-  content: string;
-  date: Date;
-};
 
 interface IProps extends IBaseProps {
   user: IUser;
@@ -82,7 +77,7 @@ class Dialog extends React.Component<IProps, IState> {
           </div>
 
           <div className="Dialog-LastMessage">
-            {lastMessage.user.id === user.id
+            {lastMessage.author.id === user.id
               ? <>
                 <Token
                   user={user}

@@ -12,6 +12,7 @@ import './index.css';
 export interface IProps extends IBaseProps {
   type?: 'default' | 'text';
   user: IUser;
+  value?: string;
   goToPage?: boolean | {
     target?: '_blank'
   };

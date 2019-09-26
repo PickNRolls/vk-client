@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Dialog from '../Dialog';
 import HeaderContent from './-Header';
 import Content from './-Content';
 
@@ -69,6 +68,7 @@ class Messages extends React.Component<IProps, IState> {
         <Content
           state={inDialog ? 'in dialog': 'default'}
           user={this.props.user}
+          interlocutor={interlocutor}
           onDialogOpen={this.handleDialogOpen}
           onDialogRemove={this.handleDialogRemove}
         />

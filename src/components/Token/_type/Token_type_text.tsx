@@ -7,7 +7,7 @@ import cn from '../../../helpers/cn';
 import './Token_type_text.css';
 
 interface IProps extends IBaseProps {
-
+  value?: string;
 };
 
 interface IState {
@@ -22,6 +22,7 @@ class TokenTypeText extends React.Component<IProps, IState> {
 
   render() {
     const { user, goToPage } = this.props;
+    let { value } = this.props;
     const cTokenTypeText = cn('Token', this.props.className, {
       type: 'text',
       disable: !goToPage
@@ -29,13 +30,17 @@ class TokenTypeText extends React.Component<IProps, IState> {
 
     let target = typeof goToPage === 'object' ? goToPage.target : undefined;
 
+    if (!value) {
+      value = user.fullName;
+    }
+
     return (
       <Link
         to={`/id${user.id}`}
         target={target}
         className={cTokenTypeText}
         >
-        {user.fullName}
+        {value}
       </Link>
     );
   }

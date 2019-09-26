@@ -32,28 +32,34 @@ class MessagesContent extends React.Component<IProps, IState> {
   }
 
   render() {
-    const { state } = this.props;
-    if (state === 'in dialog') {
+    const { state, interlocutor } = this.props;
+    if (state === 'in dialog' && interlocutor) {
       const inDialogContent = (
         <div className="Messages-Content">
           <ul className="Messages-List">
             <li className="Messages-Message">
-              Privet
+              <Message
+                data={{
+                  author: interlocutor,
+                  content: `Мужик заходит в магазин сувениров. Видит маленькую бронзовую фигурку кошки. На ценнике написано: "кошка — 1000 рублей, её история — 10 000 рублей." 
+
+— Я могу купить кошку без истории? — спрашивает он продавца. 
+
+— Конечно, — отвечает продавец, — Но за историей вы всё равно вернётесь. 
+
+Мужик покупает маленькую бронзовую кошку и идёт по городу. Вдруг он замечает, что следом за ним сначала идёт одна кошка, потом другая, потом ещё. Через некоторое время за ним уже идут тысячи кошек. Мужик в ужасе начинает убегать. Кошки не отстают. Тогда он размахивается и бросает маленькую бронзовую фигурку кошки в реку. Все кошки бежавшие до этого за мужиком, тут же прыгают в воду вслед за статуэткой и ебут ее там в жопу так долго и неистово, что помирают от усталости. `,
+                  date: new Date()
+                }}
+              />
             </li>
             <li className="Messages-Message">
-              Privet
-            </li>
-            <li className="Messages-Message">
-              Privet
-            </li>
-            <li className="Messages-Message">
-              Privet
-            </li>
-            <li className="Messages-Message">
-              Privet
-            </li>
-            <li className="Messages-Message">
-              Privet
+              <Message
+                data={{
+                  author: interlocutor,
+                  content: 'Privet',
+                  date: new Date()
+                }}
+              />
             </li>
           </ul>
         </div>
@@ -72,7 +78,7 @@ class MessagesContent extends React.Component<IProps, IState> {
                   user: this.props.user,
                   userOfToken: this.props.user,
                   lastMessage: {
-                    user: this.props.user,
+                    author: this.props.user,
                     content: 'Привет',
                     date: new Date()
                   },
@@ -82,7 +88,7 @@ class MessagesContent extends React.Component<IProps, IState> {
                   user: this.props.user,
                   userOfToken: this.props.user,
                   lastMessage: {
-                    user: this.props.user,
+                    author: this.props.user,
                     content: 'Привет Привет Привет Привет Привет Привет Привет ПриветПриветПривет Привет Привет Привет Привет Привет',
                     date: new Date()
                   },
@@ -92,7 +98,7 @@ class MessagesContent extends React.Component<IProps, IState> {
                   user: this.props.user,
                   userOfToken: this.props.user,
                   lastMessage: {
-                    user: this.props.user,
+                    author: this.props.user,
                     content: 'Привет',
                     date: new Date()
                   },
@@ -102,7 +108,7 @@ class MessagesContent extends React.Component<IProps, IState> {
                   user: this.props.user,
                   userOfToken: this.props.user,
                   lastMessage: {
-                    user: this.props.user,
+                    author: this.props.user,
                     content: 'Привет',
                     date: new Date()
                   },
@@ -112,7 +118,7 @@ class MessagesContent extends React.Component<IProps, IState> {
                   user: this.props.user,
                   userOfToken: this.props.user,
                   lastMessage: {
-                    user: this.props.user,
+                    author: this.props.user,
                     content: 'Привет',
                     date: new Date()
                   },

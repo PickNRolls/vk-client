@@ -1,0 +1,36 @@
+.Message {
+  padding: 6px 0 7px;
+  margin-bottom: 4px;
+  padding-left: 35px;
+}
+
+.Message-Token {
+  width: 36px;
+  height: 36px;
+  margin-right: 10px;
+  float: left;
+}
+
+.Message-Top {
+  display: flex;
+  align-items: baseline;
+}
+
+.Token.Message-AuthorName {
+  width: auto;
+  color: #42648b;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.Message-Date {
+  color: hsla(220,8%,51%,.6);
+  font-size: 12px;
+}
+
+.Message-Content {
+  padding-left: 46px;
+  padding-right: 81px;
+  word-wrap: break-word;
+  line-height: 18px;
+}
