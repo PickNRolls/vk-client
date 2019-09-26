@@ -5,9 +5,12 @@ import IBaseProps from '../../typing/IBaseProps';
 import IUser from '../../typing/IUser';
 import cn from '../../helpers/cn';
 
+import TokenTypeText from './_type/Token_type_text';
+
 import './index.css';
 
-interface IProps extends IBaseProps {
+export interface IProps extends IBaseProps {
+  type?: 'default' | 'text';
   user: IUser;
   goToPage?: boolean | {
     target?: '_blank'
@@ -31,9 +34,17 @@ class Token extends React.Component<IProps, IState> {
   }
 
   render() {
+    if (this.props.type === 'text') {
+      const props = {
+        ...this.props,
+      };
+      delete props.type;
+      return <TokenTypeText {...props} />
+    }
+
     const { user, goToPage } = this.props;
     const cToken = cn('Token', this.props.className, {
-      'disable': !goToPage
+      disable: !goToPage
     });
 
     let target = typeof goToPage === 'object' ? goToPage.target : undefined;

@@ -26,12 +26,13 @@ const HeaderContent: React.FC<IProps> = props => {
         </button>
 
         <div className="Messages-InterlocutorInfo">
-          <Link
-            to={`/id${interlocutor.id}`}
-            className="Messages-InterlocutorName"
-            >
-            {interlocutor.fullName}
-          </Link>
+          <Token
+            goToPage={{
+              target: '_blank'
+            }}
+            user={interlocutor}
+            type="text"
+          />
           <span className="Messages-InterlocutorStatus">
             {interlocutor.online instanceof Date
               ? interlocutor.online.toLocaleTimeString(navigator.language, {
