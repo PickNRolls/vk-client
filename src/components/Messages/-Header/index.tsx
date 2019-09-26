@@ -1,17 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import Token from '../../Token';
 
-import IBaseProps from '../../../typing/IBaseProps';
-import IUser from '../../../typing/IUser';
-import cn from '../../../helpers/cn';
+import { IElementsProps } from '..';
 import I18N from '../../../helpers/i18n';
 import localKeyset from '../i18n';
 
-interface IProps extends IBaseProps {
-  state: 'default' | 'in dialog';
-  interlocutor?: IUser;
+interface IProps extends IElementsProps {
   onBack(): void;
 };
 

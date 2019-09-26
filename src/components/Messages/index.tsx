@@ -2,12 +2,18 @@ import React from 'react';
 
 import Dialog from '../Dialog';
 import HeaderContent from './-Header';
+import Content from './-Content';
 
 import IBaseProps from '../../typing/IBaseProps';
 import IUser from '../../typing/IUser';
 import cn from '../../helpers/cn';
 
 import './index.css';
+
+export interface IElementsProps {
+  state: 'default' | 'in dialog';
+  interlocutor?: IUser;
+};
 
 interface IProps extends IBaseProps {
   user: IUser;
@@ -27,7 +33,7 @@ class Messages extends React.Component<IProps, IState> {
     };
   }
 
-  handleDialogOpen = (uid: string) => {
+  handleDialogOpen = (uid: IUser['id']) => {
     this.setState({
       inDialog: true,
       interlocutor: this.props.user
@@ -39,6 +45,10 @@ class Messages extends React.Component<IProps, IState> {
       inDialog: false,
       interlocutor: undefined
     });
+  }
+
+  handleDialogRemove = (uid: IUser['id']) => {
+    console.log('removed ' + uid);
   }
 
   render() {
@@ -56,70 +66,12 @@ class Messages extends React.Component<IProps, IState> {
             />
           </div>
         </header>
-        <ul className="Messages-Dialogs">
-          {
-          [
-            {
-              user: this.props.user,
-              userOfToken: this.props.user,
-              lastMessage: {
-                user: this.props.user,
-                content: 'Привет',
-                date: new Date()
-              },
-              className: "Messages-Dialog"
-            },
-            {
-              user: this.props.user,
-              userOfToken: this.props.user,
-              lastMessage: {
-                user: this.props.user,
-                content: 'Привет Привет Привет Привет Привет Привет Привет ПриветПриветПривет Привет Привет Привет Привет Привет',
-                date: new Date()
-              },
-              className: "Messages-Dialog"
-            },
-            {
-              user: this.props.user,
-              userOfToken: this.props.user,
-              lastMessage: {
-                user: this.props.user,
-                content: 'Привет',
-                date: new Date()
-              },
-              className: "Messages-Dialog"
-            },
-            {
-              user: this.props.user,
-              userOfToken: this.props.user,
-              lastMessage: {
-                user: this.props.user,
-                content: 'Привет',
-                date: new Date()
-              },
-              className: "Messages-Dialog"
-            },
-            {
-              user: this.props.user,
-              userOfToken: this.props.user,
-              lastMessage: {
-                user: this.props.user,
-                content: 'Привет',
-                date: new Date()
-              },
-              className: "Messages-Dialog"
-            }
-          ].map(props => (
-            <li className="Messages-DialogsItem">
-              <Dialog
-                {...props}
-                onOpen={this.handleDialogOpen}
-                onRemove={uid => console.log('closed ' + uid)}
-              />
-            </li>
-          ))
-          }
-        </ul>
+        <Content
+          state={inDialog ? 'in dialog': 'default'}
+          user={this.props.user}
+          onDialogOpen={this.handleDialogOpen}
+          onDialogRemove={this.handleDialogRemove}
+        />
         <footer className="Messages-Footer">
           Footer
         </footer>
