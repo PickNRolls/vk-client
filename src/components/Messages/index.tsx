@@ -64,7 +64,7 @@ class Messages extends React.Component<IProps, IState> {
               userOfToken: this.props.user,
               lastMessage: {
                 user: this.props.user,
-                content: 'Привет гандонище',
+                content: 'Привет',
                 date: new Date()
               },
               className: "Messages-Dialog"
@@ -74,7 +74,7 @@ class Messages extends React.Component<IProps, IState> {
               userOfToken: this.props.user,
               lastMessage: {
                 user: this.props.user,
-                content: 'Привет гандонище',
+                content: 'Привет Привет Привет Привет Привет Привет Привет ПриветПриветПривет Привет Привет Привет Привет Привет',
                 date: new Date()
               },
               className: "Messages-Dialog"
@@ -84,7 +84,7 @@ class Messages extends React.Component<IProps, IState> {
               userOfToken: this.props.user,
               lastMessage: {
                 user: this.props.user,
-                content: 'Привет гандонище',
+                content: 'Привет',
                 date: new Date()
               },
               className: "Messages-Dialog"
@@ -94,7 +94,7 @@ class Messages extends React.Component<IProps, IState> {
               userOfToken: this.props.user,
               lastMessage: {
                 user: this.props.user,
-                content: 'Привет гандонище',
+                content: 'Привет',
                 date: new Date()
               },
               className: "Messages-Dialog"
@@ -104,7 +104,7 @@ class Messages extends React.Component<IProps, IState> {
               userOfToken: this.props.user,
               lastMessage: {
                 user: this.props.user,
-                content: 'Привет гандонище',
+                content: 'Привет',
                 date: new Date()
               },
               className: "Messages-Dialog"
