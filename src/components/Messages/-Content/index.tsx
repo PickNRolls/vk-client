@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Dialog from '../../Dialog';
-import Message from '../../Message';
+import MessageGroup from '../../MessageGroup';
 
 import { IElementsProps } from '..';
 import IUser from '../../../typing/IUser';
@@ -37,27 +37,18 @@ class MessagesContent extends React.Component<IProps, IState> {
       const inDialogContent = (
         <div className="Messages-Content">
           <ul className="Messages-List">
-            <li className="Messages-Message">
-              <Message
-                data={{
-                  author: interlocutor,
-                  content: `Мужик заходит в магазин сувениров. Видит маленькую бронзовую фигурку кошки. На ценнике написано: "кошка — 1000 рублей, её история — 10 000 рублей." 
-
-— Я могу купить кошку без истории? — спрашивает он продавца. 
-
-— Конечно, — отвечает продавец, — Но за историей вы всё равно вернётесь. 
-
-Мужик покупает маленькую бронзовую кошку и идёт по городу. Вдруг он замечает, что следом за ним сначала идёт одна кошка, потом другая, потом ещё. Через некоторое время за ним уже идут тысячи кошек. Мужик в ужасе начинает убегать. Кошки не отстают. Тогда он размахивается и бросает маленькую бронзовую фигурку кошки в реку. Все кошки бежавшие до этого за мужиком, тут же прыгают в воду вслед за статуэткой и ебут ее там в жопу так долго и неистово, что помирают от усталости. `,
-                  date: new Date()
-                }}
-              />
-            </li>
-            <li className="Messages-Message">
-              <Message
-                data={{
-                  author: interlocutor,
-                  content: 'Privet',
-                  date: new Date()
+            <li className="Messages-Group">
+              <MessageGroup
+                content={{
+                  first: {
+                    author: interlocutor,
+                    content: 'first message',
+                    date: new Date()
+                  },
+                  other: [
+                    'second message',
+                    'third message'
+                  ]
                 }}
               />
             </li>
@@ -76,7 +67,10 @@ class MessagesContent extends React.Component<IProps, IState> {
               [
                 {
                   user: this.props.user,
-                  userOfToken: this.props.user,
+                  userOfToken: {
+                    ...this.props.user,
+                    id: '00000001'
+                  },
                   lastMessage: {
                     author: this.props.user,
                     content: 'Привет',
@@ -93,39 +87,9 @@ class MessagesContent extends React.Component<IProps, IState> {
                     date: new Date()
                   },
                   className: "Messages-Dialog"
-                },
-                {
-                  user: this.props.user,
-                  userOfToken: this.props.user,
-                  lastMessage: {
-                    author: this.props.user,
-                    content: 'Привет',
-                    date: new Date()
-                  },
-                  className: "Messages-Dialog"
-                },
-                {
-                  user: this.props.user,
-                  userOfToken: this.props.user,
-                  lastMessage: {
-                    author: this.props.user,
-                    content: 'Привет',
-                    date: new Date()
-                  },
-                  className: "Messages-Dialog"
-                },
-                {
-                  user: this.props.user,
-                  userOfToken: this.props.user,
-                  lastMessage: {
-                    author: this.props.user,
-                    content: 'Привет',
-                    date: new Date()
-                  },
-                  className: "Messages-Dialog"
                 }
               ].map(props => (
-                <li className="Messages-DialogsItem">
+                <li className="Messages-DialogsItem" key={props.user.id}>
                   <Dialog
                     {...props}
                     onOpen={this.handleDialogOpen}

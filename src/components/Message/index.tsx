@@ -8,7 +8,8 @@ import cn from '../../helpers/cn';
 
 import './index.css';
 
-interface IProps extends IBaseProps {
+export interface IProps extends IBaseProps {
+  onlyContent?: true;
   data: IMessage;
 };
 
@@ -24,8 +25,16 @@ class Message extends React.Component<IProps, IState> {
 
   render() {
     const propsClass = this.props.className ? this.props.className + ' clearfix' : 'clearfix';
-    const cMessage = cn('Message', propsClass);
+    const cMessage = cn('Message', propsClass, {
+      type: this.props.onlyContent ? 'onlyContent' : false
+    });
     const { data } = this.props;
+
+    const messageContent = (
+      <div className="Message-Content">
+        {data.content}
+      </div>
+    );
 
     return (
       <div className={cMessage}>
@@ -54,9 +63,8 @@ class Message extends React.Component<IProps, IState> {
             })}
           </div>
         </div>
-        <div className="Message-Content">
-          {data.content}
-        </div>
+
+        {messageContent}
       </div>
     );
   }

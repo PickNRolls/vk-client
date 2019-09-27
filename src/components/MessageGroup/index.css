@@ -1,0 +1,7 @@
+.MessageGroup .Message_type_onlyContent {
+  margin-bottom: 0;
+}
+
+.MessageGroup .Message:not(.Message_type_onlyContent) {
+  margin-bottom: -4px;
+}

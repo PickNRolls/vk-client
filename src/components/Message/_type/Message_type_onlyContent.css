@@ -1,0 +1,5 @@
+.Message_type_onlyContent .Message-Token,
+.Message_type_onlyContent .Message-AuthorName,
+.Message_type_onlyContent .Message-Date {
+  display: none;
+}
