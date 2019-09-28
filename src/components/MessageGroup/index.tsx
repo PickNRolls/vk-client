@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Message from '../Message';
-import MessageOnlyContent from '../Message/_type/Message_type_onlyContent';
+import SimpleMessage from '../SimpleMessage';
 
 import IBaseProps from '../../typing/IBaseProps';
 import IMessage from '../../typing/IMessage';
@@ -9,11 +9,8 @@ import cn from '../../helpers/cn';
 
 import './index.css';
 
-interface IProps extends IBaseProps {
-  content: {
-    first: IMessage;
-    other: string[];
-  };
+export interface IProps extends IBaseProps {
+  messages: IMessage[];
 };
 
 interface IState {
@@ -28,27 +25,24 @@ class MessageGroup extends React.Component<IProps, IState> {
 
   render() {
     const cMessageGroup = cn('MessageGroup', this.props.className);
-    const { content } = this.props;
-    const { author } = content.first;
+    const { messages } = this.props;
 
     return (
       <div className={cMessageGroup}>
         <Message
-          data={{
-            author,
-            content: content.first.content,
-            date: content.first.date
-          }}
+          data={messages[0]}
+          isActive={false}
+          
+          className="MessageGroup-Message"
         />
 
-        {content.other.map(string => (
-          <MessageOnlyContent
-            key={string}
-            data={{
-              author,
-              content: content.first.content,
-              date: content.first.date
-            }}
+        {messages.slice(1).map(message => (
+          <SimpleMessage
+            key={message.id}
+            data={message}
+            isActive={false}
+
+            className="MessageGroup-SimpleMessage"
           />
         ))}
       </div>
