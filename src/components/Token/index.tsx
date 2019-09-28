@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import withType from '../../hocs/tokens/withType';
-
 import IBaseProps from '../../typing/IBaseProps';
 import IUser from '../../typing/IUser';
 import cn from '../../helpers/cn';
