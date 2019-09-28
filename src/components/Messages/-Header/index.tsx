@@ -2,6 +2,7 @@ import React from 'react';
 
 import withType from '../../../hocs/tokens/withType';
 import Token from '../../Token';
+import ClearInput from '../../ClearInput';
 
 import { IElementsProps } from '..';
 import I18N from '../../../helpers/i18n';
@@ -60,7 +61,13 @@ const HeaderContent: React.FC<IProps> = props => {
   }
 
   return (
-    <div></div>
+    <div className="Messages-HeaderDefault">
+      <ClearInput
+        type="text"
+        className="Messages-Search"
+        placeholder={I18N(localKeyset, 'search')}
+      />
+    </div>
   );
 };
 

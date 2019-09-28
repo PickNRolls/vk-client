@@ -20,7 +20,7 @@ interface IProps extends IBaseProps {
 };
 
 interface IState {
-  inDialog: boolean;
+  state: 'default' | 'in dialog';
   interlocutor?: IUser;
 };
 
@@ -28,21 +28,21 @@ class Messages extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
-      inDialog: false,
+      state: 'default',
       interlocutor: undefined
     };
   }
 
   handleDialogOpen = (user: IUser) => {
     this.setState({
-      inDialog: true,
+      state: 'in dialog',
       interlocutor: user
     });
   }
 
   handleDialogExit = () => {
     this.setState({
-      inDialog: false,
+      state: 'default',
       interlocutor: undefined
     });
   }
@@ -53,7 +53,7 @@ class Messages extends React.Component<IProps, IState> {
 
   render() {
     const cMessages = cn('Messages', this.props.className);
-    const { inDialog, interlocutor } = this.state;
+    const { state, interlocutor } = this.state;
     const { user, interlocutors } = this.props;
 
     return (
@@ -61,14 +61,14 @@ class Messages extends React.Component<IProps, IState> {
         <header className="Messages-Header">
           <div className="Messages-HeaderWrap">
             <HeaderContent
-              state={inDialog ? 'in dialog' : 'default'}
+              state={state}
               interlocutor={interlocutor}
               onBack={this.handleDialogExit}
             />
           </div>
         </header>
         <Content
-          state={inDialog ? 'in dialog': 'default'}
+          state={state}
           user={user}
           interlocutors={interlocutors}
           interlocutor={interlocutor}
