@@ -1,10 +1,13 @@
 import React from 'react';
 
+import withType from '../../../hocs/tokens/withType';
 import Token from '../../Token';
 
 import { IElementsProps } from '..';
 import I18N from '../../../helpers/i18n';
 import localKeyset from '../i18n';
+
+const TextToken = withType('text', Token);
 
 interface IProps extends IElementsProps {
   onBack(): void;
@@ -21,12 +24,11 @@ const HeaderContent: React.FC<IProps> = props => {
         </button>
 
         <div className="Messages-InterlocutorInfo">
-          <Token
+          <TextToken
             goToPage={{
               target: '_blank'
             }}
             user={interlocutor}
-            type="text"
           />
           <span className="Messages-InterlocutorStatus">
             {interlocutor.online instanceof Date
@@ -43,6 +45,7 @@ const HeaderContent: React.FC<IProps> = props => {
           goToPage={{
             target: '_blank'
           }}
+          size={30}
           user={interlocutor}
           className="Messages-InterlocutorToken"
         />

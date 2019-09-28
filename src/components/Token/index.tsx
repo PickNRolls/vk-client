@@ -1,21 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import withType from '../../hocs/tokens/withType';
+
 import IBaseProps from '../../typing/IBaseProps';
 import IUser from '../../typing/IUser';
 import cn from '../../helpers/cn';
 
-import TokenTypeText from './_type/Token_type_text';
-
 import './index.css';
 
 export interface IProps extends IBaseProps {
-  type?: 'default' | 'text';
   user: IUser;
   value?: string;
+  size?: number;
   goToPage?: boolean | {
     target?: '_blank'
   };
+
   onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
@@ -35,15 +36,7 @@ class Token extends React.Component<IProps, IState> {
   }
 
   render() {
-    if (this.props.type === 'text') {
-      const props = {
-        ...this.props,
-      };
-      delete props.type;
-      return <TokenTypeText {...props} />
-    }
-
-    const { user, goToPage } = this.props;
+    const { user, goToPage, size = 50 } = this.props;
     const cToken = cn('Token', this.props.className, {
       disable: !goToPage
     });
@@ -57,11 +50,14 @@ class Token extends React.Component<IProps, IState> {
         target={target}
         className={cToken}
         >
-        <img
-          src={user.avatar}
-          alt={user.fullName}
+        <span
           className="Token-Image"
+          style={{
+            backgroundImage: `url(${user.avatar})`,
+            backgroundSize: `${size}px`
+          }}
         />
+        {this.props.children}
       </Link>
     );
   }

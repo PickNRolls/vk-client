@@ -12,6 +12,23 @@
 }
 
 .Token-Image {
+  display: block;
   width: 100%;
+  height: 100%;
   border-radius: 50%;
+  background: none center top / 50px;
+}
+
+.TextToken .Token-Image {
+  display: none;
+}
+
+.TextToken {
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  color: #222;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: 500;
 }
