@@ -81,6 +81,7 @@ class Dialog extends React.Component<IProps, IState> {
               ? <>
                 <Token
                   user={user}
+                  size={25}
                   className="Dialog-UserPhoto"
                 />
               </>

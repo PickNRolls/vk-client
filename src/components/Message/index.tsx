@@ -1,6 +1,7 @@
 import React from 'react';
 
 import withClickHandler from '../../hocs/messages/withClickHandler';
+import withType from '../../hocs/tokens/withType';
 import Token from '../Token';
 
 import IBaseProps from '../../typing/IBaseProps';
@@ -8,6 +9,8 @@ import IMessage from '../../typing/IMessage';
 import cn from '../../helpers/cn';
 
 import './index.css';
+
+const TextToken = withType('text', Token);
 
 export interface IProps extends IBaseProps {
   data: IMessage;
@@ -38,25 +41,19 @@ class Message extends React.Component<IProps, IState> {
     });
     const { data } = this.props;
 
-    const messageContent = (
-      <div className="Message-Content">
-        {data.content}
-      </div>
-    );
-
     return (
       <div className={cMessage} onClick={this.handleClick}>
         <Token
           goToPage={{
             target: '_blank'
           }}
+          size={36}
           user={data.author}
           className="Message-Token"
         />
 
         <div className="Message-Top">
-          <Token
-            type="text"
+          <TextToken
             goToPage={{
               target: '_blank'
             }}
@@ -72,7 +69,9 @@ class Message extends React.Component<IProps, IState> {
           </div>
         </div>
 
-        {messageContent}
+        <div className="Message-Content">
+          {data.content}
+        </div>
       </div>
     );
   }

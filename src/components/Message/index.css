@@ -1,8 +1,7 @@
 .Message {
   border-radius: 3px;
-  padding: 6px 0 7px;
+  padding: 6px 0 9px 35px;
   margin-bottom: 4px;
-  padding-left: 35px;
   cursor: pointer;
 }
 
@@ -20,6 +19,7 @@
 .Message-Top {
   display: flex;
   align-items: baseline;
+  margin-bottom: 2px;
 }
 
 .Token.Message-AuthorName {
