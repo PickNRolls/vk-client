@@ -5,6 +5,7 @@ import MessageGroup from '../../MessageGroup';
 
 import { IElementsProps } from '..';
 import IUser from '../../../typing/IUser';
+import IMessage from '../../../typing/IMessage';
 
 interface IProps extends IElementsProps {
   user: IUser;
@@ -41,33 +42,35 @@ class MessagesContent extends React.Component<IProps, IState> {
     } = this.props;
 
     if (state === 'in dialog' && interlocutor) {
+      const { list } = user.connections[interlocutor.id].messages;
+      let renderContent: JSX.Element[];
+      let groupingMessages: IMessage[][] = [[list[0]]];
+      let groupingIndex = 0;
+      let lastAuthorId: IUser['id'] = list[0].authorId;
+      for (let i = 1; i < list.length; i++) {
+        if (list[i].authorId === lastAuthorId) {
+          groupingMessages[groupingIndex].push(list[i]);
+        } else {
+          groupingIndex++;
+          groupingMessages[groupingIndex] = [list[i]];
+          lastAuthorId = list[i].authorId;
+        }
+      }
+
+      renderContent = groupingMessages.map(messages => (
+        <li className="Messages-Group" key={messages[0].id}>
+          <MessageGroup
+            interlocutor={interlocutor}
+            user={user}
+            messages={messages}
+          />
+        </li>
+      ));
+
       const inDialogContent = (
         <div className="Messages-Content">
           <ul className="Messages-List">
-            <li className="Messages-Group">
-              <MessageGroup
-                messages={[
-                  {
-                    id: '000000000000000000000000',
-                    author: interlocutor,
-                    content: 'first message',
-                    date: new Date()
-                  },
-                  {
-                    id: '000000000000000000000001',
-                    author: interlocutor,
-                    content: 'second',
-                    date: new Date()
-                  },
-                  {
-                    id: '000000000000000000000002',
-                    author: interlocutor,
-                    content: 'third message',
-                    date: new Date()
-                  }
-                ]}
-              />
-            </li>
+            {renderContent}
           </ul>
         </div>
       );
@@ -75,41 +78,35 @@ class MessagesContent extends React.Component<IProps, IState> {
       return inDialogContent;
     }
 
-    if (state === 'default') {
-      const defaultContent = (
-        <div className="Messages-Content">
-          <ul className="Messages-Dialogs">
-            {
-              interlocutors.map(interlocutor => {
-                const dialogProps = {
-                  user,
-                  userOfToken: interlocutor,
-                  lastMessage: {
-                    id: '000000000000000000000003',
-                    author: interlocutor,
-                    content: interlocutor.fullName,
-                    date: new Date()
-                  },
-                  className: "Messages-Dialog"
-                };
+    const defaultContent = (
+      <div className="Messages-Content">
+        <ul className="Messages-Dialogs">
+          {
+            interlocutors.map(interlocutor => {
+              const { list } = user.connections[interlocutor.id].messages;
+              const dialogProps = {
+                user,
+                userOfToken: interlocutor,
+                lastMessage: list[list.length - 1],
+                className: "Messages-Dialog"
+              };
 
-                return (
-                  <li className="Messages-DialogsItem" key={dialogProps.userOfToken.id}>
-                    <Dialog
-                      {...dialogProps}
-                      onOpen={this.handleDialogOpen}
-                      onRemove={this.handleDialogRemove}
-                    />
-                  </li>
-                );
-              })
-            }
-          </ul>
-        </div>
-      );
+              return (
+                <li className="Messages-DialogsItem" key={dialogProps.userOfToken.id}>
+                  <Dialog
+                    {...dialogProps}
+                    onOpen={this.handleDialogOpen}
+                    onRemove={this.handleDialogRemove}
+                  />
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+    );
 
-      return defaultContent;
-    }
+    return defaultContent;
   }
 };
 

@@ -2,7 +2,7 @@ import IUser from './IUser';
 
 export default interface IMessage {
   id: string;
-  author: IUser;
+  authorId: IUser['id'];
   content: string;
   date: Date;
 };

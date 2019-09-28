@@ -4,12 +4,15 @@ import Message from '../Message';
 import SimpleMessage from '../SimpleMessage';
 
 import IBaseProps from '../../typing/IBaseProps';
+import IUser from '../../typing/IUser';
 import IMessage from '../../typing/IMessage';
 import cn from '../../helpers/cn';
 
 import './index.css';
 
 export interface IProps extends IBaseProps {
+  user: IUser;
+  interlocutor: IUser;
   messages: IMessage[];
 };
 
@@ -25,14 +28,19 @@ class MessageGroup extends React.Component<IProps, IState> {
 
   render() {
     const cMessageGroup = cn('MessageGroup', this.props.className);
-    const { messages } = this.props;
+    const { messages, user, interlocutor } = this.props;
+
+    const author = messages[0].authorId === user.id
+      ? user
+      : interlocutor;
 
     return (
       <div className={cMessageGroup}>
         <Message
+          author={author}
           data={messages[0]}
           isActive={false}
-          
+
           className="MessageGroup-Message"
         />
 

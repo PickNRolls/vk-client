@@ -136,12 +136,20 @@
 }
 
 .Messages-Content {
-  height: calc(100vh - 150px);
+  min-height: calc(100vh - 150px);
   background: #fff;
 }
 
 .Messages-List {
   padding: 15px 4px 0;
+}
+
+.Messages-Group {
+  margin-bottom: 5px;
+}
+
+.Messages .Messages-Group:last-child {
+  padding-bottom: 48px;
 }
 
 .Messages-Footer {

@@ -11,7 +11,6 @@ import localKeyset from './i18n';
 
 interface IProps extends IBaseProps {
   user: IUser;
-  interlocutorsId: IUser['id'][];
 };
 
 interface IState {
@@ -27,7 +26,12 @@ class MessagesPage extends React.Component<IProps, IState> {
   }
 
   componentDidMount() {
-    Promise.all(this.props.interlocutorsId.map(fetchUser))
+    const { user } = this.props;
+    const interlocutorsId = Object.keys(user.connections).filter(uid =>
+      user.connections[uid].messages.list.length
+    );
+
+    Promise.all(interlocutorsId.map(fetchUser))
       .then(users => this.setState({
         interlocutors: users
       }));

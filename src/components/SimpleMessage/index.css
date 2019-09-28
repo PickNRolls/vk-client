@@ -3,6 +3,9 @@
   padding: 6px 0 7px;
   margin-bottom: 4px;
   padding-left: 81px;
+  padding-right: 81px;
+  word-wrap: break-word;
+  line-height: 18px;
   cursor: pointer;
 }
 

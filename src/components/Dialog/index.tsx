@@ -77,7 +77,7 @@ class Dialog extends React.Component<IProps, IState> {
           </div>
 
           <div className="Dialog-LastMessage">
-            {lastMessage.author.id === user.id
+            {lastMessage.authorId === user.id
               ? <>
                 <Token
                   user={user}

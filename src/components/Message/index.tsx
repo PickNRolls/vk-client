@@ -5,6 +5,7 @@ import withType from '../../hocs/tokens/withType';
 import Token from '../Token';
 
 import IBaseProps from '../../typing/IBaseProps';
+import IUser from '../../typing/IUser';
 import IMessage from '../../typing/IMessage';
 import cn from '../../helpers/cn';
 
@@ -13,6 +14,7 @@ import './index.css';
 const TextToken = withType('text', Token);
 
 export interface IProps extends IBaseProps {
+  author: IUser;
   data: IMessage;
   isActive: boolean;
 
@@ -39,7 +41,7 @@ class Message extends React.Component<IProps, IState> {
     const cMessage = cn('Message', propsClass, {
       active: this.props.isActive
     });
-    const { data } = this.props;
+    const { data, author } = this.props;
 
     return (
       <div className={cMessage} onClick={this.handleClick}>
@@ -48,7 +50,7 @@ class Message extends React.Component<IProps, IState> {
             target: '_blank'
           }}
           size={36}
-          user={data.author}
+          user={author}
           className="Message-Token"
         />
 
@@ -57,8 +59,8 @@ class Message extends React.Component<IProps, IState> {
             goToPage={{
               target: '_blank'
             }}
-            user={data.author}
-            value={data.author.firstName}
+            user={author}
+            value={author.firstName}
             className="Message-AuthorName"
           />
           <div className="Message-Date">

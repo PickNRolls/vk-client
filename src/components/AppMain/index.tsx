@@ -4,15 +4,11 @@ import { Switch, Route } from 'react-router-dom';
 import SideNav from '../SideNav';
 import UserPage from '../UserPage';
 import MessagesPage from '../MessagesPage';
-import IUser from '../../typing/IUser';
 import {IProps as SideNavProps} from '../SideNav';
 
 import './index.css';
 
 interface IProps extends SideNavProps {
-  messages: {
-    interlocutorsId: IUser['id'][];
-  };
 };
 
 const AppMain: React.FC<IProps> = props => {
@@ -34,7 +30,6 @@ const AppMain: React.FC<IProps> = props => {
               <MessagesPage
                 {...routeProps}
                 user={props.user}
-                interlocutorsId={props.messages.interlocutorsId}
               />
             )} />
             <Route path="/friends" />

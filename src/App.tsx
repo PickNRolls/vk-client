@@ -5,43 +5,44 @@ import IUser from './typing/IUser';
 import AppHeader from './components/AppHeader';
 import Main from './components/AppMain';
 
+import { fetchUser, refreshUsers } from './server';
+
 interface IProps {
 
 };
 
 interface IState {
   user: IUser;
-  messages: {
-    interlocutorsId: IUser['id'][];
-  };
+  isUserFetched: boolean;
 };
 
 class App extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
-      user: {
-        id: '00000000',
-        avatar: "https://sun9-41.userapi.com/c846018/v846018774/1964b4/MTv4NbdWX0E.jpg?ava=1",
-        fullName: 'Илья Блинков',
-        firstName: 'Илья',
-        lastName: 'Блинков',
-        age: 18,
-        gender: true,
-        online: true,
-        additionalInfo: {
-          birthday: '19.03.2001',
-          languages: ['russian', 'english']
-        }
-      },
-
-      messages: {
-        interlocutorsId: ['00000000', '00000001']
-      }
+      user: {} as IUser,
+      isUserFetched: false
     };
   }
 
+  componentDidMount() {
+    fetchUser('00000000').then(user => this.setState({
+      user,
+      isUserFetched: true
+    }));
+
+    refreshUsers();
+  }
+
   render() {
+    if (!this.state.isUserFetched) {
+      return (
+        <div>
+          Fetching...
+        </div>
+      );
+    }
+
     return (
       <>
         <AppHeader />
