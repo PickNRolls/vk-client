@@ -98,6 +98,7 @@
   width: 148px;
   height: 100%;
   border: none;
+  border-top-left-radius: 4px;
   background: none;
   padding: 14px 60px 15px 26px;
   color: #818d99;
