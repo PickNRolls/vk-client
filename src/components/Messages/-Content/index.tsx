@@ -46,17 +46,26 @@ class MessagesContent extends React.Component<IProps, IState> {
           <ul className="Messages-List">
             <li className="Messages-Group">
               <MessageGroup
-                content={{
-                  first: {
+                messages={[
+                  {
+                    id: '000000000000000000000000',
                     author: interlocutor,
                     content: 'first message',
                     date: new Date()
                   },
-                  other: [
-                    'second message',
-                    'third message'
-                  ]
-                }}
+                  {
+                    id: '000000000000000000000001',
+                    author: interlocutor,
+                    content: 'second',
+                    date: new Date()
+                  },
+                  {
+                    id: '000000000000000000000002',
+                    author: interlocutor,
+                    content: 'third message',
+                    date: new Date()
+                  }
+                ]}
               />
             </li>
           </ul>
@@ -76,6 +85,7 @@ class MessagesContent extends React.Component<IProps, IState> {
                   user,
                   userOfToken: interlocutor,
                   lastMessage: {
+                    id: '000000000000000000000003',
                     author: interlocutor,
                     content: interlocutor.fullName,
                     date: new Date()

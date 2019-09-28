@@ -1,7 +1,13 @@
 .Message {
+  border-radius: 3px;
   padding: 6px 0 7px;
   margin-bottom: 4px;
   padding-left: 35px;
+  cursor: pointer;
+}
+
+.Message_active {
+  background: #edf0f5;
 }
 
 .Message-Token {

@@ -1,0 +1,11 @@
+.SimpleMessage {
+  border-radius: 3px;
+  padding: 6px 0 7px;
+  margin-bottom: 4px;
+  padding-left: 81px;
+  cursor: pointer;
+}
+
+.SimpleMessage_active {
+  background: #edf0f5;
+}
