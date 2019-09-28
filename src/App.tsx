@@ -11,6 +11,9 @@ interface IProps {
 
 interface IState {
   user: IUser;
+  messages: {
+    interlocutorsId: IUser['id'][];
+  };
 };
 
 class App extends React.Component<IProps, IState> {
@@ -30,6 +33,10 @@ class App extends React.Component<IProps, IState> {
           birthday: '19.03.2001',
           languages: ['russian', 'english']
         }
+      },
+
+      messages: {
+        interlocutorsId: ['00000000', '00000001']
       }
     };
   }
@@ -38,7 +45,9 @@ class App extends React.Component<IProps, IState> {
     return (
       <>
         <AppHeader />
-        <Main user={this.state.user} />
+        <Main
+          {...this.state}
+        />
       </>
     );
   }

@@ -16,6 +16,7 @@ export interface IElementsProps {
 
 interface IProps extends IBaseProps {
   user: IUser;
+  interlocutors: IUser[];
 };
 
 interface IState {
@@ -32,10 +33,10 @@ class Messages extends React.Component<IProps, IState> {
     };
   }
 
-  handleDialogOpen = (uid: IUser['id']) => {
+  handleDialogOpen = (user: IUser) => {
     this.setState({
       inDialog: true,
-      interlocutor: this.props.user
+      interlocutor: user
     });
   }
 
@@ -53,6 +54,7 @@ class Messages extends React.Component<IProps, IState> {
   render() {
     const cMessages = cn('Messages', this.props.className);
     const { inDialog, interlocutor } = this.state;
+    const { user, interlocutors } = this.props;
 
     return (
       <div className={cMessages}>
@@ -67,7 +69,8 @@ class Messages extends React.Component<IProps, IState> {
         </header>
         <Content
           state={inDialog ? 'in dialog': 'default'}
-          user={this.props.user}
+          user={user}
+          interlocutors={interlocutors}
           interlocutor={interlocutor}
           onDialogOpen={this.handleDialogOpen}
           onDialogRemove={this.handleDialogRemove}

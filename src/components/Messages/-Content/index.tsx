@@ -8,8 +8,9 @@ import IUser from '../../../typing/IUser';
 
 interface IProps extends IElementsProps {
   user: IUser;
+  interlocutors: IUser[];
 
-  onDialogOpen(uid: IUser['id']): void;
+  onDialogOpen(user: IUser): void;
   onDialogRemove(uid: IUser['id']): void;
 };
 
@@ -23,8 +24,8 @@ class MessagesContent extends React.Component<IProps, IState> {
     this.state = {};
   }
 
-  handleDialogOpen = (uid: IUser['id']) => {
-    this.props.onDialogOpen(uid);
+  handleDialogOpen = (user: IUser) => {
+    this.props.onDialogOpen(user);
   }
 
   handleDialogRemove = (uid: IUser['id']) => {
@@ -32,7 +33,13 @@ class MessagesContent extends React.Component<IProps, IState> {
   }
 
   render() {
-    const { state, interlocutor } = this.props;
+    const {
+      state,
+      user,
+      interlocutor,
+      interlocutors
+    } = this.props;
+
     if (state === 'in dialog' && interlocutor) {
       const inDialogContent = (
         <div className="Messages-Content">
@@ -64,39 +71,28 @@ class MessagesContent extends React.Component<IProps, IState> {
         <div className="Messages-Content">
           <ul className="Messages-Dialogs">
             {
-              [
-                {
-                  user: this.props.user,
-                  userOfToken: {
-                    ...this.props.user,
-                    id: '00000001'
-                  },
+              interlocutors.map(interlocutor => {
+                const dialogProps = {
+                  user,
+                  userOfToken: interlocutor,
                   lastMessage: {
-                    author: this.props.user,
-                    content: 'Привет',
+                    author: interlocutor,
+                    content: interlocutor.fullName,
                     date: new Date()
                   },
                   className: "Messages-Dialog"
-                },
-                {
-                  user: this.props.user,
-                  userOfToken: this.props.user,
-                  lastMessage: {
-                    author: this.props.user,
-                    content: 'Привет Привет Привет Привет Привет Привет Привет ПриветПриветПривет Привет Привет Привет Привет Привет',
-                    date: new Date()
-                  },
-                  className: "Messages-Dialog"
-                }
-              ].map(props => (
-                <li className="Messages-DialogsItem" key={props.user.id}>
-                  <Dialog
-                    {...props}
-                    onOpen={this.handleDialogOpen}
-                    onRemove={this.handleDialogRemove}
-                  />
-                </li>
-              ))
+                };
+
+                return (
+                  <li className="Messages-DialogsItem" key={dialogProps.userOfToken.id}>
+                    <Dialog
+                      {...dialogProps}
+                      onOpen={this.handleDialogOpen}
+                      onRemove={this.handleDialogRemove}
+                    />
+                  </li>
+                );
+              })
             }
           </ul>
         </div>

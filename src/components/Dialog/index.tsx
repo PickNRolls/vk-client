@@ -14,7 +14,7 @@ interface IProps extends IBaseProps {
   userOfToken: IUser;
   lastMessage: IMessage;
 
-  onOpen(uid: IUser['id']): void;
+  onOpen(user: IUser): void;
   onRemove(uid: IUser['id']): void;
 };
 
@@ -33,7 +33,7 @@ class Dialog extends React.Component<IProps, IState> {
   }
 
   handleOpen = () => {
-    this.props.onOpen(this.props.userOfToken.id);
+    this.props.onOpen(this.props.userOfToken);
   }
 
   handleRemove = (event: React.MouseEvent<HTMLButtonElement>) => {

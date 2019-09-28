@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { fetchUser } from '../../server';
 import Messages from '../Messages';
 
 import IBaseProps from '../../typing/IBaseProps';
@@ -10,16 +11,26 @@ import localKeyset from './i18n';
 
 interface IProps extends IBaseProps {
   user: IUser;
+  interlocutorsId: IUser['id'][];
 };
 
 interface IState {
-
+  interlocutors: IUser[];
 };
 
 class MessagesPage extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      interlocutors: []
+    };
+  }
+
+  componentDidMount() {
+    Promise.all(this.props.interlocutorsId.map(fetchUser))
+      .then(users => this.setState({
+        interlocutors: users
+      }));
   }
 
   render() {
@@ -30,7 +41,10 @@ class MessagesPage extends React.Component<IProps, IState> {
     return (
       <div className={cMessagesPage}>
         <div className="page-column-wide">
-          <Messages user={this.props.user} />
+          <Messages
+            user={this.props.user}
+            interlocutors={this.state.interlocutors}
+          />
         </div>
         <div className="page-column-thin">
 
