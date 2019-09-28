@@ -66,6 +66,10 @@ const HeaderContent: React.FC<IProps> = props => {
         type="text"
         className="Messages-Search"
         placeholder={I18N(localKeyset, 'search')}
+
+        input={{
+          className: "Messages-SearchInput"
+        }}
       />
     </div>
   );
