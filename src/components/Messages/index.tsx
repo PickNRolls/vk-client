@@ -14,7 +14,7 @@ export interface IElementsProps {
   interlocutor?: User;
 };
 
-interface IProps extends BaseProps {
+interface Props extends BaseProps {
   user: User;
   interlocutors: User[];
 };
@@ -24,8 +24,8 @@ interface IState {
   interlocutor?: User;
 };
 
-class Messages extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class Messages extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       state: 'default',

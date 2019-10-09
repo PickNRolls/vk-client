@@ -4,7 +4,7 @@ import './index.css';
 
 import Logo from '../Logo';
 
-interface IProps {
+interface Props {
 
 };
 
@@ -12,8 +12,8 @@ interface IState {
 
 };
 
-class AppHeader extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class AppHeader extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = {
 

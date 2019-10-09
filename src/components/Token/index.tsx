@@ -7,7 +7,7 @@ import cn from '../../helpers/cn';
 
 import './index.css';
 
-export interface IProps extends BaseProps {
+export interface Props extends BaseProps {
   user: User;
   value?: string;
   size?: number;
@@ -22,8 +22,8 @@ interface IState {
 
 };
 
-class Token extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class Token extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = {};
   }

@@ -9,7 +9,7 @@ import cn from '../../helpers/cn';
 
 import './index.css';
 
-interface IProps extends BaseProps {
+interface Props extends BaseProps {
   user: User;
   userOfToken: User;
   lastMessage: Message;
@@ -22,8 +22,8 @@ interface IState {
 
 };
 
-class Dialog extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class Dialog extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = {};
   }

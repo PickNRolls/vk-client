@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IProps as ITokenProps } from '../../components/Token';
+import { Props as ITokenProps } from '../../components/Token';
 
 const withType = <P extends ITokenProps>
   (type: 'text' | 'photo', Token: React.ComponentType<P>) => (

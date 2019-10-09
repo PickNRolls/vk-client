@@ -13,7 +13,7 @@ import './index.css';
 
 const TextToken = withType('text', Token);
 
-export interface IProps extends BaseProps {
+export interface Props extends BaseProps {
   author: User;
   data: MessageInterface;
   isActive: boolean;
@@ -25,8 +25,8 @@ interface IState {
 
 };
 
-class Message extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class Message extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = {};
   }
@@ -79,4 +79,4 @@ class Message extends React.Component<IProps, IState> {
   }
 };
 
-export default withClickHandler<IProps>(Message);
+export default withClickHandler<Props>(Message);

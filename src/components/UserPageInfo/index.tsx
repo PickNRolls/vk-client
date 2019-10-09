@@ -12,7 +12,7 @@ import UserInfoGroup from '../UserInfoGroup';
 
 import './index.css';
 
-interface IProps extends BaseProps {
+interface Props extends BaseProps {
   user: User;
 };
 
@@ -20,8 +20,8 @@ interface IState {
   expanded: boolean;
 };
 
-class UserPageInfo extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class UserPageInfo extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       expanded: false

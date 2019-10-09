@@ -5,7 +5,7 @@ import cn from '../../helpers/cn';
 
 import './index.css';
 
-interface IProps extends BaseProps {
+interface Props extends BaseProps {
   type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
   placeholder?: React.InputHTMLAttributes<HTMLInputElement>['placeholder'];
 
@@ -24,8 +24,8 @@ interface IState {
   value: string;
 };
 
-class ClearInput extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class ClearInput extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       value: ''

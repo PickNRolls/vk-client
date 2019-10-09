@@ -5,11 +5,11 @@ import cn from '../../helpers/cn';
 
 import './index.css';
 
-interface IProps extends BaseProps {
+interface Props extends BaseProps {
   imageUrl: string;
 };
 
-const UserPageAvatar: React.FC<IProps> = props => {
+const UserPageAvatar: React.FC<Props> = props => {
   const cUserPageAvatar = cn('UserPageAvatar', props.className);
   return (
     <div className={cUserPageAvatar}>

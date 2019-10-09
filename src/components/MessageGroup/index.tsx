@@ -10,7 +10,7 @@ import cn from '../../helpers/cn';
 
 import './index.css';
 
-export interface IProps extends BaseProps {
+export interface Props extends BaseProps {
   user: User;
   interlocutor: User;
   messages: MessageInterface[];
@@ -20,8 +20,8 @@ interface IState {
 
 };
 
-class MessageGroup extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class MessageGroup extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = {};
   }

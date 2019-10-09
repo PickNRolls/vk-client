@@ -10,11 +10,11 @@ import localKeyset from '../i18n';
 
 const TextToken = withType('text', Token);
 
-interface IProps extends IElementsProps {
+interface Props extends IElementsProps {
   onBack(): void;
 };
 
-const HeaderContent: React.FC<IProps> = props => {
+const HeaderContent: React.FC<Props> = props => {
   const { state, interlocutor } = props;
 
   if (state === 'in dialog' && interlocutor) {

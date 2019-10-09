@@ -8,7 +8,7 @@ import cn from '../../helpers/cn';
 
 import './index.css';
 
-export interface IProps extends BaseProps {
+export interface Props extends BaseProps {
   data: Message;
   isActive: boolean;
 
@@ -19,8 +19,8 @@ interface IState {
 
 };
 
-class SimpleMessage extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class SimpleMessage extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = {};
   }
@@ -43,4 +43,4 @@ class SimpleMessage extends React.Component<IProps, IState> {
   }
 };
 
-export default withClickHandler<IProps>(SimpleMessage);
+export default withClickHandler<Props>(SimpleMessage);

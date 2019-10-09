@@ -18,7 +18,7 @@ interface INavItem {
   icon: string;
 };
 
-export interface IProps extends BaseProps {
+export interface Props extends BaseProps {
   user: User;
 };
 
@@ -26,8 +26,8 @@ interface IState {
   items: INavItem[];
 };
 
-class SideNav extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class SideNav extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       items: [

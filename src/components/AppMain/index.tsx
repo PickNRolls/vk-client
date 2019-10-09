@@ -4,14 +4,14 @@ import { Switch, Route } from 'react-router-dom';
 import SideNav from '../SideNav';
 import UserPage from '../UserPage';
 import MessagesPage from '../MessagesPage';
-import {IProps as SideNavProps} from '../SideNav';
+import {Props as SideNavProps} from '../SideNav';
 
 import './index.css';
 
-interface IProps extends SideNavProps {
+interface Props extends SideNavProps {
 };
 
-const AppMain: React.FC<IProps> = props => {
+const AppMain: React.FC<Props> = props => {
   return (
     <main className="AppMain">
       <div className="container clearfix">

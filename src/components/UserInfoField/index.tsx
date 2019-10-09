@@ -5,7 +5,7 @@ import cn from '../../helpers/cn';
 
 import './index.css';
 
-export interface IProps extends BaseProps {
+export interface Props extends BaseProps {
   label: string;
   value: string;
 }
@@ -13,7 +13,7 @@ interface IState {
 
 };
 
-const UserInfoField: React.FC<IProps> = props => {
+const UserInfoField: React.FC<Props> = props => {
   const cUserInfoField = cn('UserInfoField', props.className);
   return (
     <span className={cUserInfoField}>

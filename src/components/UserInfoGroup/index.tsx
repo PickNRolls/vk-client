@@ -7,7 +7,7 @@ import localKeyset from './i18n';
 
 import './index.css';
 
-interface IProps extends BaseProps {
+interface Props extends BaseProps {
   title: string;
 };
 
@@ -15,8 +15,8 @@ interface IState {
 
 };
 
-class UserInfoGroup extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class UserInfoGroup extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = {};
   }

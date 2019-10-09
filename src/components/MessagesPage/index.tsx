@@ -9,7 +9,7 @@ import cn from '../../helpers/cn';
 import I18N from '../../helpers/i18n';
 import localKeyset from './i18n';
 
-interface IProps extends BaseProps {
+interface Props extends BaseProps {
   user: User;
 };
 
@@ -17,8 +17,8 @@ interface IState {
   interlocutors: User[];
 };
 
-class MessagesPage extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class MessagesPage extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       interlocutors: []

@@ -7,7 +7,7 @@ import { IElementsProps } from '..';
 import User from '../../../typing/User';
 import Message from '../../../typing/Message';
 
-interface IProps extends IElementsProps {
+interface Props extends IElementsProps {
   user: User;
   interlocutors: User[];
 
@@ -19,8 +19,8 @@ interface IState {
 
 };
 
-class MessagesContent extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class MessagesContent extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = {};
   }

@@ -7,7 +7,7 @@ import User from '../../typing/User';
 import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
 
-interface IProps extends BaseProps {
+interface Props extends BaseProps {
   user: User;
 };
 
@@ -15,8 +15,8 @@ interface IState {
 
 };
 
-class UserPage extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class UserPage extends React.Component<Props, IState> {
+  constructor(props: Props) {
     super(props);
     this.state = {};
   }
