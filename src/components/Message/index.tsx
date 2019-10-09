@@ -21,11 +21,11 @@ export interface Props extends BaseProps {
   onClick?(event: React.MouseEvent<HTMLDivElement>): void;
 };
 
-interface IState {
+interface State {
 
 };
 
-class Message extends React.Component<Props, IState> {
+class Message extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {};

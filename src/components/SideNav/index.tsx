@@ -22,11 +22,11 @@ export interface Props extends BaseProps {
   user: User;
 };
 
-interface IState {
+interface State {
   items: INavItem[];
 };
 
-class SideNav extends React.Component<Props, IState> {
+class SideNav extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {

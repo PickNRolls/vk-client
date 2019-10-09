@@ -16,11 +16,11 @@ export interface Props extends BaseProps {
   messages: MessageInterface[];
 };
 
-interface IState {
+interface State {
 
 };
 
-class MessageGroup extends React.Component<Props, IState> {
+class MessageGroup extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {};

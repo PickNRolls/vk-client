@@ -8,11 +8,11 @@ interface Props {
 
 };
 
-interface IState {
+interface State {
 
 };
 
-class AppHeader extends React.Component<Props, IState> {
+class AppHeader extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {

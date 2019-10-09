@@ -11,11 +11,11 @@ interface Props extends BaseProps {
   user: User;
 };
 
-interface IState {
+interface State {
 
 };
 
-class UserPage extends React.Component<Props, IState> {
+class UserPage extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {};

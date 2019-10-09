@@ -18,11 +18,11 @@ export interface Props extends BaseProps {
   onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
-interface IState {
+interface State {
 
 };
 
-class Token extends React.Component<Props, IState> {
+class Token extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {};

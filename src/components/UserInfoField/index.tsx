@@ -9,7 +9,7 @@ export interface Props extends BaseProps {
   label: string;
   value: string;
 }
-interface IState {
+interface State {
 
 };
 

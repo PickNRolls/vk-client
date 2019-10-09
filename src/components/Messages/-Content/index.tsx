@@ -15,11 +15,11 @@ interface Props extends IElementsProps {
   onDialogRemove(uid: string): void;
 };
 
-interface IState {
+interface State {
 
 };
 
-class MessagesContent extends React.Component<Props, IState> {
+class MessagesContent extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {};

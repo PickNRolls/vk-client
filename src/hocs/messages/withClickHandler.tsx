@@ -4,12 +4,12 @@ interface OwnActiveProps {
   isActive: boolean;
 };
 
-interface IState {
+interface State {
   isActive: boolean;
 }
 
 const withClickHandler = <P extends OwnActiveProps>(UnwrappedComponent: React.ComponentType<P>) => (
-  class WithClickHandler extends React.Component<P, IState> {
+  class WithClickHandler extends React.Component<P, State> {
     constructor(props: P) {
       super(props);
       this.state = {

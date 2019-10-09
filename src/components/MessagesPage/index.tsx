@@ -13,11 +13,11 @@ interface Props extends BaseProps {
   user: User;
 };
 
-interface IState {
+interface State {
   interlocutors: User[];
 };
 
-class MessagesPage extends React.Component<Props, IState> {
+class MessagesPage extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {

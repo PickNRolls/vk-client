@@ -18,11 +18,11 @@ interface Props extends BaseProps {
   onRemove(uid: string): void;
 };
 
-interface IState {
+interface State {
 
 };
 
-class Dialog extends React.Component<Props, IState> {
+class Dialog extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {};

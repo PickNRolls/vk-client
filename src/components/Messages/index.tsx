@@ -19,12 +19,12 @@ interface Props extends BaseProps {
   interlocutors: User[];
 };
 
-interface IState {
+interface State {
   state: 'default' | 'in dialog';
   interlocutor?: User;
 };
 
-class Messages extends React.Component<Props, IState> {
+class Messages extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {

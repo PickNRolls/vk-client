@@ -20,11 +20,11 @@ interface Props extends BaseProps {
   };
 };
 
-interface IState {
+interface State {
   value: string;
 };
 
-class ClearInput extends React.Component<Props, IState> {
+class ClearInput extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {

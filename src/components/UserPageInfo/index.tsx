@@ -16,11 +16,11 @@ interface Props extends BaseProps {
   user: User;
 };
 
-interface IState {
+interface State {
   expanded: boolean;
 };
 
-class UserPageInfo extends React.Component<Props, IState> {
+class UserPageInfo extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
