@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-import IUser from './typing/IUser';
 import { AppState, AppActions } from './store';
 
 import AppHeader from './components/AppHeader';
+import Main from './components/AppMain';
 import { requestUser } from './store/user/actions';
 import { ThunkDispatch } from 'redux-thunk';
 import { bindActionCreators } from 'redux';
+import UserState from './store/user/types';
 
 interface AppProps {
 
@@ -24,13 +24,16 @@ class App extends React.Component<Props> {
     return (
       <>
         <AppHeader />
+        <Main
+          user={this.props.user}
+        />
       </>
     );
   }
 }
 
 interface ConnectedStateProps {
-  user: IUser;
+  user: UserState;
 };
 
 interface ConnectedDispatchProps {

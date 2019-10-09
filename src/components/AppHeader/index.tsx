@@ -24,7 +24,7 @@ class AppHeader extends React.Component<IProps, IState> {
     return (
       <header className="AppHeader">
         <div className="container AppHeader-Container">
-          <Logo />
+          <Logo className="AppHeader-Logo" />
         </div>
       </header>
     );

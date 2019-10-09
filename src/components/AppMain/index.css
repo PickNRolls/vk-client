@@ -1,0 +1,13 @@
+.AppMain {
+  padding-top: 57px;
+}
+
+.AppMain-SideNav {
+  width: 200px;
+  position: fixed;
+}
+
+.AppMain-Content {
+  width: 800px;
+  float: right;
+}

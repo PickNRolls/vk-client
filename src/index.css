@@ -2,10 +2,42 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  font-family: -apple-system,BlinkMacSystemFont,Roboto,Open Sans,Helvetica Neue,Noto Sans Armenian,Noto Sans Bengali,Noto Sans Cherokee,Noto Sans Devanagari,Noto Sans Ethiopic,Noto Sans Georgian,Noto Sans Hebrew,Noto Sans Kannada,Noto Sans Khmer,Noto Sans Lao,Noto Sans Osmanya,Noto Sans Tamil,Noto Sans Telugu,Noto Sans Thai,sans-serif;
+  font-size: 13px;
+  background: #edeef0;
 }
 
 .container {
-  max-width: 1000px;
+  width: 1000px;
   height: 100%;
   margin: 0 auto;
+}
+
+.clearfix::after {
+  content: '';
+  display: table;
+  width: 100%;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+}
+
+.page-column-thin {
+  width: 30%;
+  margin-right: 1%;
+  float: left;
+}
+
+.page-column-wide {
+  width: 69%;
+  float: left;
+}
+
+img {
+  max-width: 100%;
 }

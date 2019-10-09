@@ -10,7 +10,14 @@ const initialState: UserState = {
   fullName: '',
   id: '',
   age: 0,
-  gender: true
+  gender: true,
+  avatar: '',
+  online: true,
+  additionalInfo: {
+    birthday: '',
+    languages: []
+  },
+  connections: {}
 };
 
 export default (state = initialState, action: UserActions) => {
