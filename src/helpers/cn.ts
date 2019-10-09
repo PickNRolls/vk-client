@@ -7,11 +7,15 @@ const cn = (baseClass: string, propsClasses?: string, conditions?: IConditions) 
   if (conditions) {
     finalClass += Object.keys(conditions).reduce((modifiers, modifier) => {
       const value = conditions[modifier];
-      if (typeof value === 'boolean') {
+      if (typeof value === 'boolean' && value) {
         return `${modifiers} ${baseClass}_${modifier}`;
       }
 
-      return `${modifiers} ${baseClass}_${modifier}_${value}`;
+      if (typeof value === 'string') {
+        return `${modifiers} ${baseClass}_${modifier}_${value}`;
+      }
+
+      return modifiers;
     }, '');
   }
 

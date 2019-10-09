@@ -1,3 +1,5 @@
+import IMessage from "./IMessage";
+
 type TLanguage = 'russian' | 'english' | 'german' | 'french';
 
 export interface IUserAdditionalInfo {
@@ -16,4 +18,11 @@ export default interface IUser {
   gender: boolean;
   online: true | Date;
   additionalInfo: IUserAdditionalInfo;
+  connections: {
+    [uid: string]: {
+      messages: {
+        list: IMessage[];
+      };
+    };
+  };
 };
