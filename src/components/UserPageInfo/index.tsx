@@ -1,7 +1,7 @@
 import React from 'react';
 
-import IUser from '../../typing/IUser';
-import IBaseProps from '../../typing/IBaseProps';
+import User from '../../typing/User';
+import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
 import globalKeyset from '../../i18n';
 import localKeyset from './i18n';
@@ -12,8 +12,8 @@ import UserInfoGroup from '../UserInfoGroup';
 
 import './index.css';
 
-interface IProps extends IBaseProps {
-  user: IUser;
+interface IProps extends BaseProps {
+  user: User;
 };
 
 interface IState {

@@ -1,4 +1,4 @@
-import IUser from '../../typing/IUser';
+import User from '../../typing/User';
 
 export const REQUEST_USER = 'user/REQUEST_USER';
 interface RequestUserAction {
@@ -9,7 +9,7 @@ interface RequestUserAction {
 export const REQUEST_USER_SUCCESS = 'user/REQUEST_USER_SUCCESS';
 interface RequestUserSuccessAction {
   type: typeof REQUEST_USER_SUCCESS,
-  payload: IUser
+  payload: User
 };
 
 export type UserActions =
@@ -17,5 +17,5 @@ export type UserActions =
   | RequestUserSuccessAction;
 
 
-type UserState = IUser;
+type UserState = User;
 export default UserState;

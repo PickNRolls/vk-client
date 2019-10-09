@@ -3,25 +3,25 @@ import React from 'react';
 import HeaderContent from './-Header';
 import Content from './-Content';
 
-import IBaseProps from '../../typing/IBaseProps';
-import IUser from '../../typing/IUser';
+import BaseProps from '../../typing/BaseProps';
+import User from '../../typing/User';
 import cn from '../../helpers/cn';
 
 import './index.css';
 
 export interface IElementsProps {
   state: 'default' | 'in dialog';
-  interlocutor?: IUser;
+  interlocutor?: User;
 };
 
-interface IProps extends IBaseProps {
-  user: IUser;
-  interlocutors: IUser[];
+interface IProps extends BaseProps {
+  user: User;
+  interlocutors: User[];
 };
 
 interface IState {
   state: 'default' | 'in dialog';
-  interlocutor?: IUser;
+  interlocutor?: User;
 };
 
 class Messages extends React.Component<IProps, IState> {
@@ -33,7 +33,7 @@ class Messages extends React.Component<IProps, IState> {
     };
   }
 
-  handleDialogOpen = (user: IUser) => {
+  handleDialogOpen = (user: User) => {
     this.setState({
       state: 'in dialog',
       interlocutor: user
@@ -47,7 +47,7 @@ class Messages extends React.Component<IProps, IState> {
     });
   }
 
-  handleDialogRemove = (uid: IUser['id']) => {
+  handleDialogRemove = (uid: string) => {
     console.log('removed ' + uid);
   }
 

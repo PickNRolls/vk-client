@@ -3,17 +3,17 @@ import React from 'react';
 import Message from '../Message';
 import SimpleMessage from '../SimpleMessage';
 
-import IBaseProps from '../../typing/IBaseProps';
-import IUser from '../../typing/IUser';
-import IMessage from '../../typing/IMessage';
+import BaseProps from '../../typing/BaseProps';
+import User from '../../typing/User';
+import MessageInterface from '../../typing/Message';
 import cn from '../../helpers/cn';
 
 import './index.css';
 
-export interface IProps extends IBaseProps {
-  user: IUser;
-  interlocutor: IUser;
-  messages: IMessage[];
+export interface IProps extends BaseProps {
+  user: User;
+  interlocutor: User;
+  messages: MessageInterface[];
 };
 
 interface IState {

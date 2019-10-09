@@ -4,15 +4,15 @@ import Dialog from '../../Dialog';
 import MessageGroup from '../../MessageGroup';
 
 import { IElementsProps } from '..';
-import IUser from '../../../typing/IUser';
-import IMessage from '../../../typing/IMessage';
+import User from '../../../typing/User';
+import Message from '../../../typing/Message';
 
 interface IProps extends IElementsProps {
-  user: IUser;
-  interlocutors: IUser[];
+  user: User;
+  interlocutors: User[];
 
-  onDialogOpen(user: IUser): void;
-  onDialogRemove(uid: IUser['id']): void;
+  onDialogOpen(user: User): void;
+  onDialogRemove(uid: string): void;
 };
 
 interface IState {
@@ -25,11 +25,11 @@ class MessagesContent extends React.Component<IProps, IState> {
     this.state = {};
   }
 
-  handleDialogOpen = (user: IUser) => {
+  handleDialogOpen = (user: User) => {
     this.props.onDialogOpen(user);
   }
 
-  handleDialogRemove = (uid: IUser['id']) => {
+  handleDialogRemove = (uid: string) => {
     this.props.onDialogRemove(uid);
   }
 
@@ -44,9 +44,9 @@ class MessagesContent extends React.Component<IProps, IState> {
     if (state === 'in dialog' && interlocutor) {
       const { list } = user.connections[interlocutor.id].messages;
       let renderContent: JSX.Element[];
-      let groupingMessages: IMessage[][] = [[list[0]]];
+      let groupingMessages: Message[][] = [[list[0]]];
       let groupingIndex = 0;
-      let lastAuthorId: IUser['id'] = list[0].authorId;
+      let lastAuthorId = list[0].authorId;
       for (let i = 1; i < list.length; i++) {
         if (list[i].authorId === lastAuthorId) {
           groupingMessages[groupingIndex].push(list[i]);

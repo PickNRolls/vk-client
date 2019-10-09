@@ -4,10 +4,10 @@ import {
 } from './types';
 import { AppState, AppActions } from '../';
 import { fetchUser } from '../../server';
-import IUser from '../../typing/IUser';
+import User from '../../typing/User';
 import { Dispatch } from 'redux';
 
-const requestUserSuccess = (user: IUser): UserActions => ({
+const requestUserSuccess = (user: User): UserActions => ({
   type: REQUEST_USER_SUCCESS,
   payload: user
 });

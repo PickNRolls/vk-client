@@ -1,13 +1,13 @@
-import IMessage from "./IMessage";
+import Message from "./Message";
 
-type TLanguage = 'russian' | 'english' | 'german' | 'french';
+type Language = 'russian' | 'english' | 'german' | 'french';
 
-export interface IUserAdditionalInfo {
+export interface UserAdditionalInfo {
   birthday: string;
-  languages: TLanguage[];
+  languages: Language[];
 }
 
-export default interface IUser {
+export default interface User {
   id: string;
   avatar: string;
   fullName: string;
@@ -17,11 +17,11 @@ export default interface IUser {
   age: number;
   gender: boolean;
   online: true | Date;
-  additionalInfo: IUserAdditionalInfo;
+  additionalInfo: UserAdditionalInfo;
   connections: {
     [uid: string]: {
       messages: {
-        list: IMessage[];
+        list: Message[];
       };
     };
   };

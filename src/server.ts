@@ -1,10 +1,10 @@
-import IUser from "./typing/IUser";
+import User from "./typing/User";
 
-interface IUsersHash {
-  [uid: string]: IUser;
+interface UsersHash {
+  [uid: string]: User;
 };
 
-const users: IUsersHash = {
+const users: UsersHash = {
   '00000000': {
     id: '00000000',
     avatar: 'https://sun9-41.userapi.com/c846018/v846018774/1964b4/MTv4NbdWX0E.jpg?ava=1',
@@ -288,7 +288,7 @@ const users: IUsersHash = {
   },
 };
 
-export const fetchUser = (uid: IUser['id']): Promise<IUser> => {
+export const fetchUser = (uid: string): Promise<User> => {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(users[uid]);

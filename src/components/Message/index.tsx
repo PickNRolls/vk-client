@@ -4,18 +4,18 @@ import withClickHandler from '../../hocs/messages/withClickHandler';
 import withType from '../../hocs/tokens/withType';
 import Token from '../Token';
 
-import IBaseProps from '../../typing/IBaseProps';
-import IUser from '../../typing/IUser';
-import IMessage from '../../typing/IMessage';
+import BaseProps from '../../typing/BaseProps';
+import User from '../../typing/User';
+import MessageInterface from '../../typing/Message';
 import cn from '../../helpers/cn';
 
 import './index.css';
 
 const TextToken = withType('text', Token);
 
-export interface IProps extends IBaseProps {
-  author: IUser;
-  data: IMessage;
+export interface IProps extends BaseProps {
+  author: User;
+  data: MessageInterface;
   isActive: boolean;
 
   onClick?(event: React.MouseEvent<HTMLDivElement>): void;

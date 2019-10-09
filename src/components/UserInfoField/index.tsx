@@ -1,11 +1,11 @@
 import React from 'react';
 
-import IBaseProps from '../../typing/IBaseProps';
+import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
 
 import './index.css';
 
-export interface IProps extends IBaseProps {
+export interface IProps extends BaseProps {
   label: string;
   value: string;
 }

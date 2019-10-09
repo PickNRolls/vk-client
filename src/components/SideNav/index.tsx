@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import IBaseProps from '../../typing/IBaseProps';
-import IUser from '../../typing/IUser';
+import BaseProps from '../../typing/BaseProps';
+import User from '../../typing/User';
 import cn from '../../helpers/cn';
 
 import iconMyPage from './assets/home-page.png';
@@ -18,8 +18,8 @@ interface INavItem {
   icon: string;
 };
 
-export interface IProps extends IBaseProps {
-  user: IUser;
+export interface IProps extends BaseProps {
+  user: User;
 };
 
 interface IState {

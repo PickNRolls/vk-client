@@ -3,18 +3,18 @@ import React from 'react';
 import { fetchUser } from '../../server';
 import Messages from '../Messages';
 
-import IBaseProps from '../../typing/IBaseProps';
-import IUser from '../../typing/IUser';
+import BaseProps from '../../typing/BaseProps';
+import User from '../../typing/User';
 import cn from '../../helpers/cn';
 import I18N from '../../helpers/i18n';
 import localKeyset from './i18n';
 
-interface IProps extends IBaseProps {
-  user: IUser;
+interface IProps extends BaseProps {
+  user: User;
 };
 
 interface IState {
-  interlocutors: IUser[];
+  interlocutors: User[];
 };
 
 class MessagesPage extends React.Component<IProps, IState> {

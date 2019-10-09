@@ -3,12 +3,12 @@ import React from 'react';
 import UserPageAvatar from '../UserPageAvatar';
 import UserPageInfo from '../UserPageInfo';
 
-import IUser from '../../typing/IUser';
-import IBaseProps from '../../typing/IBaseProps';
+import User from '../../typing/User';
+import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
 
-interface IProps extends IBaseProps {
-  user: IUser;
+interface IProps extends BaseProps {
+  user: User;
 };
 
 interface IState {

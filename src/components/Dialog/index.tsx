@@ -2,20 +2,20 @@ import React from 'react';
 
 import Token from '../Token';
 
-import IBaseProps from '../../typing/IBaseProps';
-import IUser from '../../typing/IUser';
-import IMessage from '../../typing/IMessage';
+import BaseProps from '../../typing/BaseProps';
+import User from '../../typing/User';
+import Message from '../../typing/Message';
 import cn from '../../helpers/cn';
 
 import './index.css';
 
-interface IProps extends IBaseProps {
-  user: IUser;
-  userOfToken: IUser;
-  lastMessage: IMessage;
+interface IProps extends BaseProps {
+  user: User;
+  userOfToken: User;
+  lastMessage: Message;
 
-  onOpen(user: IUser): void;
-  onRemove(uid: IUser['id']): void;
+  onOpen(user: User): void;
+  onRemove(uid: string): void;
 };
 
 interface IState {
