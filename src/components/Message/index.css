@@ -1,0 +1,42 @@
+.Message {
+  border-radius: 3px;
+  padding: 6px 0 9px 35px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.Message_active {
+  background: #edf0f5;
+}
+
+.Message-Token {
+  width: 36px;
+  height: 36px;
+  margin-right: 10px;
+  float: left;
+}
+
+.Message-Top {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+
+.Token.Message-AuthorName {
+  width: auto;
+  color: #42648b;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.Message-Date {
+  color: hsla(220,8%,51%,.6);
+  font-size: 12px;
+}
+
+.Message-Content {
+  padding-left: 46px;
+  padding-right: 81px;
+  word-wrap: break-word;
+  line-height: 18px;
+}

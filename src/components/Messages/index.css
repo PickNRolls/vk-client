@@ -1,0 +1,162 @@
+.Messages {
+  position: relative;
+  overflow-y: hidden;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+  padding-top: 50px;
+}
+
+.Messages-Header {
+  width: 554px;
+  height: 65px;
+  border-top: 15px solid #edeef0;
+  border-left: 1px solid #edeef0;
+  border-right: 1px solid #edeef0;
+  margin-left: -1px;
+  position: fixed;
+  top: 42px;
+  left: auto;
+  z-index: 9;
+}
+
+.Messages-HeaderWrap {
+  height: 100%;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 0 0 1px #e3e4e8;
+  background: #fff;
+}
+
+.Messages-Dialogs {
+  height: 4000px;
+}
+
+.Messages-Dialog {
+  height: 71px;
+  padding-left: 20px;
+}
+
+.Messages-DialogsItem {
+  overflow: hidden;
+}
+
+.Messages-DialogsItem:hover {
+  border-top: 1px solid #e7e8ec;
+}
+
+.Messages-DialogsItem:hover + .Messages-DialogsItem {
+  border-top: 1px solid #e7e8ec;
+}
+
+.Messages-DialogsItem:hover .Dialog {
+  margin-top: -1px;
+}
+
+.Messages-DialogsItem:hover + .Messages-DialogsItem .Dialog {
+  margin-top: -1px;
+}
+
+.Messages-HeaderInDialog {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  border-radius: 4px 4px 0 0;
+}
+
+.Messages-HeaderDefault {
+  height: 100%;
+  border-radius: 4px 4px 0 0;
+}
+
+.Messages-InterlocutorInfo {
+  text-align: center;
+  padding-top: 2px;
+  left: 49%;
+  transform: translateX(-50%);
+  position: absolute;
+}
+
+.Messages-InterlocutorName {
+  display: block;
+  color: #222;
+  font-weight: 500;
+}
+
+.Messages-InterlocutorStatus {
+  font-size: 12px;
+  color: #939393;
+}
+
+.Messages-InterlocutorToken {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+}
+
+.Messages-BackButton {
+  display: block;
+  width: 148px;
+  height: 100%;
+  border: none;
+  border-top-left-radius: 4px;
+  background: none;
+  padding: 14px 60px 15px 26px;
+  color: #818d99;
+  font-size: 14px;
+  line-height: 19px;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+}
+
+.Messages-BackButton::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+  background: url('./assets/back.png') no-repeat center / contain;
+  transform: rotate(90deg);
+  position: absolute;
+  top: 15px;
+  left: 10px;
+}
+
+.Messages-BackButton:hover {
+  background: linear-gradient(90deg, #f0f2f5 50%, #fff);
+}
+
+.Messages-Search {
+  width: 100%;
+  height: 100%;
+}
+
+.Messages-SearchInput {
+  padding-left: 41px;
+}
+
+.Messages-Content {
+  min-height: calc(100vh - 150px);
+  background: #fff;
+}
+
+.Messages-List {
+  padding: 15px 4px 0;
+}
+
+.Messages-Group {
+  margin-bottom: 5px;
+}
+
+.Messages .Messages-Group:last-child {
+  padding-bottom: 48px;
+}
+
+.Messages-Footer {
+  width: 552px;
+  height: 46px;
+  background: #fff;
+  box-shadow: 0 0 0 1px #e3e4e8;
+  position: fixed;
+  bottom: 0;
+}

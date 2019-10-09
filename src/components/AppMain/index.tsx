@@ -9,7 +9,6 @@ import {IProps as SideNavProps} from '../SideNav';
 import './index.css';
 
 interface IProps extends SideNavProps {
-
 };
 
 const AppMain: React.FC<IProps> = props => {
@@ -28,7 +27,10 @@ const AppMain: React.FC<IProps> = props => {
             )} />
             <Route path="/feed" />
             <Route path="/messages" render={routeProps => (
-              <MessagesPage {...routeProps} user={props.user} />
+              <MessagesPage
+                {...routeProps}
+                user={props.user}
+              />
             )} />
             <Route path="/friends" />
             <Route path="/groups" />

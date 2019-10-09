@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { fetchUser } from '../../server';
 import Messages from '../Messages';
 
 import IBaseProps from '../../typing/IBaseProps';
@@ -13,23 +14,41 @@ interface IProps extends IBaseProps {
 };
 
 interface IState {
-
+  interlocutors: IUser[];
 };
 
 class MessagesPage extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      interlocutors: []
+    };
+  }
+
+  componentDidMount() {
+    const { user } = this.props;
+    const interlocutorsId = Object.keys(user.connections).filter(uid =>
+      user.connections[uid].messages.list.length
+    );
+
+    Promise.all(interlocutorsId.map(fetchUser))
+      .then(users => this.setState({
+        interlocutors: users
+      }));
   }
 
   render() {
-    const cMessagesPage = cn('MessagesPage', this.props.className);
+    const propsClass = this.props.className ? this.props.className + ' clearfix' : 'clearfix';
+    const cMessagesPage = cn('MessagesPage', propsClass);
     document.title = I18N(localKeyset, 'page-title');
 
     return (
       <div className={cMessagesPage}>
         <div className="page-column-wide">
-          <Messages />
+          <Messages
+            user={this.props.user}
+            interlocutors={this.state.interlocutors}
+          />
         </div>
         <div className="page-column-thin">
 
