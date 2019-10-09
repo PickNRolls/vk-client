@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { fetchUser } from '../../server';
+import { fetchUsers } from '../../server';
 import Messages from '../Messages';
 
 import BaseProps from '../../typing/BaseProps';
@@ -8,10 +8,10 @@ import User from '../../typing/User';
 import cn from '../../helpers/cn';
 import I18N from '../../helpers/i18n';
 import localKeyset from './i18n';
+import { AppState } from '../../store';
+import { connect } from 'react-redux';
 
-interface Props extends BaseProps {
-  user: User;
-};
+type Props = BaseProps & ConnectedStateProps;
 
 interface State {
   interlocutors: User[];
@@ -25,16 +25,16 @@ class MessagesPage extends React.Component<Props, State> {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { user } = this.props;
     const interlocutorsId = Object.keys(user.connections).filter(uid =>
       user.connections[uid].messages.list.length
     );
 
-    Promise.all(interlocutorsId.map(fetchUser))
-      .then(users => this.setState({
-        interlocutors: users
-      }));
+    const interlocutors = await fetchUsers(interlocutorsId);
+    this.setState({
+      interlocutors
+    });
   }
 
   render() {
@@ -58,4 +58,12 @@ class MessagesPage extends React.Component<Props, State> {
   }
 };
 
-export default MessagesPage;
+interface ConnectedStateProps {
+  user: User;
+};
+
+const mapStateToProps = (state: AppState) => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps)(MessagesPage);

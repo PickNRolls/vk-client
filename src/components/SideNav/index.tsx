@@ -11,6 +11,8 @@ import iconGroups from './assets/groups.png';
 import iconMessages from './assets/messages.png';
 import iconFriends from './assets/friends.png';
 import './index.css';
+import { connect } from 'react-redux';
+import { AppState } from '../../store';
 
 interface INavItem {
   text: string;
@@ -18,55 +20,47 @@ interface INavItem {
   icon: string;
 };
 
-export interface Props extends BaseProps {
-  user: User;
-};
+type Props = BaseProps & ConnectedStateProps;
 
-interface State {
-  items: INavItem[];
-};
-
-class SideNav extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      items: [
-        {
-          text: 'Моя страница',
-          url: `/id${props.user.id}`,
-          icon: iconMyPage
-        },
-        {
-          text: 'Новости',
-          url: `/feed`,
-          icon: iconFeed
-        },
-        {
-          text: 'Сообщения',
-          url: `/messages`,
-          icon: iconMessages
-        },
-        {
-          text: 'Друзья',
-          url: `/friends`,
-          icon: iconFriends
-        },
-        {
-          text: 'Сообщества',
-          url: `/groups`,
-          icon: iconGroups
-        }
-      ]
-    };
+class SideNav extends React.Component<Props> {
+  _getItems(uid: string): INavItem[] {
+    return [
+      {
+        text: 'Моя страница',
+        url: `/id${uid}`,
+        icon: iconMyPage
+      },
+      {
+        text: 'Новости',
+        url: `/feed`,
+        icon: iconFeed
+      },
+      {
+        text: 'Сообщения',
+        url: `/messages`,
+        icon: iconMessages
+      },
+      {
+        text: 'Друзья',
+        url: `/friends`,
+        icon: iconFriends
+      },
+      {
+        text: 'Сообщества',
+        url: `/groups`,
+        icon: iconGroups
+      }
+    ];
   }
 
   render() {
     const cSideNav = cn('SideNav', this.props.className);
+    const items = this._getItems(this.props.user.id);
     return (
       <nav className={cSideNav}>
         <ul className="SideNav-List">
           {
-            this.state.items.map(item => (
+            items.map(item => (
               <li className="SideNav-Item" key={item.url}>
                 <Link to={item.url} className="SideNav-ItemLink">
                   <span className="SideNav-ItemIcon">
@@ -85,4 +79,12 @@ class SideNav extends React.Component<Props, State> {
   }
 };
 
-export default SideNav;
+interface ConnectedStateProps {
+  user: User;
+};
+
+const mapStateToProps = (state: AppState) => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps)(SideNav);

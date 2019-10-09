@@ -288,21 +288,23 @@ const users: UsersHash = {
   },
 };
 
-export const fetchUser = (uid: string): Promise<User> => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(users[uid]);
-    }, 800);
-  });
-};
-
-export const refreshUsers = () => {
-  users['00000000'].connections['00000001'].messages.list = 
-  users['00000001'].connections['00000000'].messages.list;
+const refreshUsers = () => {
+  users['00000000'].connections['00000001'].messages.list =
+    users['00000001'].connections['00000000'].messages.list;
 
   users['00000000'].connections['00000002'] = {
     messages: {
       list: users['00000002'].connections['00000000'].messages.list
     }
   };
+};
+
+refreshUsers();
+
+export const fetchUsers = (uids: string[]): Promise<User[]> => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(uids.map(uid => users[uid]));
+    }, 800);
+  });
 };
