@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { fetchUser } from '../../server';
+import { fetchUsers } from '../../server';
 import Messages from '../Messages';
 
 import BaseProps from '../../typing/BaseProps';
@@ -25,16 +25,16 @@ class MessagesPage extends React.Component<Props, State> {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { user } = this.props;
     const interlocutorsId = Object.keys(user.connections).filter(uid =>
       user.connections[uid].messages.list.length
     );
 
-    Promise.all(interlocutorsId.map(fetchUser))
-      .then(users => this.setState({
-        interlocutors: users
-      }));
+    const interlocutors = await fetchUsers(interlocutorsId);
+    this.setState({
+      interlocutors
+    });
   }
 
   render() {

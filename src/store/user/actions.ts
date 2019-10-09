@@ -3,7 +3,7 @@ import {
   REQUEST_USER_SUCCESS
 } from './types';
 import { AppState, AppActions } from '../';
-import { fetchUser } from '../../server';
+import { fetchUsers } from '../../server';
 import User from '../../typing/User';
 import { Dispatch } from 'redux';
 
@@ -14,7 +14,7 @@ const requestUserSuccess = (user: User): UserActions => ({
 
 export const requestUser = (uid: string) => {
   return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    const user = await fetchUser(uid);
-    dispatch(requestUserSuccess(user));
+    const users = await fetchUsers([uid]);
+    dispatch(requestUserSuccess(users[0]));
   };
 };
