@@ -301,10 +301,10 @@ const refreshUsers = () => {
 
 refreshUsers();
 
-export const fetchUser = (uid: string): Promise<User> => {
+export const fetchUsers = (uids: string[]): Promise<User[]> => {
   return new Promise(resolve => {
     setTimeout(() => {
-      resolve(users[uid]);
+      resolve(uids.map(uid => users[uid]));
     }, 800);
   });
 };
