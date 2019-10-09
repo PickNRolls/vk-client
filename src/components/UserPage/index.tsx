@@ -6,21 +6,12 @@ import UserPageInfo from '../UserPageInfo';
 import User from '../../typing/User';
 import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
+import { connect } from 'react-redux';
+import { AppState } from '../../store';
 
-interface Props extends BaseProps {
-  user: User;
-};
+type Props = BaseProps & ConnectStateProps;
 
-interface State {
-
-};
-
-class UserPage extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {};
-  }
-
+class UserPage extends React.Component<Props> {
   render() {
     const propsClass = this.props.className ? this.props.className + ' clearfix' : 'clearfix';
     const cUserPage = cn('UserPage', propsClass);
@@ -39,4 +30,12 @@ class UserPage extends React.Component<Props, State> {
   }
 };
 
-export default UserPage;
+interface ConnectStateProps {
+  user: User;
+};
+
+const mapStateToProps = (state: AppState) => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps)(UserPage);
