@@ -1,6 +1,5 @@
 import UserState, {
   UserActions,
-  REQUEST_USER,
   REQUEST_USER_SUCCESS
 } from './types';
 
@@ -20,19 +19,14 @@ const initialState: UserState = {
   connections: {}
 };
 
-export default (state = initialState, action: UserActions) => {
+export default (state = initialState, action: UserActions): UserState => {
   switch (action.type) {
-    case REQUEST_USER: {
-      return initialState;
-    }
-
     case REQUEST_USER_SUCCESS: {
-      console.log(action.payload);
       return action.payload;
     }
 
     default: {
-      return initialState;
+      return state;
     }
   }
 };
