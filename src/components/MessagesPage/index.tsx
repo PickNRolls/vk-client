@@ -88,7 +88,7 @@ interface ConnectedDispatchProps {
 }
 
 const mapStateToProps = (state: AppState) => ({
-  pageMeta: state.page.meta,
+  pageMeta: state.page.meta as MessagesPageMeta,
   user: state.user
 });
 
