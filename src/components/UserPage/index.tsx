@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Preloader from '../Preloader';
 import UserPageAvatar from '../UserPageAvatar';
 import UserPageInfo from '../UserPageInfo';
 
@@ -10,6 +11,8 @@ import cn from '../../helpers/cn';
 import { AppState } from '../../store';
 import UserState from '../../store/user/types';
 import { fetchUsers } from '../../server';
+
+import './index.css';
 
 type Props = {
     uid: string;
@@ -63,7 +66,11 @@ class UserPage extends React.Component<Props, State> {
     let { user } = this.state;
 
     if (loadingUser) {
-      return 'loading...';
+      return (
+        <div className={cUserPage}>
+          <Preloader className="UserPage-Preloader" />
+        </div>
+      );
     }
 
     user = user as User;
