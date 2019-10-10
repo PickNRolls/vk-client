@@ -18,6 +18,7 @@ const users: UsersHash = {
       birthday: '19.03.2001',
       languages: ['russian', 'english']
     },
+    friends: ['00000001', '00000002'],
     connections: {
       '00000001': {
         messages: {
@@ -39,6 +40,7 @@ const users: UsersHash = {
       birthday: '07.04.2001',
       languages: ['russian']
     },
+    friends: [],
     connections: {
       '00000000': {
         messages: {
@@ -241,6 +243,7 @@ const users: UsersHash = {
       birthday: '17.12.2001',
       languages: ['russian', 'english']
     },
+    friends: [],
     connections: {
       '00000000': {
         messages: {
@@ -304,6 +307,6 @@ export const fetchUsers = (uids: string[]): Promise<User[]> => {
     refreshUsers();
     setTimeout(() => {
       resolve(uids.map(uid => users[uid]));
-    }, 800);
+    }, 200);
   });
 };

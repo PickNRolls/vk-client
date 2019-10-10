@@ -12,6 +12,7 @@ const initialState: UserState = {
   gender: true,
   avatar: '',
   online: true,
+  friends: [],
   additionalInfo: {
     birthday: '',
     languages: []
