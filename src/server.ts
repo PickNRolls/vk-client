@@ -37,7 +37,7 @@ const users: UsersHash = {
     online: new Date(),
     additionalInfo: {
       birthday: '07.04.2001',
-      languages: ['russian', 'english']
+      languages: ['russian']
     },
     connections: {
       '00000000': {

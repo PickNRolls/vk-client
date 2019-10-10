@@ -76,7 +76,10 @@ class UserPage extends React.Component<Props, State> {
           <UserPageAvatar imageUrl={user.avatar} />
         </div>
         <div className="page-column-wide">
-          <UserPageInfo user={user} />
+          <UserPageInfo
+            isPageMine={user.id === this.props.appUser.id}
+            user={user}
+          />
         </div>
       </div>
     );

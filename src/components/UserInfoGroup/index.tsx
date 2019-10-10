@@ -9,6 +9,7 @@ import './index.css';
 
 interface Props extends BaseProps {
   title: string;
+  isPageMine: boolean;
 };
 
 interface State {
@@ -28,9 +29,14 @@ class UserInfoGroup extends React.Component<Props, State> {
         <span className="UserInfoGroup-Title">
           {this.props.title}
         </span>
-        <button className="UserInfoGroup-Edit">
-          {I18N(localKeyset, 'edit')}
-        </button>
+
+        {
+          this.props.isPageMine && (
+            <button className="UserInfoGroup-Edit">
+              {I18N(localKeyset, 'edit')}
+            </button>
+          )
+        }
 
         {this.props.children
           ? this.props.children
