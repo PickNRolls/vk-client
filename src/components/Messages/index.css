@@ -25,10 +25,6 @@
   background: #fff;
 }
 
-.Messages-Dialogs {
-  height: 4000px;
-}
-
 .Messages-Dialog {
   height: 71px;
   padding-left: 20px;
@@ -150,6 +146,10 @@
 
 .Messages .Messages-Group:last-child {
   padding-bottom: 48px;
+}
+
+.Messages-Preloader {
+  padding-top: 30px;
 }
 
 .Messages-Footer {

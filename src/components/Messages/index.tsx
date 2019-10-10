@@ -17,6 +17,7 @@ export interface IElementsProps {
 interface Props extends BaseProps {
   user: User;
   interlocutors: User[];
+  loading: boolean;
 };
 
 interface State {
@@ -53,8 +54,12 @@ class Messages extends React.Component<Props, State> {
 
   render() {
     const cMessages = cn('Messages', this.props.className);
+    const {
+      user,
+      interlocutors,
+      loading
+    } = this.props;
     const { state, interlocutor } = this.state;
-    const { user, interlocutors } = this.props;
 
     return (
       <div className={cMessages}>
@@ -70,6 +75,7 @@ class Messages extends React.Component<Props, State> {
         <Content
           state={state}
           user={user}
+          loading={loading}
           interlocutors={interlocutors}
           interlocutor={interlocutor}
           onDialogOpen={this.handleDialogOpen}

@@ -12,7 +12,7 @@ interface AppProps {
 
 };
 
-type Props = AppProps & ConnectedStateProps & ConnectedDispatchProps;
+type Props = AppProps & ConnectedDispatchProps;
 
 class App extends React.Component<Props> {
   componentDidMount() {
@@ -28,10 +28,6 @@ class App extends React.Component<Props> {
     );
   }
 }
-
-interface ConnectedStateProps {
-
-};
 
 interface ConnectedDispatchProps {
   requestUser: (uid: string) => void;

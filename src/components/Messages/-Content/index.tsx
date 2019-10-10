@@ -2,6 +2,7 @@ import React from 'react';
 
 import Dialog from '../../Dialog';
 import MessageGroup from '../../MessageGroup';
+import Preloader from '../../Preloader';
 
 import { IElementsProps } from '..';
 import User from '../../../typing/User';
@@ -10,6 +11,7 @@ import Message from '../../../typing/Message';
 interface Props extends IElementsProps {
   user: User;
   interlocutors: User[];
+  loading: boolean;
 
   onDialogOpen(user: User): void;
   onDialogRemove(uid: string): void;
@@ -37,6 +39,7 @@ class MessagesContent extends React.Component<Props, State> {
     const {
       state,
       user,
+      loading,
       interlocutor,
       interlocutors
     } = this.props;
@@ -103,6 +106,10 @@ class MessagesContent extends React.Component<Props, State> {
             })
           }
         </ul>
+
+        {
+          loading && <Preloader className="Messages-Preloader" />
+        }
       </div>
     );
 
