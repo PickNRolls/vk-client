@@ -1,41 +1,96 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import UserPageAvatar from '../UserPageAvatar';
 import UserPageInfo from '../UserPageInfo';
 
-import User from '../../typing/User';
 import BaseProps from '../../typing/BaseProps';
+import User from '../../typing/User';
 import cn from '../../helpers/cn';
-import { connect } from 'react-redux';
 import { AppState } from '../../store';
+import UserState from '../../store/user/types';
+import { fetchUsers } from '../../server';
 
-type Props = BaseProps & ConnectStateProps;
+type Props = {
+    uid: string;
+  }
+  & BaseProps
+  & ConnectedStateProps;
 
-class UserPage extends React.Component<Props> {
+interface State {
+  user: User | null;
+  loadingUser: boolean;
+};
+
+class UserPage extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      user: null,
+      loadingUser: true
+    };
+  }
+
+  async loadUser() {
+    const { uid } = this.props;
+
+    this.setState({
+      loadingUser: true
+    });
+
+    const [user] = await fetchUsers([uid]);
+
+    this.setState({
+      user,
+      loadingUser: false
+    });
+  }
+
+  componentDidMount() {
+    this.loadUser();
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    if (prevProps.uid !== this.props.uid) {
+      this.loadUser();
+    }
+  }
+
   render() {
     const propsClass = this.props.className ? this.props.className + ' clearfix' : 'clearfix';
     const cUserPage = cn('UserPage', propsClass);
-    document.title = `${this.props.user.fullName}`;
+    const { loadingUser } = this.state;
+    let { user } = this.state;
+
+    if (loadingUser) {
+      return 'loading...';
+    }
+
+    user = user as User;
+
+    document.title = `${user.fullName}`;
 
     return (
       <div className={cUserPage}>
         <div className="page-column-thin">
-          <UserPageAvatar imageUrl={this.props.user.avatar} />
+          <UserPageAvatar imageUrl={user.avatar} />
         </div>
         <div className="page-column-wide">
-          <UserPageInfo user={this.props.user} />
+          <UserPageInfo user={user} />
         </div>
       </div>
     );
   }
 };
 
-interface ConnectStateProps {
-  user: User;
+interface ConnectedStateProps {
+  appUser: UserState;
 };
 
 const mapStateToProps = (state: AppState) => ({
-  user: state.user
+  appUser: state.user
 });
 
-export default connect(mapStateToProps)(UserPage);
+export default connect(
+  mapStateToProps
+)(UserPage);

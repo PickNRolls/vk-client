@@ -27,7 +27,9 @@ const AppMain: React.FC<Props> = props => {
 
         <div className="AppMain-Content">
           <Switch>
-            <Route path="/id:id" component={UserPage} />
+            <Route path="/id:id" render={routerProps => {
+              return <UserPage uid={routerProps.match.params.id} />;
+            }} />
             <Route path="/feed" />
             <Route path="/messages" render={routerProps => {
               props.changePage('messages');
