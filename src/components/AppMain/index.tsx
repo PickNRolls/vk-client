@@ -10,6 +10,7 @@ import { changePage } from '../../store/page/actions';
 import SideNav from '../SideNav';
 import UserPage from '../UserPage';
 import MessagesPage from '../MessagesPage';
+import FriendsPage from '../FriendsPage';
 
 import './index.css';
 import { connect } from 'react-redux';
@@ -30,12 +31,18 @@ const AppMain: React.FC<Props> = props => {
             <Route path="/id:id" render={routerProps => {
               return <UserPage uid={routerProps.match.params.id} />;
             }} />
+
             <Route path="/feed" />
+
             <Route path="/messages" render={routerProps => {
               props.changePage('messages');
               return <MessagesPage {...routerProps} />;
             }} />
-            <Route path="/friends" />
+
+            <Route path="/friends" render={() => {
+              return <FriendsPage />;
+            }} />
+
             <Route path="/groups" />
           </Switch>
         </div>

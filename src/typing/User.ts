@@ -18,6 +18,7 @@ export default interface User {
   gender: boolean;
   online: true | Date;
   additionalInfo: UserAdditionalInfo;
+  friends: string[];
   connections: {
     [uid: string]: {
       messages: {
