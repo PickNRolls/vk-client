@@ -14,6 +14,7 @@ import './index.css';
 
 interface Props extends BaseProps {
   user: User;
+  isPageMine: boolean;
 };
 
 interface State {
@@ -35,7 +36,7 @@ class UserPageInfo extends React.Component<Props, State> {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, isPageMine } = this.props;
     const cUserPageInfo = cn('UserPageInfo', this.props.className);
 
     return (
@@ -60,7 +61,7 @@ class UserPageInfo extends React.Component<Props, State> {
 
 
         <div className="UserPageInfo-AlwaysVisible">
-          <UserInfoField label={I18N(localKeyset, 'birthday')} value="19.03.2001" />
+          <UserInfoField label={I18N(localKeyset, 'birthday')} value={user.additionalInfo.birthday}/>
         </div>
 
         <button
@@ -75,15 +76,21 @@ class UserPageInfo extends React.Component<Props, State> {
         {this.state.expanded
           ? (
           <div className="UserPageInfo-Details">
-            <UserInfoGroup title={I18N(localKeyset, 'basic-info')} className="UserPageInfo-Group">
+            <UserInfoGroup
+              isPageMine={isPageMine}
+              title={I18N(localKeyset, 'basic-info')}
+              className="UserPageInfo-Group">
               <UserInfoField
                 label={I18N(localKeyset, 'languages')}
                 value={user.additionalInfo.languages.map(lang => I18N(globalKeyset, lang)).join(', ')}
               />
             </UserInfoGroup>
 
-            <UserInfoGroup title={I18N(localKeyset, 'education-info')} className="UserPageInfo-Group">
-            </UserInfoGroup>
+            <UserInfoGroup
+              isPageMine={isPageMine}
+              title={I18N(localKeyset, 'education-info')}
+              className="UserPageInfo-Group"
+            />
           </div>
           )
           : null
