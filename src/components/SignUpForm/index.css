@@ -1,0 +1,54 @@
+.SignUpForm {
+  border-radius: 4px;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+  background: #fff;
+  padding: 25px;
+}
+
+.SignUpForm-Title {
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+}
+
+.SignUpForm-Subtitle {
+  color: #656565;
+  font-size: 12.5px;
+  font-weight: 400;
+  text-align: center;
+  padding: 5px 0 21px;
+}
+
+.SignUpForm-Input {
+  margin-bottom: 15px;
+}
+
+.SignUpForm-Birthday {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.SignUpForm-DaySelect,
+.SignUpForm-YearSelect {
+  width: 72px;
+}
+
+.SignUpForm-MonthSelect {
+  width: 122px;
+}
+
+.SignUpForm-Submit {
+  display: block;
+  width: 100%;
+  height: 35px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #fff;
+  background-color: #5fb053;
+  border-radius: 3px;
+  border: none;
+  padding-bottom: 2px;
+  cursor: pointer;
+  outline: none;
+}

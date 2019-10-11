@@ -1,0 +1,57 @@
+.FormSelect {
+  height: 35px;
+  font-size: 14px;
+  color: rgb(124, 127, 130);
+  background: url(../Messages/assets/back.png) no-repeat calc(100% - 8px) 50% / 12px;
+  border: 1px solid #d3d9de;
+  border-radius: 3px;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  outline: none;
+}
+
+.FormSelect-Value {
+  display: block;
+  height: 100%;
+  padding: 7px 24px 8px 12px;
+}
+
+.FormSelect_expanded {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.FormSelect_expanded .FormSelect-Value {
+  margin-bottom: 1px;
+}
+
+.FormSelect_filled .FormSelect-Value {
+  color: #000;
+}
+
+.FormSelect_error {
+  border-color: #ff4c4c;
+}
+
+.FormSelect-List {
+  width: calc(100% + 2px);
+  max-height: 200px;
+  overflow: scroll;
+  background: #fff;
+  position: relative;
+  left: -1px;
+  border: 1px solid #d3d9de;
+  border-top: none;
+}
+
+.FormSelect-Option {
+  height: 32px;
+  padding: 7px 0 9px 12px;
+  color: #000;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.FormSelect-Option:hover {
+  background: #e7edf2;;
+}
