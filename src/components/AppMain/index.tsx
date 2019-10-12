@@ -1,13 +1,9 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { ThunkDispatch } from 'redux-thunk';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import BaseProps from '../../typing/BaseProps';
-import { AppActions, AppState } from '../../store';
-import { changePage } from '../../store/page/actions';
-import { PageName } from '../../store/page/types';
+import { AppState } from '../../store';
 
 import SignUpPage from '../SignUpPage';
 import SideNav from '../SideNav';
@@ -19,8 +15,7 @@ import './index.css';
 
 type Props =
   & BaseProps
-  & ConnectedStateProps
-  & ConnectedDispatchProps;
+  & ConnectedStateProps;
 
 const AppMain: React.FC<Props> = props => {
   return (
@@ -42,7 +37,6 @@ const AppMain: React.FC<Props> = props => {
                   <Route path="/feed" />
 
                   <Route path="/messages" render={routerProps => {
-                    props.changePage('messages');
                     return <MessagesPage {...routerProps} />;
                   }} />
 
@@ -71,20 +65,11 @@ interface ConnectedStateProps {
   isUserLoggedIn: boolean;
 };
 
-interface ConnectedDispatchProps {
-  changePage: (name: PageName) => void;
-}
-
 const mapStateToProps = (state: AppState) => ({
   isUserLoggedIn: state.auth.isUserLoggedIn
 });
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>) => ({
-  changePage: bindActionCreators(changePage, dispatch)
-});
-
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(AppMain);

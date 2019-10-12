@@ -1,23 +1,25 @@
 import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
+import { History } from 'history';
 
 import authReducer from './auth/reducer';
 import { AuthActions } from './auth/types';
 
-import pageReducer from './page/reducer';
-import { PageActions } from './page/types';
-
 import userReducer from './user/reducer';
 import { UserActions } from './user/types';
 
-export const rootReducer = combineReducers({
-  auth: authReducer,
-  page: pageReducer,
-  user: userReducer
-});
+export const createRootReducer = (history: History) => {
+  const rootReducer = combineReducers({
+    auth: authReducer,
+    router: connectRouter(history),
+    user: userReducer
+  });
+
+  return rootReducer;
+};
 
 export type AppActions =
   | AuthActions
-  | PageActions
   | UserActions;
 
-export type AppState = ReturnType<typeof rootReducer>;
+export type AppState = ReturnType<ReturnType<typeof createRootReducer>>;

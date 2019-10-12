@@ -16,7 +16,11 @@ import './index.css';
 import InputError from '../FormInput/types';
 
 interface Props extends BaseProps {
-
+  onSubmit: (data : {
+    firstName: string;
+    lastName: string;
+    birthday: Date
+  }) => void;
 };
 
 interface State {
@@ -177,7 +181,16 @@ class SignUpForm extends React.Component<Props, State> {
   }
 
   submit() {
-    
+    const { state } = this;
+    const data = {
+      firstName: state.firstName,
+      lastName: state.lastName,
+      birthday: new Date(
+        `${state.birthday.year}-${state.birthday.month}-${state.birthday.day}`
+      )
+    };
+
+    this.props.onSubmit(data);
   }
 
   render() {
