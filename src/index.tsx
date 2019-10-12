@@ -1,39 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { createStore, applyMiddleware } from 'redux';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { rootReducer, AppState, AppActions } from './store';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import { routerMiddleware, ConnectedRouter } from 'connected-react-router';
 import thunk, { ThunkMiddleware } from 'redux-thunk';
+import { createBrowserHistory } from 'history';
+import './bootstrapFirebase';
 
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
+import * as serviceWorker from './serviceWorker';
+import { createRootReducer, AppState, AppActions } from './store';
+import App from './App';
+import './index.css';
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyCTkJ2p7ggiKkPU8MLvo7jJk3MsxmYc4FU',
-  authDomain: 'vkontaktlyah.firebaseapp.com',
-  databaseURL: 'https://vkontaktlyah.firebaseio.com',
-  projectId: 'vkontaktlyah',
-  storageBucket: 'vkontaktlyah.appspot.com',
-  messagingSenderId: '767305225250',
-  appId: '1:767305225250:web:58bd6ca2ae3ef14dc9267b'
-};
-
-firebase.initializeApp(firebaseConfig);
-
+const history = createBrowserHistory();
 const store = createStore(
-  rootReducer,
-  applyMiddleware(thunk as ThunkMiddleware<AppState, AppActions>)
+  createRootReducer(history),
+  compose(
+    applyMiddleware(
+      thunk as ThunkMiddleware<AppState, AppActions>,
+      routerMiddleware(history)
+    )
+  )
 );
+
+const wind = window as any;
+wind.store = store;
 
 ReactDOM.render((
   <Provider store={store}>
-    <BrowserRouter>
+    <ConnectedRouter history={history}>
       <App />
-    </BrowserRouter>
+    </ConnectedRouter>
   </Provider>
 ), document.getElementById('root'));
 

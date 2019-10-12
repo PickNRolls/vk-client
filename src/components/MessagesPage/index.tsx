@@ -1,11 +1,9 @@
 import React from 'react';
 import { withRouter, RouteProps } from 'react-router';
 import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { bindActionCreators } from 'redux';
 
 import { fetchUsers } from '../../server';
-import { AppState, AppActions } from '../../store';
+import { AppState } from '../../store';
 import Messages from '../Messages';
 
 import BaseProps from '../../typing/BaseProps';
@@ -13,45 +11,37 @@ import User from '../../typing/User';
 import cn from '../../helpers/cn';
 import I18N from '../../helpers/i18n';
 import localKeyset from './i18n';
-import { MessagesPageMeta } from '../../store/page/types';
 import UserState from '../../store/user/types';
-import { changeMeta } from '../../store/page/actions';
 
-type Props = BaseProps & ConnectedStateProps & ConnectedDispatchProps;
+type Props = BaseProps & ConnectedStateProps;
 
 interface State {
   interlocutors: User[];
+  loadingDialogs: boolean;
 };
 
 class MessagesPage extends React.Component<Props & RouteProps, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      interlocutors: []
+      interlocutors: [],
+      loadingDialogs: true
     };
   }
 
   async componentDidMount() {
     const {
-      user,
-      changeMeta
+      user
     } = this.props;
 
     const interlocutorsId = Object.keys(user.connections).filter(uid =>
       user.connections[uid].messages.list.length
     );
 
-    changeMeta({
-      loadingDialogs: true
-    });
-
     const interlocutors = await fetchUsers(interlocutorsId);
 
-    changeMeta({
-      loadingDialogs: false
-    });
-
     this.setState({
+      loadingDialogs: false,
       interlocutors
     });
   }
@@ -67,7 +57,7 @@ class MessagesPage extends React.Component<Props & RouteProps, State> {
           <Messages
             user={this.props.user}
             interlocutors={this.state.interlocutors}
-            loading={Boolean(this.props.pageMeta.loadingDialogs)}
+            loading={Boolean(this.state.loadingDialogs)}
           />
         </div>
         <div className="page-column-thin">
@@ -79,24 +69,14 @@ class MessagesPage extends React.Component<Props & RouteProps, State> {
 };
 
 interface ConnectedStateProps {
-  pageMeta: MessagesPageMeta;
   user: UserState;
 };
 
-interface ConnectedDispatchProps {
-  changeMeta: (meta: MessagesPageMeta) => void;
-}
 
 const mapStateToProps = (state: AppState) => ({
-  pageMeta: state.page.meta as MessagesPageMeta,
   user: state.user
 });
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>) => ({
-  changeMeta: bindActionCreators(changeMeta, dispatch)
-});
-
 export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(MessagesPage));
