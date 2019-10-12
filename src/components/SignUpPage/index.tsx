@@ -1,13 +1,11 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 
 import SignUpForm from '../SignUpForm';
 
-import { AppActions } from '../../store';
-import { SignUpPayload } from '../../store/auth/types';
-import { signUp } from '../../store/auth/actions';
+import { AppActions, AppState } from '../../store';
+import { goToStep } from '../../store/signUpProgress/actions';
 import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
 import I18N from '../../helpers/i18n';
@@ -16,6 +14,7 @@ import localKeyset from './i18n';
 import './index.css';
 
 type Props =
+  & ConnectedStateProps
   & ConnectedDispatchProps
   & BaseProps;
 
@@ -30,7 +29,7 @@ class SignUpPage extends React.Component<Props, State> {
   }
 
   handleSubmit = (data: {firstName: string; lastName: string; birthday: Date}) => {
-    this.props.signUp(data);
+    console.log(this.props.step);
   }
 
   render() {
@@ -50,19 +49,19 @@ class SignUpPage extends React.Component<Props, State> {
 };
 
 interface ConnectedStateProps {
-
+  step: number;
 };
 
 interface ConnectedDispatchProps {
-  signUp: (payload: SignUpPayload) => void;
+  goToStep: (step: number) => void;
 };
 
-const mapStateToProps = () => ({
-
+const mapStateToProps = (state: AppState) => ({
+  step: state.signUpProgress.step
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>) => ({
-  signUp: bindActionCreators(signUp, dispatch)
+  goToStep: (step: number) => dispatch(goToStep(step))
 });
 
 export default connect(
