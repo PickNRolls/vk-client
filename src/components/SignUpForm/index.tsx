@@ -139,29 +139,33 @@ class SignUpForm extends React.Component<Props, State> {
 
     this.setState({
       submitting: true
+    }, () => {
+      this.checkValid();
     });
   }
 
-  handleValidation = (name: string, result: true | InputError | SelectError) => {
+  getValidationHandler = (name: string, result: true | InputError | SelectError) => {
     this.setState({
       errors: {
         ...this.state.errors,
         [name]: !(result === true)
       }
-    }, () => {
-      const {
-        firstName,
-        lastName,
-        day,
-        month,
-        year
-      } = this.state.errors;
-      const errors = [firstName, lastName, day, month, year];
-
-      if (errors.every(error => error === false)) {
-        console.log('submit');
-      }
     });
+  }
+
+  checkValid() {
+    const {
+      firstName,
+      lastName,
+      day,
+      month,
+      year
+    } = this.state.errors;
+    const errors = [firstName, lastName, day, month, year];
+
+    if (errors.every(error => error === false)) {
+      this.submit();
+    }
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
@@ -172,8 +176,8 @@ class SignUpForm extends React.Component<Props, State> {
     }
   }
 
-  submit = () => {
-
+  submit() {
+    
   }
 
   render() {
@@ -193,7 +197,7 @@ class SignUpForm extends React.Component<Props, State> {
               maxLength: 50
             }}
             forceValidation={this.state.submitting}
-            onValidation={this.handleValidation}
+            onValidation={this.getValidationHandler}
             placeholder={I18N(localKeyset, 'first-name')}
             className="SignUpForm-Input"
           />
@@ -206,7 +210,7 @@ class SignUpForm extends React.Component<Props, State> {
               maxLength: 50
             }}
             forceValidation={this.state.submitting}
-            onValidation={this.handleValidation}
+            onValidation={this.getValidationHandler}
             placeholder={I18N(localKeyset, 'last-name')}
             className="SignUpForm-Input"
           />
@@ -218,7 +222,7 @@ class SignUpForm extends React.Component<Props, State> {
               onChange={this.handleDay}
               required
               forceValidation={this.state.submitting}
-              onValidation={this.handleValidation}
+              onValidation={this.getValidationHandler}
               placeholder={I18N(localKeyset, 'birthday-day')}
               className="SignUpForm-DaySelect"
             />
@@ -228,7 +232,7 @@ class SignUpForm extends React.Component<Props, State> {
               onChange={this.handleMonth}
               required
               forceValidation={this.state.submitting}
-              onValidation={this.handleValidation}
+              onValidation={this.getValidationHandler}
               placeholder={I18N(localKeyset, 'birthday-month')}
               className="SignUpForm-MonthSelect"
             />
@@ -238,7 +242,7 @@ class SignUpForm extends React.Component<Props, State> {
               onChange={this.handleYear}
               required
               forceValidation={this.state.submitting}
-              onValidation={this.handleValidation}
+              onValidation={this.getValidationHandler}
               placeholder={I18N(localKeyset, 'birthday-year')}
               className="SignUpForm-YearSelect"
             />
