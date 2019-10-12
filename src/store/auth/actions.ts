@@ -13,7 +13,7 @@ import {
 
   SIGN_LINKING_SUCCESS
 } from './types';
-import getNextUserId from '../../helpers/getNextUserId';
+import incNumString from '../../helpers/incNumString';
 import { ThunkDispatch } from 'redux-thunk';
 
 const db = firebase.firestore();
@@ -56,8 +56,11 @@ export const signLinking = (
       if (!firebaseData.user) throw new Error('no user');
 
       const firebaseUid = firebaseData.user.uid;
-      const nextId = await getNextUserId(usersSnapshot, firebaseUid);
-      if (!nextId) throw new Error('no nextId');
+      const usersData = usersSnapshot.data();
+      if (!usersData) throw new Error('no user id');
+
+      const currentId: string = usersData.id;
+      const nextId = incNumString(currentId);
 
       await usersCounterDoc.update({
         id: nextId
