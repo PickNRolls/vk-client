@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 
-import SignUpForm from '../SignUpForm';
+import SignUpForm from './step1/SignUpForm';
 
 import { AppActions, AppState } from '../../store';
+import { SubmitValues } from './step1/SignUpForm/types';
 import { goToStep } from '../../store/signUpProgress/actions';
 import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
@@ -28,23 +29,36 @@ class SignUpPage extends React.Component<Props, State> {
     this.state = {};
   }
 
-  handleSubmit = (data: {firstName: string; lastName: string; birthday: Date}) => {
-    console.log(this.props.step);
+  handleSubmit = (data: SubmitValues) => {
+    this.props.goToStep(2);
   }
 
   render() {
     const cSignUpPage = cn('SignUpPage', this.props.className);
     document.title = I18N(localKeyset, 'document-title');
 
-    return (
-      <div className={cSignUpPage}>
-        <div className="SignUpPage-RightColumn">
-          <SignUpForm
-            onSubmit={this.handleSubmit}
-          />
-        </div>
-      </div>
-    );
+    switch (this.props.step) {
+      default:
+      case 1: {
+        return (
+          <div className={cSignUpPage}>
+            <div className="SignUpPage-RightColumn">
+              <SignUpForm
+                onSubmit={this.handleSubmit}
+              />
+            </div>
+          </div>
+        );
+      }
+
+      case 2: {
+        return (
+          <div>
+            step 2
+          </div>
+        );
+      }
+    }
   }
 };
 

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import BaseProps from '../../typing/BaseProps';
 import { AppState } from '../../store';
 
-import SignUpPage from '../SignUpPage';
+import SignUpPage from '../LoginPage';
 import SideNav from '../SideNav';
 import UserPage from '../UserPage';
 import MessagesPage from '../MessagesPage';

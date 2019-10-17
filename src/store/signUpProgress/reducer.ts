@@ -4,7 +4,7 @@ import SignUpProgressState, {
 } from "./types";
 
 const initialState: SignUpProgressState = {
-  step: -1
+  step: 1
 };
 
 export default (state = initialState, action: SignUpProgressActions) => {
