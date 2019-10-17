@@ -1,8 +1,8 @@
-.FormSelect {
+.SignUpForm-Select {
   height: 35px;
   font-size: 14px;
   color: rgb(124, 127, 130);
-  background: url(../Messages/assets/back.png) no-repeat calc(100% - 8px) 50% / 12px;
+  background: url(../../../Messages/assets/back.png) no-repeat calc(100% - 8px) 50% / 12px;
   border: 1px solid #d3d9de;
   border-radius: 3px;
   text-overflow: ellipsis;
@@ -10,30 +10,30 @@
   outline: none;
 }
 
-.FormSelect-Value {
+.SignUpForm-SelectValue {
   display: block;
   height: 100%;
   padding: 7px 24px 8px 12px;
 }
 
-.FormSelect_expanded {
+.SignUpForm-Select_expanded {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.FormSelect_expanded .FormSelect-Value {
+.SignUpForm-Select_expanded .SignUpForm-SelectValue {
   margin-bottom: 1px;
 }
 
-.FormSelect_filled .FormSelect-Value {
+.SignUpForm-Select_filled .SignUpForm-SelectValue {
   color: #000;
 }
 
-.FormSelect_error {
+.SignUpForm-Select_error {
   border-color: #ff4c4c;
 }
 
-.FormSelect-List {
+.SignUpForm-SelectList {
   width: calc(100% + 2px);
   max-height: 200px;
   overflow: scroll;
@@ -44,7 +44,7 @@
   border-top: none;
 }
 
-.FormSelect-Option {
+.SignUpForm-SelectOption {
   height: 32px;
   padding: 7px 0 9px 12px;
   color: #000;
@@ -52,6 +52,15 @@
   overflow: hidden;
 }
 
-.FormSelect-Option:hover {
+.SignUpForm-SelectOption:hover {
   background: #e7edf2;;
+}
+
+.SignUpForm-SelectInput {
+  opacity: 0;
+  height: 0;
+  width: 0;
+  border: none;
+  font-size: 0;
+  position: absolute;
 }

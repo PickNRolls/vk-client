@@ -1,11 +1,15 @@
-.FormInput {
+.SignUpForm-InputWrapper {
   display: block;
   border: 1px solid #d3d9de;
   border-radius: 3px;
   position: relative;
 }
 
-.FormInput-Input {
+.SignUpForm-InputWrapper_error {
+  border-color: #ff4c4c;
+}
+
+.SignUpForm-Input {
   width: 100%;
   height: 35px;
   font-size: 14px;
@@ -15,11 +19,7 @@
   outline: none;
 }
 
-.FormInput_error {
-  border-color: #ff4c4c;
-}
-
-.FormInput-Error {
+.SignUpForm-InputError {
   background: #fff;
   color: #ff4c4c;
   font-size: 9px;
@@ -29,6 +29,6 @@
   bottom: -5px;
 }
 
-.FormInput-Error:empty {
+.SignUpForm-InputError:empty {
   display: none;
 }
