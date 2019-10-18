@@ -5,12 +5,13 @@ import AuthState, {
   SIGN_UP_SUCCESS,
   SIGN_UP_FAIL
 } from './types';
+import { AppActions } from '..';
 
 const initialState: AuthState = {
   isUserLoggedIn: false
 };
 
-export default (state = initialState, action: AuthActions): AuthState => {
+export default (state = initialState, action: AppActions): AuthState => {
   switch (action.type) {
     case SIGN_UP: {
       console.log('sign up..');

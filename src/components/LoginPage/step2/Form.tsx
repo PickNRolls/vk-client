@@ -14,16 +14,13 @@ import ValuesState from './types';
 import I18N from '../../../helpers/i18n';
 import globalKeyset from '../../../i18n';
 import localKeyset from './i18n';
+import Button from '../../Button';
 
 interface Props {
   onSubmit: (data: ValuesState) => void;
 };
 
 const SignUpForm = (props: Props & FormikProps<ValuesState>) => {
-  const cSubmit = cn('SignUpForm-Submit', undefined, {
-    disabled: !props.isValid
-  });
-
   return (
     <div className="SignUpForm SignUpForm_step_2">
       <Form>
@@ -40,9 +37,9 @@ const SignUpForm = (props: Props & FormikProps<ValuesState>) => {
           component={FormikInput}
         />
 
-        <button className={cSubmit} type="submit">
+        <Button disabled={!props.isValid} type="submit" className="SignUpForm-Submit">
           {I18N(localKeyset, 'submit')}
-        </button>
+        </Button>
       </Form>
     </div>
   );

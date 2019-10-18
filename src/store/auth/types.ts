@@ -11,8 +11,8 @@ export interface SignUpPayload {
   firstName: string;
   lastName: string;
   birthday: Date;
-  // email: string;
-  // password: string;
+  email: string;
+  password: string;
 };
 export const SIGN_UP = 'auth/SIGN_UP';
 interface SignUpAction {

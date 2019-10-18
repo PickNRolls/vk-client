@@ -1,7 +1,7 @@
 import UserState, {
-  UserActions,
   REQUEST_USER_SUCCESS
 } from './types';
+import { AppActions } from '..';
 
 const initialState: UserState = {
   firstName: '',
@@ -20,7 +20,7 @@ const initialState: UserState = {
   connections: {}
 };
 
-export default (state = initialState, action: UserActions): UserState => {
+export default (state = initialState, action: AppActions): UserState => {
   switch (action.type) {
     case REQUEST_USER_SUCCESS: {
       return action.payload;

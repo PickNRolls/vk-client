@@ -31,14 +31,14 @@ export const signUp = (payload: SignUpPayload) => {
   return async (dispatch: Dispatch<AppActions>) => {
     try {
       const response = await firebase.auth().createUserWithEmailAndPassword(
-        'uoeuoeu@ya.ru',
-        '123123'
+        payload.email,
+        payload.password
       );
 
       const thunkDispatch = dispatch as ThunkDispatch<any, any, AppActions>;
       await thunkDispatch(signLinking(response, payload));
     } catch (error) {
-      return dispatch(signUpFail(error));
+      dispatch(signUpFail(error));
     }
     
     dispatch(signUpSuccess());
