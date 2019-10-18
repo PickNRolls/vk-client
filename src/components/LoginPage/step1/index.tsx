@@ -1,17 +1,26 @@
 import React from 'react';
+import { ThunkDispatch } from 'redux-thunk';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import SignUpForm from './SignUpForm';
 
-import BaseProps from '../../../typing/BaseProps';
 import { SubmitValues } from './SignUpForm/types';
+import { IntermediateData } from '../../../store/signUpProgress/types';
+import { AppActions } from '../../../store';
+import { saveIntermediateData } from '../../../store/signUpProgress/actions';
 
-interface Props extends BaseProps {
+interface OwnProps {
   onFinish: (step: 1) => void;
 };
 
+type Props =
+  & OwnProps
+  & ConnectedDispatchProps;
+
 class LoginPageStep1 extends React.Component<Props> {
   handleSubmit = (submittingData: SubmitValues) => {
-    console.log(submittingData);
+    this.props.saveData(submittingData);
     this.handleFinish();
   }
 
@@ -30,4 +39,15 @@ class LoginPageStep1 extends React.Component<Props> {
   }
 }
 
-export default LoginPageStep1;
+interface ConnectedDispatchProps {
+  saveData: (data: IntermediateData) => void;
+};
+
+const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>) => ({
+  saveData: bindActionCreators(saveIntermediateData, dispatch)
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(LoginPageStep1);
