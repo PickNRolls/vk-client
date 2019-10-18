@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 
-import SignUpForm from './step1/SignUpForm';
+import Step1Component from './step1';
+import Step2Component from './step2';
 
 import { AppActions, AppState } from '../../store';
-import { SubmitValues } from './step1/SignUpForm/types';
 import { goToStep } from '../../store/signUpProgress/actions';
 import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
@@ -19,46 +19,40 @@ type Props =
   & ConnectedDispatchProps
   & BaseProps;
 
-interface State {
-
-};
-
-class SignUpPage extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {};
-  }
-
-  handleSubmit = (data: SubmitValues) => {
-    this.props.goToStep(2);
+class SignUpPage extends React.Component<Props> {
+  handleStepFinish = (step: number) => {
+    this.props.goToStep(step + 1);
   }
 
   render() {
     const cSignUpPage = cn('SignUpPage', this.props.className);
     document.title = I18N(localKeyset, 'document-title');
 
+    let currentStepComponent;
+
     switch (this.props.step) {
       default:
       case 1: {
-        return (
-          <div className={cSignUpPage}>
-            <div className="SignUpPage-RightColumn">
-              <SignUpForm
-                onSubmit={this.handleSubmit}
-              />
-            </div>
-          </div>
-        );
+        currentStepComponent = <Step1Component onFinish={this.handleStepFinish} />;
+        break;
       }
 
       case 2: {
-        return (
-          <div>
-            step 2
-          </div>
-        );
+        currentStepComponent = <Step2Component onFinish={this.handleStepFinish} />;
+        break;
+      }
+
+      case 3: {
+        currentStepComponent = <div>регистрация завершена</div>;
+        break;
       }
     }
+
+    return (
+      <div className={cSignUpPage}>
+        {currentStepComponent}
+      </div>
+    )
   }
 };
 
