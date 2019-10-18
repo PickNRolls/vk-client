@@ -41,14 +41,12 @@ class FormSelect extends React.Component<Props, State> {
 
   handleOptionClick = (event: React.MouseEvent, value: string) => {
     event.stopPropagation();
-
-    const { onChange } = this.props;
-
     this.setState({
       value,
       expanded: false
     });
 
+    const { onChange } = this.props;
     onChange && onChange(value);
   }
 
@@ -92,7 +90,7 @@ class FormSelect extends React.Component<Props, State> {
     this.mixPlaceholderToOptions();
   }
 
-  componentDidUpdate(prevProps: Props) {
+  componentDidUpdate() {
     this.mixPlaceholderToOptions();
   }
 

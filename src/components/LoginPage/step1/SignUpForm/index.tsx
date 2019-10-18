@@ -32,13 +32,13 @@ interface Props extends BaseProps {
 };
 
 const FormikInput = ({
-  field, // { name, value, onChange, onBlur }
+  field,
   form: { touched, errors, setFieldTouched, setFieldValue, isValid },
   ...props
 }: FieldProps & InputProps) => {
   return <Input
     {...field}
-    onBlur={value => {
+    onBlur={() => {
       setFieldTouched(field.name, true);
     }}
     onChange={value => {
@@ -61,12 +61,14 @@ const FormikSelect = ({
 }: FieldProps & SelectProps) => {
   return <Select
     {...field}
-    onBlur={value => {
+    onBlur={() => {
       setFieldTouched(field.name, true);
     }}
     onChange={value => {
-      if (!isValid) {
+      if (!value) {
+        setFieldValue(field.name, value);
         setFieldTouched(field.name, true);
+        return;
       }
 
       switch (field.name) {
@@ -190,17 +192,17 @@ const SignUpSchema = Yup.object().shape({
     .required(I18N(localKeyset, 'required')),
 
   day: Yup.string()
-    .required('uoeuo'),
+    .required(),
   
   month: Yup.string()
-    .required('oeuoeu'),
+    .required(),
   
   year: Yup.string()
-    .required('ueou')
+    .required()
 });
 
 const SignUpFormWithFormik = withFormik<Props, ValuesState>({
-  mapPropsToValues(props) {
+  mapPropsToValues() {
     return {
       firstName: '',
       lastName: '',
