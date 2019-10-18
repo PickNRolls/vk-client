@@ -3,7 +3,6 @@ import { withRouter, RouteProps } from 'react-router';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchUsers } from '../../server';
 import { AppState, AppActions } from '../../store';
 import UserState from '../../store/user/types';
 import { change as changeTitle } from '../../store/document/title/actions';
@@ -35,22 +34,22 @@ class MessagesPage extends React.Component<Props & RouteProps, State> {
   }
 
   async componentDidMount() {
-    const {
-      user
-    } = this.props;
+  //   const {
+  //     user
+  //   } = this.props;
 
     this.props.changeTitle(I18N(localKeyset, 'page-title'));
 
-    const interlocutorsId = Object.keys(user.connections).filter(uid =>
-      user.connections[uid].messages.list.length
-    );
+  //   const interlocutorsId = Object.keys(user.connections).filter(uid =>
+  //     user.connections[uid].messages.list.length
+  //   );
 
-    const interlocutors = await fetchUsers(interlocutorsId);
+  //   const interlocutors = await fetchUsers(interlocutorsId);
 
-    this.setState({
-      loadingDialogs: false,
-      interlocutors
-    });
+  //   this.setState({
+  //     loadingDialogs: false,
+  //     interlocutors
+  //   });
   }
 
   render() {

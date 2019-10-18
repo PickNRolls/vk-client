@@ -9,7 +9,6 @@ import * as Yup from 'yup';
 
 import FormikInput from '../Input';
 
-import cn from '../../../helpers/cn';
 import ValuesState from './types';
 import I18N from '../../../helpers/i18n';
 import globalKeyset from '../../../i18n';

@@ -1,20 +1,12 @@
-import {
-  UserActions,
-  REQUEST_USER_SUCCESS
-} from './types';
-import { AppState, AppActions } from '../';
-import { fetchUsers } from '../../server';
-import User from '../../typing/User';
-import { Dispatch } from 'redux';
+import UserState, {
+  SET, UserActions
+} from "./types";
+import { Dispatch } from "redux";
 
-const requestUserSuccess = (user: User): UserActions => ({
-  type: REQUEST_USER_SUCCESS,
-  payload: user
-});
-
-export const requestUser = (uid: string) => {
-  return async (dispatch: Dispatch<AppActions>) => {
-    const users = await fetchUsers([uid]);
-    dispatch(requestUserSuccess(users[0]));
-  };
+export const set = (user: UserState) => (dispatch: Dispatch<UserActions>) => {
+  localStorage.setItem('user', JSON.stringify(user));
+  dispatch({
+    type: SET,
+    payload: user
+  });
 };

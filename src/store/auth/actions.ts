@@ -2,8 +2,11 @@ import { Dispatch } from 'redux';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import { AppActions } from '..';
 import { push } from 'connected-react-router';
+import { ThunkDispatch } from 'redux-thunk';
+import { AppActions } from '..';
+import { set as setAppUser } from '../user/actions';
+import User from '../../typing/User';
 import {
   AuthActions,
   SIGN_IN,
@@ -12,16 +15,17 @@ import {
   SIGN_UP_FAIL,
 } from './types';
 import incNumString from '../../helpers/incNumString';
-import { ThunkDispatch } from 'redux-thunk';
+import API from '../../api';
 
 const db = firebase.firestore();
 
-const signUpSuccess = () => {
-  return (dispatch: Dispatch<AppActions>) => {
+const signUpSuccess = (user: User) => {
+  return (dispatch: ThunkDispatch<any, any, AppActions>) => {
+    dispatch(setAppUser(user));
     dispatch({
       type: SIGN_UP_SUCCESS
     });
-    dispatch(push('/id00000000'));
+    dispatch(push(`/id${user.id}`));
   };
 }
 
@@ -42,10 +46,13 @@ export const signUp = (payload: SignUpPayload) => {
       await thunkDispatch(signLinking(response, payload));
     } catch (error) {
       dispatch(signUpFail(error));
+      return;
     }
-    
 
-    thunkDispatch(signUpSuccess());
+    const appUser = await API.user.current();
+    if (appUser === null) throw new Error('appUser === null');
+
+    thunkDispatch(signUpSuccess(appUser));
   };
 };
 
@@ -72,7 +79,8 @@ export const signLinking = (
 
       await db.collection('users').doc(firebaseUid).set({
         appId: nextId,
-        ...appData
+        ...appData,
+        fullName: appData.firstName + ' ' + appData.lastName
       });
 
       await db.collection('appIdsLinks').doc(nextId).set({

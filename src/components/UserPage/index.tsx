@@ -9,10 +9,10 @@ import UserPageInfo from '../UserPageInfo';
 import UserState from '../../store/user/types';
 import BaseProps from '../../typing/BaseProps';
 import User from '../../typing/User';
+import API from '../../api';
 import cn from '../../helpers/cn';
 import { AppState, AppActions } from '../../store';
 import { change as changeTitle } from '../../store/document/title/actions';
-import { fetchUsers } from '../../server';
 
 import './index.css';
 
@@ -38,13 +38,22 @@ class UserPage extends React.Component<Props, State> {
   }
 
   async loadUser() {
-    const { uid } = this.props;
+    const { uid, appUser } = this.props;
 
     this.setState({
       loadingUser: true
     });
 
-    const [user] = await fetchUsers([uid]);
+    let user;
+    if (uid === appUser.id) {
+      user = appUser;
+    } else {
+      user = await API.user.find(uid);
+    }
+
+    if (user === null) {
+      throw new Error('user === null');
+    }
 
     this.setState({
       user,
@@ -108,7 +117,7 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<AppActions>) => ({
-  changeTitle
+  changeTitle: (title: string) => changeTitle(title)
 });
 
 export default connect(

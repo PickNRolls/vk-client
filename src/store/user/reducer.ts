@@ -1,33 +1,31 @@
 import UserState, {
-  REQUEST_USER_SUCCESS
+  SET
 } from './types';
 import { AppActions } from '..';
 
-const initialState: UserState = {
+const storageUser = JSON.parse(localStorage.getItem('user') || 'null');
+const initialState: UserState = storageUser || {
   firstName: '',
   lastName: '',
   fullName: '',
   id: '',
   age: 0,
-  gender: true,
   avatar: '',
   online: true,
-  friends: [],
   additionalInfo: {
     birthday: '',
-    languages: []
-  },
-  connections: {}
+  }
 };
 
 export default (state = initialState, action: AppActions): UserState => {
   switch (action.type) {
-    case REQUEST_USER_SUCCESS: {
-      return action.payload;
+    case SET: {
+      return {
+        ...state,
+        ...action.payload
+      };
     }
 
-    default: {
-      return state;
-    }
+    default: return state;
   }
 };

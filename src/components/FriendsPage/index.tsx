@@ -11,7 +11,6 @@ import UserState from '../../store/user/types';
 import { AppState } from '../../store';
 
 import cn from '../../helpers/cn';
-import { fetchUsers } from '../../server';
 
 import './index.css';
 
@@ -36,11 +35,11 @@ class FriendsPage extends React.Component<Props, State> {
   }
 
   async componentDidMount() {
-    const friends = await fetchUsers(this.props.user.friends);
-    this.setState({
-      friends,
-      loadingFriends: false
-    });
+    // const friends = await fetchUsers(this.props.user.friends);
+    // this.setState({
+    //   friends,
+    //   loadingFriends: false
+    // });
   }
 
   render() {

@@ -5,14 +5,14 @@ interface GoToStepAction {
 };
 
 export const SAVE_INTERMEDIATE_DATA = 'signUpProgress/SAVE_INTERMEDIATE_DATA';
-interface SaveIntermediateData {
+interface SaveIntermediateDataAction {
   type: typeof SAVE_INTERMEDIATE_DATA;
   payload: IntermediateData;
 };
 
 export type SignUpProgressActions =
   | GoToStepAction
-  | SaveIntermediateData;
+  | SaveIntermediateDataAction;
 
 
 export interface IntermediateData {

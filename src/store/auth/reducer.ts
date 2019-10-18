@@ -1,5 +1,4 @@
 import AuthState, {
-  AuthActions,
   SIGN_IN,
   SIGN_UP,
   SIGN_UP_SUCCESS,
@@ -7,8 +6,9 @@ import AuthState, {
 } from './types';
 import { AppActions } from '..';
 
+const isUserLoggedIn = JSON.parse(localStorage.getItem('user') || 'false');
 const initialState: AuthState = {
-  isUserLoggedIn: false
+  isUserLoggedIn
 };
 
 export default (state = initialState, action: AppActions): AuthState => {
