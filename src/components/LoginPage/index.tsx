@@ -7,6 +7,7 @@ import Step2Component from './step2';
 
 import { AppActions, AppState } from '../../store';
 import { goToStep } from '../../store/signUpProgress/actions';
+import { change as changeTitle } from '../../store/document/title/actions';
 import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
 import I18N from '../../helpers/i18n';
@@ -24,9 +25,12 @@ class SignUpPage extends React.Component<Props> {
     this.props.goToStep(step + 1);
   }
 
+  componentDidMount() {
+    this.props.changeTitle(I18N(localKeyset, 'document-title'));
+  }
+
   render() {
     const cSignUpPage = cn('SignUpPage', this.props.className);
-    document.title = I18N(localKeyset, 'document-title');
 
     let currentStepComponent;
 
@@ -62,6 +66,7 @@ interface ConnectedStateProps {
 
 interface ConnectedDispatchProps {
   goToStep: (step: number) => void;
+  changeTitle: (title: string) => void;
 };
 
 const mapStateToProps = (state: AppState) => ({
@@ -69,7 +74,8 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>) => ({
-  goToStep: (step: number) => dispatch(goToStep(step))
+  goToStep: (step: number) => dispatch(goToStep(step)),
+  changeTitle: (title: string) => dispatch(changeTitle(title))
 });
 
 export default connect(

@@ -1,15 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import Preloader from '../Preloader';
 import UserPageAvatar from '../UserPageAvatar';
 import UserPageInfo from '../UserPageInfo';
 
+import UserState from '../../store/user/types';
 import BaseProps from '../../typing/BaseProps';
 import User from '../../typing/User';
 import cn from '../../helpers/cn';
-import { AppState } from '../../store';
-import UserState from '../../store/user/types';
+import { AppState, AppActions } from '../../store';
+import { change as changeTitle } from '../../store/document/title/actions';
 import { fetchUsers } from '../../server';
 
 import './index.css';
@@ -18,7 +20,8 @@ type Props = {
     uid: string;
   }
   & BaseProps
-  & ConnectedStateProps;
+  & ConnectedStateProps
+  & ConnectedDispatchProps;
 
 interface State {
   user: User | null;
@@ -47,6 +50,7 @@ class UserPage extends React.Component<Props, State> {
       user,
       loadingUser: false
     });
+    this.props.changeTitle(`${user.fullName}`);
   }
 
   componentDidMount() {
@@ -75,8 +79,6 @@ class UserPage extends React.Component<Props, State> {
 
     user = user as User;
 
-    document.title = `${user.fullName}`;
-
     return (
       <div className={cUserPage}>
         <div className="page-column-thin">
@@ -97,10 +99,19 @@ interface ConnectedStateProps {
   appUser: UserState;
 };
 
+interface ConnectedDispatchProps {
+  changeTitle: (title: string) => void;
+}
+
 const mapStateToProps = (state: AppState) => ({
   appUser: state.user
 });
 
+const mapDispatchToProps = (dispatch: Dispatch<AppActions>) => ({
+  changeTitle
+});
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(UserPage);

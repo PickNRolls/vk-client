@@ -1,9 +1,12 @@
 import React from 'react';
 import { withRouter, RouteProps } from 'react-router';
+import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { fetchUsers } from '../../server';
-import { AppState } from '../../store';
+import { AppState, AppActions } from '../../store';
+import UserState from '../../store/user/types';
+import { change as changeTitle } from '../../store/document/title/actions';
 import Messages from '../Messages';
 
 import BaseProps from '../../typing/BaseProps';
@@ -11,9 +14,11 @@ import User from '../../typing/User';
 import cn from '../../helpers/cn';
 import I18N from '../../helpers/i18n';
 import localKeyset from './i18n';
-import UserState from '../../store/user/types';
 
-type Props = BaseProps & ConnectedStateProps;
+type Props =
+  & BaseProps
+  & ConnectedStateProps
+  & ConnectedDispatchProps;
 
 interface State {
   interlocutors: User[];
@@ -34,6 +39,8 @@ class MessagesPage extends React.Component<Props & RouteProps, State> {
       user
     } = this.props;
 
+    this.props.changeTitle(I18N(localKeyset, 'page-title'));
+
     const interlocutorsId = Object.keys(user.connections).filter(uid =>
       user.connections[uid].messages.list.length
     );
@@ -49,7 +56,6 @@ class MessagesPage extends React.Component<Props & RouteProps, State> {
   render() {
     const propsClass = this.props.className ? this.props.className + ' clearfix' : 'clearfix';
     const cMessagesPage = cn('MessagesPage', propsClass);
-    document.title = I18N(localKeyset, 'page-title');
 
     return (
       <div className={cMessagesPage}>
@@ -72,11 +78,19 @@ interface ConnectedStateProps {
   user: UserState;
 };
 
+interface ConnectedDispatchProps {
+  changeTitle: (title: string) => void;
+}
 
 const mapStateToProps = (state: AppState) => ({
   user: state.user
 });
 
+const mapDispatchToProps = (dispatch: Dispatch<AppActions>) => ({
+  changeTitle
+});
+
 export default withRouter(connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(MessagesPage));
