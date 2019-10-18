@@ -24,7 +24,8 @@ type Props =
   & ConnectedDispatchProps
   & BaseProps;
 
-const SIGN_UP_LAST_STEP = 2;
+const INFO_STEP = 1;
+const EMAIL_PASSWORD_STEP = 2;
 class SignUpPage extends React.Component<Props> {
   handleStepFinish = (step: number) => {
     const {
@@ -33,7 +34,7 @@ class SignUpPage extends React.Component<Props> {
       intermediateData
     } = this.props;
 
-    if (step === SIGN_UP_LAST_STEP) {
+    if (step === EMAIL_PASSWORD_STEP) {
       const signUpPayload = intermediateData as SignUpPayload;
       signUp(signUpPayload);
       return;
@@ -53,18 +54,13 @@ class SignUpPage extends React.Component<Props> {
 
     switch (this.props.step) {
       default:
-      case 1: {
+      case INFO_STEP: {
         currentStepComponent = <Step1Component onFinish={this.handleStepFinish} />;
         break;
       }
 
-      case 2: {
+      case EMAIL_PASSWORD_STEP: {
         currentStepComponent = <Step2Component onFinish={this.handleStepFinish} />;
-        break;
-      }
-
-      case 3: {
-        currentStepComponent = <div>регистрация завершена</div>;
         break;
       }
     }
