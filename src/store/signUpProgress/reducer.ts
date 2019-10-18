@@ -15,7 +15,7 @@ const initialState: SignUpProgressState = {
   }
 };
 
-export default (state = initialState, action: SignUpProgressActions) => {
+export default (state = initialState, action: SignUpProgressActions): SignUpProgressState => {
   switch (action.type) {
     case GO_TO_STEP: {
       return {
