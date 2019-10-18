@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import BaseProps from '../../typing/BaseProps';
 import { AppState } from '../../store';
+import UserState from '../../store/user/types';
 
 import SignUpPage from '../LoginPage';
 import SideNav from '../SideNav';
@@ -22,40 +23,38 @@ const AppMain: React.FC<Props> = props => {
     <main className="AppMain">
       <div className="container clearfix">
         {
-          props.isUserLoggedIn ?
-          <>
-              <SideNav
-                className="AppMain-SideNav"
-              />
-
-              <div className="AppMain-Content">
-                <Switch>
-                  <Route path="/id:id" render={routerProps => {
-                    return <UserPage uid={routerProps.match.params.id} />;
-                  }} />
-
-                  <Route path="/feed" />
-
-                  <Route path="/messages" render={routerProps => {
-                    return <MessagesPage {...routerProps} />;
-                  }} />
-
-                  <Route path="/friends" render={() => {
-                    return <FriendsPage />;
-                  }} />
-
-                  <Route path="/groups" />
-                </Switch>
-              </div>
-          </> :
-
-          <>
-            <Redirect to="/login" />
-            <Route path="/login" render={() => {
-              return <SignUpPage />;
-            }} />
-          </>
+          !props.isUserLoggedIn && <Redirect to="/login" />
         }
+
+        <SideNav
+          className="AppMain-SideNav"
+        />
+
+        <div className="AppMain-Content">
+          <Switch>
+            <Route path="/login" render={() => {
+              return !props.isUserLoggedIn ?
+                <SignUpPage /> :
+                <Redirect to={`/id${props.user.id}`} />;
+            }} />
+
+            <Route path="/id:id" render={routerProps => {
+              return <UserPage uid={routerProps.match.params.id} />;
+            }} />
+
+            <Route path="/feed" />
+
+            <Route path="/messages" render={routerProps => {
+              return <MessagesPage {...routerProps} />;
+            }} />
+
+            <Route path="/friends" render={() => {
+              return <FriendsPage />;
+            }} />
+
+            <Route path="/groups" />
+          </Switch>
+        </div>
       </div>
     </main>
   );
@@ -63,10 +62,12 @@ const AppMain: React.FC<Props> = props => {
 
 interface ConnectedStateProps {
   isUserLoggedIn: boolean;
+  user: UserState;
 };
 
 const mapStateToProps = (state: AppState) => ({
-  isUserLoggedIn: state.auth.isUserLoggedIn
+  isUserLoggedIn: state.auth.isUserLoggedIn,
+  user: state.user
 });
 
 
