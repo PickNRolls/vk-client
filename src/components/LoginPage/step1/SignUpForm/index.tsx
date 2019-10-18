@@ -10,6 +10,7 @@ import * as Yup from 'yup';
 
 import FormikInput from '../../Input';
 import Select, { Props as SelectProps } from './Select';
+import Button from '../../../Button';
 
 import BaseProps from '../../../../typing/BaseProps';
 import { Option, SubmitValues } from './types';
@@ -146,9 +147,9 @@ const SignUpForm = (props: Props & FormikProps<ValuesState>) => {
           />
         </div>
 
-        <button className="SignUpForm-Submit" type="submit">
+        <Button type="submit">
           {I18N(localKeyset, 'continue-sign-up')}
-        </button>
+        </Button>
       </Form>
     </div>
   );
