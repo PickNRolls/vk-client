@@ -3,24 +3,27 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { AppActions } from '..';
+import { push } from 'connected-react-router';
 import {
   AuthActions,
   SIGN_IN,
-
   SignUpPayload,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAIL,
-
-  SIGN_LINKING_SUCCESS
 } from './types';
 import incNumString from '../../helpers/incNumString';
 import { ThunkDispatch } from 'redux-thunk';
 
 const db = firebase.firestore();
 
-const signUpSuccess = (): AuthActions => ({
-  type: SIGN_UP_SUCCESS
-});
+const signUpSuccess = () => {
+  return (dispatch: Dispatch<AppActions>) => {
+    dispatch({
+      type: SIGN_UP_SUCCESS
+    });
+    dispatch(push('/id00000000'));
+  };
+}
 
 const signUpFail = (error: any): AuthActions => ({
   type: SIGN_UP_FAIL,
@@ -29,19 +32,20 @@ const signUpFail = (error: any): AuthActions => ({
 
 export const signUp = (payload: SignUpPayload) => {
   return async (dispatch: Dispatch<AppActions>) => {
+    const thunkDispatch = dispatch as ThunkDispatch<any, any, AppActions>;
     try {
       const response = await firebase.auth().createUserWithEmailAndPassword(
         payload.email,
         payload.password
       );
 
-      const thunkDispatch = dispatch as ThunkDispatch<any, any, AppActions>;
       await thunkDispatch(signLinking(response, payload));
     } catch (error) {
       dispatch(signUpFail(error));
     }
     
-    dispatch(signUpSuccess());
+
+    thunkDispatch(signUpSuccess());
   };
 };
 

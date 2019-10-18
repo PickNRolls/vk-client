@@ -2,7 +2,6 @@ import SignUpProgressState, {
   GO_TO_STEP,
   SAVE_INTERMEDIATE_DATA
 } from "./types";
-import {SIGN_UP_SUCCESS} from '../auth/types'
 import { AppActions } from "..";
 
 const initialState: SignUpProgressState = {
@@ -33,14 +32,6 @@ export default (state = initialState, action: AppActions): SignUpProgressState =
           ...stateIntermediateData,
           ...action.payload
         }
-      };
-    }
-
-    case SIGN_UP_SUCCESS: {
-      const currentStep = state.step;
-      return {
-        ...state,
-        step: currentStep + 1
       };
     }
 

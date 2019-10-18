@@ -13,7 +13,7 @@ const requestUserSuccess = (user: User): UserActions => ({
 });
 
 export const requestUser = (uid: string) => {
-  return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+  return async (dispatch: Dispatch<AppActions>) => {
     const users = await fetchUsers([uid]);
     dispatch(requestUserSuccess(users[0]));
   };

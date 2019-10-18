@@ -19,8 +19,10 @@ export default (state = initialState, action: AppActions): AuthState => {
     }
 
     case SIGN_UP_SUCCESS: {
-      console.log('sign up success');
-      return state;
+      return {
+        ...state,
+        isUserLoggedIn: true
+      };
     }
 
     case SIGN_UP_FAIL: {
