@@ -44,47 +44,47 @@ class MessagesContent extends React.Component<Props, State> {
       interlocutors
     } = this.props;
 
-    if (state === 'in dialog' && interlocutor) {
-      const { list } = user.connections[interlocutor.id].messages;
-      let renderContent: JSX.Element[];
-      let groupingMessages: Message[][] = [[list[0]]];
-      let groupingIndex = 0;
-      let lastAuthorId = list[0].authorId;
-      for (let i = 1; i < list.length; i++) {
-        if (list[i].authorId === lastAuthorId) {
-          groupingMessages[groupingIndex].push(list[i]);
-        } else {
-          groupingIndex++;
-          groupingMessages[groupingIndex] = [list[i]];
-          lastAuthorId = list[i].authorId;
-        }
-      }
+    // if (state === 'in dialog' && interlocutor) {
+    //   const { list } = user.connections[interlocutor.id].messages;
+    //   let renderContent: JSX.Element[];
+    //   let groupingMessages: Message[][] = [[list[0]]];
+    //   let groupingIndex = 0;
+    //   let lastAuthorId = list[0].authorId;
+    //   for (let i = 1; i < list.length; i++) {
+    //     if (list[i].authorId === lastAuthorId) {
+    //       groupingMessages[groupingIndex].push(list[i]);
+    //     } else {
+    //       groupingIndex++;
+    //       groupingMessages[groupingIndex] = [list[i]];
+    //       lastAuthorId = list[i].authorId;
+    //     }
+    //   }
 
-      renderContent = groupingMessages.map(messages => (
-        <li className="Messages-Group" key={messages[0].id}>
-          <MessageGroup
-            interlocutor={interlocutor}
-            user={user}
-            messages={messages}
-          />
-        </li>
-      ));
+    //   renderContent = groupingMessages.map(messages => (
+    //     <li className="Messages-Group" key={messages[0].id}>
+    //       <MessageGroup
+    //         interlocutor={interlocutor}
+    //         user={user}
+    //         messages={messages}
+    //       />
+    //     </li>
+    //   ));
 
-      const inDialogContent = (
-        <div className="Messages-Content">
-          <ul className="Messages-List">
-            {renderContent}
-          </ul>
-        </div>
-      );
+    //   const inDialogContent = (
+    //     <div className="Messages-Content">
+    //       <ul className="Messages-List">
+    //         {renderContent}
+    //       </ul>
+    //     </div>
+    //   );
 
-      return inDialogContent;
-    }
+    //   return inDialogContent;
+    // }
 
     const defaultContent = (
       <div className="Messages-Content">
         <ul className="Messages-Dialogs">
-          {
+          {/* {
             interlocutors.map(interlocutor => {
               const { list } = user.connections[interlocutor.id].messages;
               const dialogProps = {
@@ -104,7 +104,7 @@ class MessagesContent extends React.Component<Props, State> {
                 </li>
               );
             })
-          }
+          } */}
         </ul>
 
         {

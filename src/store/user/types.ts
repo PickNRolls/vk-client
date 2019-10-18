@@ -1,20 +1,13 @@
 import User from '../../typing/User';
 
-export const REQUEST_USER = 'user/REQUEST_USER';
-interface RequestUserAction {
-  type: typeof REQUEST_USER;
-  payload: string;
-};
-
-export const REQUEST_USER_SUCCESS = 'user/REQUEST_USER_SUCCESS';
-interface RequestUserSuccessAction {
-  type: typeof REQUEST_USER_SUCCESS;
-  payload: User;
+export const SET = 'user/SET';
+interface SetAction {
+  type: typeof SET,
+  payload: UserState;
 };
 
 export type UserActions =
-  | RequestUserAction
-  | RequestUserSuccessAction;
+  & SetAction;
 
 type UserState = User;
 export default UserState;

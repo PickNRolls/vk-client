@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router';
+import { connectRouter, RouterAction } from 'connected-react-router';
 import { History } from 'history';
 
 import authReducer from './auth/reducer';
@@ -32,6 +32,7 @@ export type AppActions =
   | AuthActions
   | SignUpProgressActions
   | UserActions
-  | TitleActions;
+  | TitleActions
+  | RouterAction;
 
 export type AppState = ReturnType<ReturnType<typeof createRootReducer>>;

@@ -2,25 +2,32 @@ import { Dispatch } from 'redux';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import { push } from 'connected-react-router';
+import { ThunkDispatch } from 'redux-thunk';
 import { AppActions } from '..';
+import { set as setAppUser } from '../user/actions';
+import User from '../../typing/User';
 import {
   AuthActions,
   SIGN_IN,
-
   SignUpPayload,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAIL,
-
-  SIGN_LINKING_SUCCESS
 } from './types';
 import incNumString from '../../helpers/incNumString';
-import { ThunkDispatch } from 'redux-thunk';
+import API from '../../api';
 
 const db = firebase.firestore();
 
-const signUpSuccess = (): AuthActions => ({
-  type: SIGN_UP_SUCCESS
-});
+const signUpSuccess = (user: User) => {
+  return (dispatch: ThunkDispatch<any, any, AppActions>) => {
+    dispatch(setAppUser(user));
+    dispatch({
+      type: SIGN_UP_SUCCESS
+    });
+    dispatch(push(`/id${user.id}`));
+  };
+}
 
 const signUpFail = (error: any): AuthActions => ({
   type: SIGN_UP_FAIL,
@@ -29,19 +36,23 @@ const signUpFail = (error: any): AuthActions => ({
 
 export const signUp = (payload: SignUpPayload) => {
   return async (dispatch: Dispatch<AppActions>) => {
+    const thunkDispatch = dispatch as ThunkDispatch<any, any, AppActions>;
     try {
       const response = await firebase.auth().createUserWithEmailAndPassword(
-        'uoeuoeu@ya.ru',
-        '123123'
+        payload.email,
+        payload.password
       );
 
-      const thunkDispatch = dispatch as ThunkDispatch<any, any, AppActions>;
       await thunkDispatch(signLinking(response, payload));
     } catch (error) {
-      return dispatch(signUpFail(error));
+      dispatch(signUpFail(error));
+      return;
     }
-    
-    dispatch(signUpSuccess());
+
+    const appUser = await API.user.current();
+    if (appUser === null) throw new Error('appUser === null');
+
+    thunkDispatch(signUpSuccess(appUser));
   };
 };
 
@@ -68,7 +79,8 @@ export const signLinking = (
 
       await db.collection('users').doc(firebaseUid).set({
         appId: nextId,
-        ...appData
+        ...appData,
+        fullName: appData.firstName + ' ' + appData.lastName
       });
 
       await db.collection('appIdsLinks').doc(nextId).set({

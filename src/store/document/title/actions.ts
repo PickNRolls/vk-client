@@ -4,10 +4,12 @@ import {
   CHANGE
 } from "./types";
 
-export const change = (title: string) => (dispatch: Dispatch<TitleActions>) => {
+export const change = (title: string) => {
   document.title = title;
-  dispatch({
-    type: CHANGE,
-    payload: title
-  });
+  return (dispatch: Dispatch<TitleActions>) => {
+    dispatch({
+      type: CHANGE,
+      payload: title
+    });
+  };
 };

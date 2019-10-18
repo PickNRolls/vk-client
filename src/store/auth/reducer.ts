@@ -1,16 +1,17 @@
 import AuthState, {
-  AuthActions,
   SIGN_IN,
   SIGN_UP,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAIL
 } from './types';
+import { AppActions } from '..';
 
+const isUserLoggedIn = JSON.parse(localStorage.getItem('user') || 'false');
 const initialState: AuthState = {
-  isUserLoggedIn: false
+  isUserLoggedIn
 };
 
-export default (state = initialState, action: AuthActions): AuthState => {
+export default (state = initialState, action: AppActions): AuthState => {
   switch (action.type) {
     case SIGN_UP: {
       console.log('sign up..');
@@ -18,8 +19,10 @@ export default (state = initialState, action: AuthActions): AuthState => {
     }
 
     case SIGN_UP_SUCCESS: {
-      console.log('sign up success');
-      return state;
+      return {
+        ...state,
+        isUserLoggedIn: true
+      };
     }
 
     case SIGN_UP_FAIL: {

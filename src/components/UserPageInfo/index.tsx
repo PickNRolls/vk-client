@@ -76,15 +76,17 @@ class UserPageInfo extends React.Component<Props, State> {
         {this.state.expanded
           ? (
           <div className="UserPageInfo-Details">
-            <UserInfoGroup
-              isPageMine={isPageMine}
-              title={I18N(localKeyset, 'basic-info')}
-              className="UserPageInfo-Group">
-              <UserInfoField
-                label={I18N(localKeyset, 'languages')}
-                value={user.additionalInfo.languages.map(lang => I18N(globalKeyset, lang)).join(', ')}
-              />
-            </UserInfoGroup>
+            {user.additionalInfo.languages &&
+              <UserInfoGroup
+                isPageMine={isPageMine}
+                title={I18N(localKeyset, 'basic-info')}
+                className="UserPageInfo-Group">
+                <UserInfoField
+                  label={I18N(localKeyset, 'languages')}
+                  value={user.additionalInfo.languages.map(lang => I18N(globalKeyset, lang)).join(', ')}
+                />
+              </UserInfoGroup>
+            }
 
             <UserInfoGroup
               isPageMine={isPageMine}

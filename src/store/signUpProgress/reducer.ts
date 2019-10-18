@@ -1,8 +1,8 @@
 import SignUpProgressState, {
-  SignUpProgressActions,
   GO_TO_STEP,
   SAVE_INTERMEDIATE_DATA
 } from "./types";
+import { AppActions } from "..";
 
 const initialState: SignUpProgressState = {
   step: 1,
@@ -15,7 +15,7 @@ const initialState: SignUpProgressState = {
   }
 };
 
-export default (state = initialState, action: SignUpProgressActions): SignUpProgressState => {
+export default (state = initialState, action: AppActions): SignUpProgressState => {
   switch (action.type) {
     case GO_TO_STEP: {
       return {

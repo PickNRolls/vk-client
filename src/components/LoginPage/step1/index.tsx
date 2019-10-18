@@ -18,7 +18,7 @@ type Props =
   & OwnProps
   & ConnectedDispatchProps;
 
-class LoginPageStep1 extends React.Component<Props> {
+class SignUpPageStep1 extends React.Component<Props> {
   handleSubmit = (submittingData: SubmitValues) => {
     this.props.saveData(submittingData);
     this.handleFinish();
@@ -50,4 +50,4 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>) => ({
 export default connect(
   null,
   mapDispatchToProps
-)(LoginPageStep1);
+)(SignUpPageStep1);
