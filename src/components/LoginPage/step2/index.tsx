@@ -1,4 +1,7 @@
 import React from 'react';
+import { ThunkDispatch } from 'redux-thunk';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import Form from './Form';
 
@@ -7,14 +10,21 @@ import I18N from '../../../helpers/i18n';
 import localKeyset from './i18n';
 
 import './index.css';
+import { IntermediateData } from '../../../store/signUpProgress/types';
+import { saveIntermediateData } from '../../../store/signUpProgress/actions';
+import { AppActions } from '../../../store';
 
-interface Props {
+interface OwnProps {
   onFinish: (step: 2) => void;
 };
 
-class SignUpStep2 extends React.Component<Props> {
+type Props =
+  & OwnProps
+  & ConnectedDispatchProps;
+
+class LoginPageStep2 extends React.Component<Props> {
   handleSubmit = (values: SubmitValues) => {
-    console.log(values);
+    this.props.saveData(values);
     this.handleFinish();
   }
 
@@ -35,4 +45,15 @@ class SignUpStep2 extends React.Component<Props> {
   }
 };
 
-export default SignUpStep2;
+interface ConnectedDispatchProps {
+  saveData: (data: IntermediateData) => void;
+};
+
+const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>) => ({
+  saveData: bindActionCreators(saveIntermediateData, dispatch)
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(LoginPageStep2);

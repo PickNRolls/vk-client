@@ -1,10 +1,18 @@
 import SignUpProgressState, {
   SignUpProgressActions,
-  GO_TO_STEP
+  GO_TO_STEP,
+  SAVE_INTERMEDIATE_DATA
 } from "./types";
 
 const initialState: SignUpProgressState = {
-  step: 1
+  step: 1,
+  intermediateData: {
+    firstName: '',
+    lastName: '',
+    birthday: null,
+    email: '',
+    password: ''
+  }
 };
 
 export default (state = initialState, action: SignUpProgressActions) => {
@@ -13,6 +21,17 @@ export default (state = initialState, action: SignUpProgressActions) => {
       return {
         ...state,
         step: action.payload
+      };
+    }
+
+    case SAVE_INTERMEDIATE_DATA: {
+      const stateIntermediateData = state.intermediateData;
+      return {
+        ...state,
+        intermediateData: {
+          ...stateIntermediateData,
+          ...action.payload
+        }
       };
     }
 
