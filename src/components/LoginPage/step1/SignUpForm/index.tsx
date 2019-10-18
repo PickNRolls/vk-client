@@ -8,11 +8,11 @@ import {
 } from 'formik';
 import * as Yup from 'yup';
 
-import Input, { Props as InputProps} from './Input';
+import FormikInput from '../../Input';
 import Select, { Props as SelectProps } from './Select';
 
 import BaseProps from '../../../../typing/BaseProps';
-import { Option } from './types';
+import { Option, SubmitValues } from './types';
 import ValuesState from './types';
 import cn from '../../../../helpers/cn';
 import monthLength, { monthSequence } from './monthsMeta';
@@ -24,34 +24,7 @@ import localKeyset from './i18n';
 import './index.css';
 
 interface Props extends BaseProps {
-  onSubmit: (data : {
-    firstName: string;
-    lastName: string;
-    birthday: Date;
-  }) => void;
-};
-
-const FormikInput = ({
-  field,
-  form: { touched, errors, setFieldTouched, setFieldValue, isValid },
-  ...props
-}: FieldProps & InputProps) => {
-  return <Input
-    {...field}
-    onBlur={() => {
-      setFieldTouched(field.name, true);
-    }}
-    onChange={value => {
-      if (!isValid) {
-        setFieldTouched(field.name, true);
-      }
-      setFieldValue(field.name, value);
-    }}
-    placeholder={props.placeholder}
-    error={touched[field.name] && errors[field.name] ?
-      errors[field.name] as string : ''
-    }
-  />;
+  onSubmit: (data : SubmitValues) => void;
 };
 
 const FormikSelect = ({
@@ -184,12 +157,12 @@ const SignUpForm = (props: Props & FormikProps<ValuesState>) => {
 
 const SignUpSchema = Yup.object().shape({
   firstName: Yup.string()
-    .max(50, I18N(localKeyset, 'maxLength'))
-    .required(I18N(localKeyset, 'required')),
+    .max(50, I18N(globalKeyset, 'maxLength'))
+    .required(I18N(globalKeyset, 'required')),
 
   lastName: Yup.string()
-    .max(50, I18N(localKeyset, 'maxLength'))
-    .required(I18N(localKeyset, 'required')),
+    .max(50, I18N(globalKeyset, 'maxLength'))
+    .required(I18N(globalKeyset, 'required')),
 
   day: Yup.string()
     .required(),

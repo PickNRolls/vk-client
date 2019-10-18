@@ -61,5 +61,31 @@ export default {
   december: {
     ru: 'декабря',
     en: 'december'
+  },
+
+
+  minLength: {
+    ru: 'Слишком коротко',
+    en: 'So short'
+  },
+
+  maxLength: {
+    ru: 'Достигнута максимальная длина',
+    en: 'Reached maximum length'
+  },
+
+  required: {
+    ru: 'Обязательное поле',
+    en: 'Required field'
+  },
+
+  email: {
+    ru: 'Почта должна быть действительна',
+    en: 'Email must be valid'
+  },
+
+  type: {
+    ru: 'Неверные данные',
+    en: 'Wrong data'
   }
 };

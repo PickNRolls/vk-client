@@ -1,13 +1,16 @@
 import React from 'react';
 
-import cn from '../../../../helpers/cn';
+import BaseProps from '../../typing/BaseProps';
+import cn from '../../helpers/cn';
 
 import './Input.css';
+import { FieldProps } from 'formik';
 
-export interface Props {
+export interface Props extends BaseProps {
   error?: string;
   placeholder?: string;
   name?: string;
+  type?: string;
   value?: string;
 
   onFocus?: (value: string) => void;
@@ -19,7 +22,7 @@ interface State {
   value: string;
 };
 
-class FormInput extends React.Component<Props, State> {
+export class FormInput extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -49,7 +52,7 @@ class FormInput extends React.Component<Props, State> {
       onBlur,
       onFocus
     } = this.props;
-    
+
     const { value } = this.state;
 
     switch (event.type) {
@@ -68,7 +71,7 @@ class FormInput extends React.Component<Props, State> {
   }
 
   render() {
-    const cFormInput = cn('SignUpForm-InputWrapper', undefined, {
+    const cFormInput = cn('SignUpForm-InputWrapper', this.props.className, {
       error: !!this.props.error
     });
     const { placeholder } = this.props;
@@ -78,6 +81,7 @@ class FormInput extends React.Component<Props, State> {
         <input
           className="SignUpForm-Input"
           name={this.props.name}
+          type={this.props.type}
           value={this.state.value}
           placeholder={placeholder}
           onChange={this.handleChange}
@@ -92,4 +96,28 @@ class FormInput extends React.Component<Props, State> {
   }
 };
 
-export default FormInput;
+const FormikInput = ({
+  field,
+  form: { touched, errors, setFieldTouched, setFieldValue, isValid },
+  ...props
+}: FieldProps & Props) => {
+  return <FormInput
+    {...field}
+    type={props.type}
+    onBlur={() => {
+      setFieldTouched(field.name, true);
+    }}
+    onChange={value => {
+      if (!isValid) {
+        setFieldTouched(field.name, true);
+      }
+      setFieldValue(field.name, value);
+    }}
+    placeholder={props.placeholder}
+    error={touched[field.name] && errors[field.name] ?
+      errors[field.name] as string : ''
+    }
+  />;
+};
+
+export default FormikInput;
