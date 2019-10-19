@@ -1,7 +1,5 @@
 import React from 'react';
 
-import noAvatarImage from '../../assets/no-avatar.png';
-
 import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
 
@@ -13,7 +11,7 @@ interface Props extends BaseProps {
 
 const UserPageAvatar: React.FC<Props> = props => {
   const cUserPageAvatar = cn('UserPageAvatar', props.className);
-  const src = props.imageUrl || noAvatarImage;
+  const src = props.imageUrl;
 
   return (
     <div className={cUserPageAvatar}>
