@@ -1,0 +1,17 @@
+.Dropdown {
+  outline: none;
+}
+
+.Dropdown-Content {
+  visibility: hidden;
+  opacity: 0
+}
+
+.Dropdown-Switcher {
+  cursor: pointer;
+}
+
+.Dropdown_expanded .Dropdown-Content {
+  visibility: visible;
+  opacity: 1;
+}

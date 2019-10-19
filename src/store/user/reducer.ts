@@ -2,15 +2,19 @@ import UserState, {
   SET
 } from './types';
 import { AppActions } from '..';
+import noAvatarImage from '../../assets/no-avatar.png';
 
 const storageUser = JSON.parse(localStorage.getItem('user') || 'null');
-const initialState: UserState = storageUser || {
+const initialState: UserState = storageUser ? {
+  ...storageUser,
+  avatar: noAvatarImage
+} : {
   firstName: '',
   lastName: '',
   fullName: '',
   id: '',
   age: 0,
-  avatar: '',
+  avatar: noAvatarImage,
   online: true,
   additionalInfo: {
     birthday: '',
