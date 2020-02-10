@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { ThunkDispatch } from 'redux-thunk';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
