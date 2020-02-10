@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import PageList from '../PageList';
 import Friend from '../Friend';

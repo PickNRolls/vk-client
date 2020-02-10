@@ -2,14 +2,14 @@
 
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
 
 # testing
 /coverage
 
 # production
 /build
+/public/bundle.js
+/public/*[.png, .jpg, .jpeg, .svg]
 
 # misc
 .DS_Store

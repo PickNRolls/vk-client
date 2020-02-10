@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import withType from '../../../hocs/tokens/withType';
 import Token from '../../Token';

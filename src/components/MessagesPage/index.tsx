@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { withRouter, RouteProps } from 'react-router';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';

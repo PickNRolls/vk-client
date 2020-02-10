@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
