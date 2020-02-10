@@ -9,6 +9,7 @@
 # production
 /build
 /public/bundle.js
+/public/*[.png, .jpg, .jpeg, .svg]
 
 # misc
 .DS_Store
