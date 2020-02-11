@@ -10,7 +10,7 @@ import iconFeed from './assets/feed.png';
 import iconGroups from './assets/groups.png';
 import iconMessages from './assets/messages.png';
 import iconFriends from './assets/friends.png';
-import './index.css';
+import css from './SideNav.css';
 import { connect } from 'react-redux';
 import { AppState } from '../../store';
 
@@ -54,19 +54,19 @@ class SideNav extends React.Component<Props> {
   }
 
   render() {
-    const cSideNav = cn('SideNav', this.props.className);
+    const cSideNav = cn(css.SideNav, this.props.className);
     const items = this._getItems(this.props.user.id);
     return (
       <nav className={cSideNav}>
-        <ul className="SideNav-List">
+        <ul className={css.List}>
           {
             items.map(item => (
-              <li className="SideNav-Item" key={item.url}>
-                <Link to={item.url} className="SideNav-ItemLink">
-                  <span className="SideNav-ItemIcon">
+              <li className={css.Item} key={item.url}>
+                <Link to={item.url} className={css.ItemLink}>
+                  <span className={css.ItemIcon}>
                     <img src={item.icon} alt={item.text} />
                   </span>
-                  <span className="SideNav-ItemText">
+                  <span className={css.ItemText}>
                     {item.text}
                   </span>
                 </Link>
@@ -84,7 +84,7 @@ interface ConnectedStateProps {
 };
 
 const mapStateToProps = (state: AppState) => ({
-  user: state.user
+  user: state.user,
 });
 
 export default connect(mapStateToProps)(SideNav);

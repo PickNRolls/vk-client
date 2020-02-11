@@ -7,21 +7,21 @@
   z-index: 10;
 }
 
-.AppHeader-Container {
+.Container {
   display: flex;
   align-items: center;
 }
 
-.AppHeader-Logo {
+.Logo {
   margin-left: 6px;
 }
 
-.AppHeader-Dropdown {
+.Dropdown {
   height: 100%;
   margin-left: auto;
 }
 
-.AppHeader-Dropdown .Dropdown-Switcher {
+.Dropdown .Dropdown-Switcher {
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
@@ -30,15 +30,15 @@
   float: right;
 }
 
-.AppHeader-Dropdown .Dropdown-Switcher:hover {
+.Dropdown .Dropdown-Switcher:hover {
   background-color: #3d6898;
 }
 
-.AppHeader-Dropdown.Dropdown_expanded .Dropdown-Switcher {
+.Dropdown.Dropdown_expanded .Dropdown-Switcher {
   background-color: #335e8f;
 }
 
-.AppHeader-Dropdown .Dropdown-Content {
+.Dropdown .Dropdown-Content {
   padding: 4px 0;
   background: #fff;
   border: 1px solid #c5d0db;
@@ -50,8 +50,8 @@
   top: 49px;
 }
 
-.AppHeader-Dropdown .Dropdown-Content::before,
-.AppHeader-Dropdown .Dropdown-Content::after {
+.Dropdown .Dropdown-Content::before,
+.Dropdown .Dropdown-Content::after {
   content: '';
   position: absolute;
   pointer-events: none;
@@ -65,13 +65,13 @@
   border-bottom-color: #c5d0db;
 }
 
-.AppHeader-Dropdown .Dropdown-Content::after {
+.Dropdown .Dropdown-Content::after {
   border-width: 5px;
   margin: 0 -5px;
   border-bottom-color: #fff;
 }
 
-.AppHeader-DropdownLink {
+.DropdownLink {
   display: block;
   min-width: 160px;
   padding: 0 15px;
@@ -83,17 +83,17 @@
   outline: none;
 }
 
-.AppHeader-DropdownLink:hover {
+.DropdownLink:hover {
   background-color: #e4eaf0;
 }
 
-.AppHeader-DropdownDivider {
+.DropdownDivider {
   display: block;
   margin: 4px 13px;
   border-top: 1px solid #dbe4ec;
 }
 
-.AppHeader-DropdownName {
+.DropdownName {
   white-space: nowrap;
   font-weight: 700;
   overflow: hidden;
@@ -103,14 +103,14 @@
   padding-right: 10px;
 }
 
-.AppHeader-DropdownPhoto {
+.DropdownPhoto {
   height: 28px;
   width: 28px;
   border-radius: 50%;
   background-size: 28px;
 }
 
-.AppHeader-DropdownArrow {
+.DropdownArrow {
   width: 5px;
   height: 5px;
   margin-left: 7px;
@@ -120,6 +120,6 @@
   opacity: .4;
 }
 
-.AppHeader-Dropdown.Dropdown_expanded .AppHeader-DropdownArrow {
+.Dropdown.Dropdown_expanded .DropdownArrow {
   opacity: 1;
 }

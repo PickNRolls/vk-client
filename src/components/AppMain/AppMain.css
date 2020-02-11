@@ -2,12 +2,12 @@
   padding-top: 57px;
 }
 
-.AppMain-SideNav {
+.SideNav {
   width: 200px;
   position: fixed;
 }
 
-.AppMain-Content {
+.Content {
   width: 800px;
   float: right;
 }
