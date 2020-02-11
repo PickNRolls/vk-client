@@ -1,4 +1,4 @@
-.SignUpForm-Select {
+.Select {
   height: 35px;
   font-size: 14px;
   color: rgb(124, 127, 130);
@@ -10,30 +10,30 @@
   outline: none;
 }
 
-.SignUpForm-SelectValue {
+.SelectValue {
   display: block;
   height: 100%;
   padding: 7px 24px 8px 12px;
 }
 
-.SignUpForm-Select_expanded {
+.Select_expanded {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.SignUpForm-Select_expanded .SignUpForm-SelectValue {
+.Select_expanded .SelectValue {
   margin-bottom: 1px;
 }
 
-.SignUpForm-Select_filled .SignUpForm-SelectValue {
+.Select_filled .SelectValue {
   color: #000;
 }
 
-.SignUpForm-Select_error {
+.Select_error {
   border-color: #ff4c4c;
 }
 
-.SignUpForm-SelectList {
+.SelectList {
   width: calc(100% + 2px);
   max-height: 200px;
   overflow: scroll;
@@ -44,7 +44,7 @@
   border-top: none;
 }
 
-.SignUpForm-SelectOption {
+.SelectOption {
   height: 32px;
   padding: 7px 0 9px 12px;
   color: #000;
@@ -52,11 +52,11 @@
   overflow: hidden;
 }
 
-.SignUpForm-SelectOption:hover {
+.SelectOption:hover {
   background: #e7edf2;;
 }
 
-.SignUpForm-SelectInput {
+.SelectInput {
   opacity: 0;
   height: 0;
   width: 0;

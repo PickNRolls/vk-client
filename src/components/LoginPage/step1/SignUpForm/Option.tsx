@@ -1,4 +1,5 @@
 import * as React from 'react';
+import css from './Select.css';
 
 interface Props {
   value: string;
@@ -13,7 +14,7 @@ class Option extends React.Component<Props> {
 
   render() {
     return (
-      <li className="SignUpForm-SelectOption" onClick={this.handleClick}>
+      <li className={css.SelectOption} onClick={this.handleClick}>
         {this.props.text}
       </li>
     );
