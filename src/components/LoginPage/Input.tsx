@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import cn from '../../helpers/cn';
+import cn from 'classnames';
 
 import css from './Input.css';
 import { FieldProps } from 'formik';
@@ -71,7 +71,6 @@ export class FormInput extends React.Component<Props, State> {
   }
 
   render() {
-    console.log(this.props);
     const cFormInput = cn(css.InputWrapper, this.props.className, {
       [css.InputWrapper_error]: !!this.props.error
     });

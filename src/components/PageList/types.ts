@@ -1,8 +1,8 @@
-import { Tab } from '../Tabs/types';
+import { types as TabsTypes } from 'components/Tabs';
 
 export interface HeaderTabProp {
   type: 'tabs';
-  tabs: Tab[];
+  tabs: TabsTypes.Tab[];
   button: {
     text: string;
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;

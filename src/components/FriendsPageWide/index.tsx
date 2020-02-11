@@ -1,25 +1,25 @@
 import * as React from 'react';
 
-import PageList from '../PageList';
-import Friend from '../Friend';
+import PageList from 'components/PageList';
+import Friend from 'components/Friend';
 
-import { Category } from '../FriendsPage';
-import { OwnProps as FriendProps } from '../Friend';
-import User from '../../typing/User';
+import { types as FriendsPageTypes } from 'components/FriendsPage';
+import { OwnProps as FriendProps } from 'components/Friend';
+import User from 'typing/User';
 
-import I18N from '../../helpers/i18n';
+import I18N from 'helpers/i18n';
 import localKeyset from './i18n';
 
-import './index.css';
+import css from './FriendsPageWide.css';
 
 interface Props {
-  category: Category;
+  category: FriendsPageTypes.Category;
   friends: User[];
 };
 
 const FriendsPageWide: React.FC<Props> = props => {
   return (
-    <div className="FriendsPage-Wide">
+    <div>
       <PageList<FriendProps>
         header={{
           type: 'tabs',
@@ -50,7 +50,7 @@ const FriendsPageWide: React.FC<Props> = props => {
         }))}
 
         listProps={{
-          className: "FriendsPage-List"
+          className: css.List,
         }}
       />
     </div>

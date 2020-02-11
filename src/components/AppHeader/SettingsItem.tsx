@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import Dropdown from '../Dropdown';
-
-import I18N from '../../helpers/i18n';
-import localKeyset from './i18n';
+import Dropdown from 'components/Dropdown';
+import css from './AppHeader.css';
 
 interface Props {
   url: string;
@@ -14,8 +12,8 @@ interface Props {
 const AppHeaderSetting: React.FC<Props> = props => {
   return (
     <Dropdown.Item>
-      <li className="AppHeader-DropdownItem">
-        <Link to={props.url} className="AppHeader-DropdownLink">
+      <li className={css.DropdownItem}>
+        <Link to={props.url} className={css.DropdownLink}>
           {props.text}
         </Link>
       </li>

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import User from '../../typing/User';
-import cn from '../../helpers/cn';
+import User from 'typing/User';
+import cn from 'classnames';
 
 import iconMyPage from './assets/home-page.png';
 import iconFeed from './assets/feed.png';

@@ -1,14 +1,13 @@
 import * as React from 'react';
+import cn from 'classnames';
 
-import { Props as ITokenProps } from '../../components/Token';
+import { OwnProps as TokenProps, css } from 'components/Token';
 
-const withType = <P extends ITokenProps>
+const withType = <P extends TokenProps>
   (type: 'text' | 'photo', Token: React.ComponentType<P>) => (
     class withType extends React.Component<P> {
       render() {
-        const className = this.props.className
-          ? this.props.className + ' TextToken'
-          : 'TextToken';
+        const className = cn(this.props.className, css.TextToken);
 
         if (type === 'text') {
           let { value, user } = this.props;
