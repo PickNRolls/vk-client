@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import Tabs from '../Tabs';
 
-import BaseProps from '../../typing/BaseProps';
 import {
   HeaderProp,
   HeaderTabProp,
@@ -12,11 +11,14 @@ import cn from '../../helpers/cn';
 
 import './index.css';
 
-interface Props<P> extends BaseProps {
+interface Props<P> {
   header: HeaderProp;
   itemComponent: React.ComponentType<P>;
   items: P[];
-  listProps?: BaseProps;
+  className?: string;
+  listProps?: {
+    className?: string;
+  }
 };
 
 type State = {};

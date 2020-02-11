@@ -3,16 +3,16 @@ import * as React from 'react';
 import HeaderContent from './components/Header';
 import Content from './components/Content';
 
-import BaseProps from '../../typing/BaseProps';
 import User from 'typing/User';
 import cn from 'classnames';
 
 import css from './Messages.css';
 
-interface Props extends BaseProps {
+interface Props {
   user: User;
   interlocutors: User[];
   loading: boolean;
+  className?: string;
 };
 
 interface State {

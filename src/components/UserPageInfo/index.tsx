@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import User from '../../typing/User';
-import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
 import globalKeyset from '../../i18n';
 import localKeyset from './i18n';
@@ -12,9 +11,10 @@ import UserInfoGroup from '../UserInfoGroup';
 
 import './index.css';
 
-interface Props extends BaseProps {
+interface Props {
   user: User;
   isPageMine: boolean;
+  className?: string;
 };
 
 interface State {

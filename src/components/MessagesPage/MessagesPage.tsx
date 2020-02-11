@@ -8,14 +8,17 @@ import UserState from '../../store/user/types';
 import { change as changeTitle } from '../../store/document/title/actions';
 import Messages from '../Messages';
 
-import BaseProps from '../../typing/BaseProps';
 import User from '../../typing/User';
 import cn from 'classnames';
 import I18N from '../../helpers/i18n';
 import localKeyset from './i18n';
 
+interface OwnProps {
+  className?: string;
+}
+
 type Props =
-  & BaseProps
+  & OwnProps
   & ConnectedStateProps
   & ConnectedDispatchProps;
 

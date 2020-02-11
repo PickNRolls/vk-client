@@ -2,14 +2,14 @@ import * as React from 'react';
 
 import TabItem from '../Tab';
 
-import BaseProps from '../../typing/BaseProps';
 import { Tab } from './types';
 import cn from '../../helpers/cn';
 
 import './index.css';
 
-interface Props extends BaseProps {
+interface Props {
   items: Tab[];
+  className?: string;
 
   onChange: (value: string) => void;
 };

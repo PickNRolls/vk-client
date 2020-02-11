@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import BaseProps from '../../../../typing/BaseProps';
 import cn from 'classnames';
 
 import { Option } from './types';
@@ -8,9 +7,10 @@ import SelectOption from './Option';
 
 import css from './Select.css';
 
-export interface Props extends BaseProps {
+export interface Props {
   placeholder: string;
   options: Option[];
+  className?: string;
   
   error?: string;
   value?: string;

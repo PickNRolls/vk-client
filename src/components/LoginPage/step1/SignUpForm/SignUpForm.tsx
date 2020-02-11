@@ -12,7 +12,6 @@ import FormikInput from '../../Input';
 import Select, { Props as SelectProps } from './Select';
 import Button from '../../../Button';
 
-import BaseProps from '../../../../typing/BaseProps';
 import { Option, SubmitValues } from './types';
 import ValuesState from './types';
 import cn from 'classnames';
@@ -24,8 +23,9 @@ import localKeyset from './i18n';
 
 import css from './SignUpForm.css';
 
-interface Props extends BaseProps {
+interface Props {
   onSubmit: (data: SubmitValues) => void;
+  className?: string;
 };
 
 const FormikSelect = ({

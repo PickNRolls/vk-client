@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import BaseProps from '../../typing/BaseProps';
 import { AppState } from '../../store';
 import UserState from '../../store/user/types';
 
@@ -15,7 +14,6 @@ import FriendsPage from '../FriendsPage';
 import css from './AppMain.css';
 
 type Props =
-  & BaseProps
   & ConnectedStateProps;
 
 const AppMain: React.FC<Props> = props => {

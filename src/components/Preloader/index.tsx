@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
 
 import './index.css';
 
-interface Props extends BaseProps {
+interface Props {
   ms?: number;
+  className?: string;
 };
 
 const Preloader: React.FC<Props> = props => {

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import BaseProps from '../../typing/BaseProps';
 import User from '../../typing/User';
 import cn from '../../helpers/cn';
 
@@ -20,7 +19,11 @@ interface INavItem {
   icon: string;
 };
 
-type Props = BaseProps & ConnectedStateProps;
+interface OwnProps {
+  className?: string;
+}
+
+type Props = OwnProps & ConnectedStateProps;
 
 class SideNav extends React.Component<Props> {
   _getItems(uid: string): INavItem[] {

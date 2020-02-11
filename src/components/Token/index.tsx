@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import BaseProps from '../../typing/BaseProps';
 import User from '../../typing/User';
 import cn from '../../helpers/cn';
 
 import './index.css';
 
-export interface Props extends BaseProps {
+export interface Props {
   user: User;
   value?: string;
   size?: number;
   goToPage?: boolean | {
     target?: '_blank'
   };
+  className?: string;
 
   onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 };

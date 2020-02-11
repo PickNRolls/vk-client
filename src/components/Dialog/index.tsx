@@ -2,17 +2,17 @@ import * as React from 'react';
 
 import Token from '../Token';
 
-import BaseProps from '../../typing/BaseProps';
 import User from '../../typing/User';
 import Message from '../../typing/Message';
 import cn from '../../helpers/cn';
 
 import './index.css';
 
-interface Props extends BaseProps {
+interface Props {
   user: User;
   userOfToken: User;
   lastMessage: Message;
+  className?: string;
 
   onOpen(user: User): void;
   onRemove(uid: string): void;

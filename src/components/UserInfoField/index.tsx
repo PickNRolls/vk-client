@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
 
 import './index.css';
 
-export interface Props extends BaseProps {
+export interface Props {
   label: string;
   value: string;
+  className?: string;
 }
 interface State {
 

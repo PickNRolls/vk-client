@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import Token from '../Token';
 
-import BaseProps from '../../typing/BaseProps';
 import User from '../../typing/User';
 import withType from '../../hocs/tokens/withType';
 import cn from '../../helpers/cn';
@@ -13,9 +12,10 @@ const TextToken = withType('text', Token);
 
 export type OwnProps = {
   uniqId: string;
+  className?: string;
 } & User;
 
-type Props = OwnProps & BaseProps;
+type Props = OwnProps;
 
 interface State {
 

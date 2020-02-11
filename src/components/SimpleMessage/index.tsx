@@ -2,15 +2,15 @@ import * as React from 'react';
 
 import withClickHandler from '../../hocs/messages/withClickHandler';
 
-import BaseProps from '../../typing/BaseProps';
 import Message from '../../typing/Message';
 import cn from '../../helpers/cn';
 
 import './index.css';
 
-export interface Props extends BaseProps {
+export interface Props {
   data: Message;
   isActive: boolean;
+  className?: string;
 
   onClick?(event: React.MouseEvent<HTMLDivElement>): void;
 };

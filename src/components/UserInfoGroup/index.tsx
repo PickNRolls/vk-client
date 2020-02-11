@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
 import I18N from '../../helpers/i18n';
 import localKeyset from './i18n';
 
 import './index.css';
 
-interface Props extends BaseProps {
+interface Props {
   title: string;
   isPageMine: boolean;
+  className?: string;
 };
 
 interface State {

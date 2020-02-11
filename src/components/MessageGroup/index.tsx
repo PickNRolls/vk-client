@@ -3,17 +3,17 @@ import * as React from 'react';
 import Message from '../Message';
 import SimpleMessage from '../SimpleMessage';
 
-import BaseProps from '../../typing/BaseProps';
 import User from '../../typing/User';
 import MessageInterface from '../../typing/Message';
 import cn from '../../helpers/cn';
 
 import './index.css';
 
-export interface Props extends BaseProps {
+export interface Props {
   user: User;
   interlocutor: User;
   messages: MessageInterface[];
+  className?: string;
 };
 
 interface State {

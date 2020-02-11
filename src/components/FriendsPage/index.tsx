@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Preloader from '../Preloader';
 import FriendsPageWide from '../FriendsPageWide';
 
-import BaseProps from '../../typing/BaseProps';
 import User from '../../typing/User';
 import UserState from '../../store/user/types';
 import { AppState } from '../../store';
@@ -14,7 +13,11 @@ import cn from '../../helpers/cn';
 
 import './index.css';
 
-type Props = BaseProps & ConnectedStateProps & RouteChildrenProps;
+interface OwnProps {
+  className?: string;
+}
+
+type Props = OwnProps & ConnectedStateProps & RouteChildrenProps;
 export type Category =
   | 'default';
 

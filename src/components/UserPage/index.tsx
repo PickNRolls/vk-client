@@ -7,7 +7,6 @@ import UserPageAvatar from '../UserPageAvatar';
 import UserPageInfo from '../UserPageInfo';
 
 import UserState from '../../store/user/types';
-import BaseProps from '../../typing/BaseProps';
 import User from '../../typing/User';
 import API from '../../api';
 import cn from '../../helpers/cn';
@@ -18,8 +17,8 @@ import './index.css';
 
 type Props = {
     uid: string;
+    className?: string;
   }
-  & BaseProps
   & ConnectedStateProps
   & ConnectedDispatchProps;
 

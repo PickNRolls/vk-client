@@ -11,15 +11,18 @@ import { signUp } from '../../store/auth/actions';
 import { IntermediateData } from '../../store/signUpProgress/types';
 import { change as changeTitle } from '../../store/document/title/actions';
 import { SignUpPayload } from '../../store/auth/types';
-import BaseProps from '../../typing/BaseProps';
 import cn from 'classnames';
 import I18N from '../../helpers/i18n';
 import localKeyset from './i18n';
 
+interface OwnProps {
+  className?: string;
+}
+
 type Props =
+  & OwnProps
   & ConnectedStateProps
   & ConnectedDispatchProps
-  & BaseProps;
 
 const INFO_STEP = 1;
 const EMAIL_PASSWORD_STEP = 2;
