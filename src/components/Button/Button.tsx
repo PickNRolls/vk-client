@@ -1,10 +1,7 @@
 import * as React from 'react';
-
 import { Props, State } from './types';
-
-import cn from '../../helpers/cn';
-
-import './index.css';
+import cn from 'classnames';
+import css from './Button.css';
 
 class Button extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -24,8 +21,8 @@ class Button extends React.Component<Props, State> {
       ...restProps
     } = this.props;
 
-    const cButton = cn('Button', this.props.className, {
-      disabled: !!disabled
+    const cButton = cn(css.Button, this.props.className, {
+      [css.Button_disabled]: !!disabled
     });
 
     return (

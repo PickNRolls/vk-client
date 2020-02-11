@@ -4,9 +4,9 @@ import Token from '../Token';
 
 import User from '../../typing/User';
 import Message from '../../typing/Message';
-import cn from '../../helpers/cn';
+import cn from 'classnames';
 
-import './index.css';
+import css from './Dialog.css';
 
 interface Props {
   user: User;
@@ -42,7 +42,7 @@ class Dialog extends React.Component<Props, State> {
   }
 
   render() {
-    const cDialog = cn('Dialog', this.props.className);
+    const cDialog = cn(css.Dialog, this.props.className);
     const {
       user,
       userOfToken,
@@ -56,14 +56,14 @@ class Dialog extends React.Component<Props, State> {
           onClick={this.handleTokenClick}
           goToPage={{ target: '_blank'}}
           user={userOfToken}
-          className="Dialog-Photo"
+          className={css.Photo}
         />
-        <div className="Dialog-Content">
-          <div className="Dialog-Top">
-            <div className="Dialog-FullName">
+        <div className={css.Content}>
+          <div className={css.Top}>
+            <div className={css.FullName}>
               {fullName}
             </div>
-            <div className="Dialog-Date">
+            <div className={css.Date}>
               {
                 lastMessage.date.toLocaleTimeString(navigator.language, {
                   hour: '2-digit',
@@ -71,23 +71,23 @@ class Dialog extends React.Component<Props, State> {
                 })
               }
             </div>
-            <button className="Dialog-Remove" onClick={this.handleRemove}>
+            <button className={css.Remove} onClick={this.handleRemove}>
               &#215;
             </button>
           </div>
 
-          <div className="Dialog-LastMessage">
+          <div className={css.LastMessage}>
             {lastMessage.authorId === user.id
               ? <>
                 <Token
                   user={user}
                   size={25}
-                  className="Dialog-UserPhoto"
+                  className={css.UserPhoto}
                 />
               </>
               : null
             }
-            <div className="Dialog-LastMessageContent">
+            <div className={css.LastMessageContent}>
               {lastMessage.content}
             </div>
           </div>
