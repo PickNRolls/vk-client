@@ -10,10 +10,10 @@ import * as Yup from 'yup';
 import FormikInput from '../Input';
 
 import ValuesState from './types';
-import I18N from '../../../helpers/i18n';
-import globalKeyset from '../../../i18n';
+import I18N from 'helpers/i18n';
+import globalKeyset from 'i18n';
 import localKeyset from './i18n';
-import Button from '../../Button';
+import Button from 'components/Button';
 
 interface Props {
   onSubmit: (data: ValuesState) => void;

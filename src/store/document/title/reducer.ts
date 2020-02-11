@@ -1,7 +1,7 @@
 import TitleState, {
   CHANGE
-} from "./types";
-import { AppActions } from "../..";
+} from './types';
+import { AppActions } from 'store';
 
 const initialState: TitleState = '';
 

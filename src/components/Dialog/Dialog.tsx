@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import Token from '../Token';
+import Token from 'components/Token';
 
-import User from '../../typing/User';
-import Message from '../../typing/Message';
+import User from 'typing/User';
+import Message from 'typing/Message';
 import cn from 'classnames';
 
 import css from './Dialog.css';

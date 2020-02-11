@@ -11,7 +11,7 @@ import iconMessages from './assets/messages.png';
 import iconFriends from './assets/friends.png';
 import css from './SideNav.css';
 import { connect } from 'react-redux';
-import { AppState } from '../../store';
+import { AppState } from 'store';
 
 interface INavItem {
   text: string;

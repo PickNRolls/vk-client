@@ -1,8 +1,8 @@
-import '../bootstrapFirebase';
+import 'bootstrapFirebase';
 import firebase from 'firebase';
 
-import User from '../typing/User';
-import calcAge from '../helpers/calcAge';
+import User from 'typing/User';
+import calcAge from 'helpers/calcAge';
 
 const db = firebase.firestore();
 
