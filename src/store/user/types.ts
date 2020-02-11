@@ -1,4 +1,4 @@
-import User from '../../typing/User';
+import User from 'typing/User';
 
 export const SET = 'user/SET';
 interface SetAction {

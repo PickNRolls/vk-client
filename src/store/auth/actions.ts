@@ -5,8 +5,8 @@ import 'firebase/firestore';
 import { push } from 'connected-react-router';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppActions } from '..';
-import { set as setAppUser } from '../user/actions';
-import User from '../../typing/User';
+import { set as setAppUser } from 'store/user/actions';
+import User from 'typing/User';
 import {
   AuthActions,
   SIGN_IN,
@@ -14,8 +14,8 @@ import {
   SIGN_UP_SUCCESS,
   SIGN_UP_FAIL,
 } from './types';
-import incNumString from '../../helpers/incNumString';
-import API from '../../api';
+import incNumString from 'helpers/incNumString';
+import API from 'api';
 
 const db = firebase.firestore();
 

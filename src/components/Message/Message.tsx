@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import withClickHandler from '../../hocs/messages/withClickHandler';
-import withType from '../../hocs/tokens/withType';
-import Token from '../Token';
+import withClickHandler from 'hocs/messages/withClickHandler';
+import withType from 'hocs/tokens/withType';
+import Token from 'components/Token';
 
-import User from '../../typing/User';
-import MessageInterface from '../../typing/Message';
+import User from 'typing/User';
+import MessageInterface from 'typing/Message';
 import cn from 'classnames';
 
 import css from './Message.css';

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import Logo from '../Logo';
+import Logo from 'components/Logo';
 import Settings from './Settings';
 
-import { AppState } from '../../store';
-import UserState from '../../store/user/types';
+import { AppState } from 'store';
+import UserState from 'store/user/types';
 
 import cn from 'classnames';
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import css from '../../Tabs.css';
+import css from 'components/Tabs/Tabs.css';
 
 interface Props {
   value: string;

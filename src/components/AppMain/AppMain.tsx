@@ -2,14 +2,14 @@ import * as React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { AppState } from '../../store';
-import UserState from '../../store/user/types';
+import { AppState } from 'store';
+import UserState from 'store/user/types';
 
-import SignUpPage from '../LoginPage';
-import SideNav from '../SideNav';
-import UserPage from '../UserPage';
-import MessagesPage from '../MessagesPage';
-import FriendsPage from '../FriendsPage';
+import SignUpPage from 'components/LoginPage';
+import SideNav from 'components/SideNav';
+import UserPage from 'components/UserPage';
+import MessagesPage from 'components/MessagesPage';
+import FriendsPage from 'components/FriendsPage';
 
 import css from './AppMain.css';
 

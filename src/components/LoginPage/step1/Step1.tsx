@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import SignUpForm from './SignUpForm';
 
 import { SubmitValues } from './SignUpForm/types';
-import { IntermediateData } from '../../../store/signUpProgress/types';
-import { AppActions } from '../../../store';
-import { saveIntermediateData } from '../../../store/signUpProgress/actions';
+import { IntermediateData } from 'store/signUpProgress/types';
+import { AppActions } from 'store';
+import { saveIntermediateData } from 'store/signUpProgress/actions';
 import css from '../LoginPage.css';
 
 interface OwnProps {
