@@ -1,16 +1,16 @@
 import * as React from 'react';
 
-import withClickHandler from '../../hocs/messages/withClickHandler';
+import withClickHandler from 'hocs/messages/withClickHandler';
 
-import BaseProps from '../../typing/BaseProps';
-import Message from '../../typing/Message';
-import cn from '../../helpers/cn';
+import Message from 'typing/Message';
+import cn from 'classnames';
 
-import './index.css';
+import css from './SimpleMessage.css';
 
-export interface Props extends BaseProps {
+export interface Props {
   data: Message;
   isActive: boolean;
+  className?: string;
 
   onClick?(event: React.MouseEvent<HTMLDivElement>): void;
 };
@@ -31,8 +31,8 @@ class SimpleMessage extends React.Component<Props, State> {
   }
 
   render() {
-    const cSimpleMessage = cn('SimpleMessage', this.props.className, {
-      active: this.props.isActive
+    const cSimpleMessage = cn(css.SimpleMessage, this.props.className, {
+      [css.SimpleMessage_active]: this.props.isActive,
     });
 
     return (

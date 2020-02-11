@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import BaseProps from 'typing/BaseProps';
 import cn from 'classnames';
 
 import css from './ClearInput.css';
 
-interface Props extends BaseProps {
+interface Props {
   type?: string;
   placeholder?: string;
+  className?: string;
 
   onChange?(event: React.ChangeEvent<HTMLInputElement>, value: string): void;
 

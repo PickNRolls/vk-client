@@ -1,0 +1,81 @@
+.Dialog {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Dialog:hover {
+  background: #f5f7fa;
+}
+
+.Dialog:hover .Remove {
+  visibility: visible;
+}
+
+.Photo {
+  min-width: 50px;
+  margin-right: 14px;
+}
+
+.Content {
+  width: 100%;
+  height: 100%;
+  padding-top: 7px;
+  border-top: solid 1px #e7e8ec;
+  overflow-x: hidden;
+}
+
+.Top {
+  display: flex;
+  align-items: baseline;
+  padding-top: 3px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.FullName {
+  color: #222;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.Date {
+  color: #777e8c;
+  font-size: 12.5px;
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+.Remove {
+  visibility: hidden;
+  font-size: 17px;
+  color: #c3c6cb;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 1px;
+}
+
+.LastMessage {
+  display: flex;
+  align-items: center;
+  color: #656565;
+  font-size: 13px;
+}
+
+.UserPhoto {
+  width: 25px;
+  height: 25px;
+  margin-right: 7px;
+}
+
+.LastMessageContent {
+  max-width: 70%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

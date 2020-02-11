@@ -1,0 +1,32 @@
+.SimpleMessage {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.SimpleMessage.SimpleMessage_active::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background: #edf0f5;
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+}
+
+.Message.Message_active +
+.SimpleMessage.SimpleMessage_active,
+.SimpleMessage.SimpleMessage_active +
+.SimpleMessage.SimpleMessage_active {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+
+.Message {
+  margin-bottom: -4px;
+}
+

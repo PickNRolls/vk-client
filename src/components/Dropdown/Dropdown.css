@@ -1,0 +1,19 @@
+.Dropdown {
+  outline: none;
+}
+
+.Content {
+  visibility: hidden;
+  opacity: 0
+}
+
+.Switcher {
+  cursor: pointer;
+}
+
+.Dropdown_expanded .Content {
+  visibility: visible;
+  opacity: 1;
+}
+
+.Item {}

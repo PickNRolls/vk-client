@@ -1,5 +1,3 @@
-import BaseProps from '../../typing/BaseProps';
-
 interface OwnProps {
   disabled?: boolean;
 
@@ -7,8 +5,11 @@ interface OwnProps {
 };
 
 export type Props =
+  & {
+    className?: string;
+    children?: React.ReactNode;
+  }
   & OwnProps
-  & BaseProps
   & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export interface State {
