@@ -1,18 +1,13 @@
 import * as React from 'react';
 
-import HeaderContent from './-Header';
-import Content from './-Content';
+import HeaderContent from './components/Header';
+import Content from './components/Content';
 
 import BaseProps from '../../typing/BaseProps';
-import User from '../../typing/User';
-import cn from '../../helpers/cn';
+import User from 'typing/User';
+import cn from 'classnames';
 
-import './index.css';
-
-export interface IElementsProps {
-  state: 'default' | 'in dialog';
-  interlocutor?: User;
-};
+import css from './Messages.css';
 
 interface Props extends BaseProps {
   user: User;
@@ -53,7 +48,7 @@ class Messages extends React.Component<Props, State> {
   }
 
   render() {
-    const cMessages = cn('Messages', this.props.className);
+    const cMessages = cn(css.Messages, this.props.className);
     const {
       user,
       interlocutors,
@@ -63,8 +58,8 @@ class Messages extends React.Component<Props, State> {
 
     return (
       <div className={cMessages}>
-        <header className="Messages-Header">
-          <div className="Messages-HeaderWrap">
+        <header className={css.Header}>
+          <div className={css.HeaderWrap}>
             <HeaderContent
               state={state}
               interlocutor={interlocutor}
@@ -81,7 +76,7 @@ class Messages extends React.Component<Props, State> {
           onDialogOpen={this.handleDialogOpen}
           onDialogRemove={this.handleDialogRemove}
         />
-        <footer className="Messages-Footer">
+        <footer className={css.Footer}>
           Footer
         </footer>
       </div>

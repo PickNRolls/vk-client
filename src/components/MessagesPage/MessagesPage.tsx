@@ -10,7 +10,7 @@ import Messages from '../Messages';
 
 import BaseProps from '../../typing/BaseProps';
 import User from '../../typing/User';
-import cn from '../../helpers/cn';
+import cn from 'classnames';
 import I18N from '../../helpers/i18n';
 import localKeyset from './i18n';
 
@@ -34,27 +34,27 @@ class MessagesPage extends React.Component<Props & RouteProps, State> {
   }
 
   async componentDidMount() {
-  //   const {
-  //     user
-  //   } = this.props;
+    //   const {
+    //     user
+    //   } = this.props;
 
     this.props.changeTitle(I18N(localKeyset, 'page-title'));
 
-  //   const interlocutorsId = Object.keys(user.connections).filter(uid =>
-  //     user.connections[uid].messages.list.length
-  //   );
+    //   const interlocutorsId = Object.keys(user.connections).filter(uid =>
+    //     user.connections[uid].messages.list.length
+    //   );
 
-  //   const interlocutors = await fetchUsers(interlocutorsId);
+    //   const interlocutors = await fetchUsers(interlocutorsId);
 
-  //   this.setState({
-  //     loadingDialogs: false,
-  //     interlocutors
-  //   });
+    //   this.setState({
+    //     loadingDialogs: false,
+    //     interlocutors
+    //   });
   }
 
   render() {
-    const propsClass = this.props.className ? this.props.className + ' clearfix' : 'clearfix';
-    const cMessagesPage = cn('MessagesPage', propsClass);
+    const propsClass = cn(this.props.className, 'clearfix');
+    const cMessagesPage = cn(propsClass);
 
     return (
       <div className={cMessagesPage}>
@@ -62,7 +62,7 @@ class MessagesPage extends React.Component<Props & RouteProps, State> {
           <Messages
             user={this.props.user}
             interlocutors={this.state.interlocutors}
-            loading={Boolean(this.state.loadingDialogs)}
+            loading={!!this.state.loadingDialogs}
           />
         </div>
         <div className="page-column-thin">
