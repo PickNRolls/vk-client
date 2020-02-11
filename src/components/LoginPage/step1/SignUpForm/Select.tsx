@@ -1,12 +1,12 @@
 import * as React from 'react';
 
 import BaseProps from '../../../../typing/BaseProps';
-import cn from '../../../../helpers/cn';
+import cn from 'classnames';
 
 import { Option } from './types';
 import SelectOption from './Option';
 
-import './Select.css';
+import css from './Select.css';
 
 export interface Props extends BaseProps {
   placeholder: string;
@@ -95,10 +95,10 @@ class FormSelect extends React.Component<Props, State> {
   }
 
   render() {
-    const cFormSelect = cn('SignUpForm-Select', this.props.className, {
-      expanded: this.state.expanded,
-      filled: this.state.value.length !== 0,
-      error: !!this.props.error
+    const cFormSelect = cn(css.Select, this.props.className, {
+      [css.Select_expanded]: this.state.expanded,
+      [css.Select_filled]: this.state.value.length !== 0,
+      [css.Select_error]: !!this.props.error
     });
 
     const selectedOption = this.props.options.find(option => (
@@ -115,7 +115,7 @@ class FormSelect extends React.Component<Props, State> {
         onBlur={this.handleFocusEvent}
         className={cFormSelect}
       >
-        <span className="SignUpForm-SelectValue">
+        <span className={css.SelectValue}>
           {this.state.value.length ?
             selectedOptionText :
             this.props.placeholder
@@ -124,7 +124,7 @@ class FormSelect extends React.Component<Props, State> {
 
         {
           this.state.expanded &&
-          <ul className="SignUpForm-SelectList">
+          <ul className={css.SelectList}>
             {
               this.props.options.map(option => (
                 <SelectOption

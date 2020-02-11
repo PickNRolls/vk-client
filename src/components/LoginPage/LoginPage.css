@@ -1,4 +1,4 @@
-.SignUpPage-StepWrapper {
+.StepWrapper {
   width: 680px;
   background: #fff;
   border-radius: 4px;
@@ -7,7 +7,7 @@
   margin: 0 auto;
 }
 
-.SignUpPage-RightColumn {
+.RightColumn {
   width: 33%;
   float: right;
 }

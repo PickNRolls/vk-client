@@ -3,7 +3,7 @@ import * as React from 'react';
 import BaseProps from '../../typing/BaseProps';
 import cn from '../../helpers/cn';
 
-import './Input.css';
+import css from './Input.css';
 import { FieldProps } from 'formik';
 
 export interface Props extends BaseProps {
@@ -71,15 +71,16 @@ export class FormInput extends React.Component<Props, State> {
   }
 
   render() {
-    const cFormInput = cn('SignUpForm-InputWrapper', this.props.className, {
-      error: !!this.props.error
+    console.log(this.props);
+    const cFormInput = cn(css.InputWrapper, this.props.className, {
+      [css.InputWrapper_error]: !!this.props.error
     });
     const { placeholder } = this.props;
 
     return (
       <span className={cFormInput} onFocus={this.handleFocusEvents}>
         <input
-          className="SignUpForm-Input"
+          className={css.Input}
           name={this.props.name}
           type={this.props.type}
           value={this.state.value}
@@ -88,7 +89,7 @@ export class FormInput extends React.Component<Props, State> {
           onBlur={this.handleFocusEvents}
         />
 
-        <span className="SignUpForm-InputError">
+        <span className={css.InputError}>
           {this.props.error ? this.props.error : ''}
         </span>
       </span>

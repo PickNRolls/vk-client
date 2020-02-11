@@ -5,13 +5,34 @@
   padding: 25px;
 }
 
-.SignUpForm-Title {
+.SignUpForm_step_2 {
+  box-shadow: none;
+  padding: 0;
+}
+
+.SignUpForm_step_2 .InputWrapper {
+  max-width: 300px;
+  margin: 0 auto 15px;
+}
+
+.SignUpForm_step_2 .Submit {
+  max-width: 300px;
+  background-color: #5181b8;
+  margin: 0 auto;
+}
+
+.SignUpForm_step_2 .Submit_disabled {
+  opacity: .8;
+  cursor: default;
+}
+
+.Title {
   font-weight: 500;
   font-size: 20px;
   text-align: center;
 }
 
-.SignUpForm-Subtitle {
+.Subtitle {
   color: #656565;
   font-size: 12.5px;
   font-weight: 400;
@@ -19,26 +40,26 @@
   padding: 5px 0 21px;
 }
 
-.SignUpForm-InputWrapper {
+.InputWrapper {
   margin-bottom: 15px;
 }
 
-.SignUpForm-Birthday {
+.Birthday {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
 }
 
-.SignUpForm-DaySelect,
-.SignUpForm-YearSelect {
+.DaySelect,
+.YearSelect {
   width: 72px;
 }
 
-.SignUpForm-MonthSelect {
+.MonthSelect {
   width: 122px;
 }
 
-.SignUpForm-Submit {
+.Submit {
   display: block;
   width: 100%;
   height: 35px;
