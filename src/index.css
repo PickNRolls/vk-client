@@ -12,13 +12,13 @@ body {
   background: #edeef0;
 }
 
-.container {
+:global(.container) {
   width: 1000px;
   height: 100%;
   margin: 0 auto;
 }
 
-.clearfix::after {
+:global(.clearfix)::after {
   content: '';
   display: table;
   width: 100%;
@@ -27,13 +27,13 @@ body {
   clear: both;
 }
 
-.page-column-thin {
+:global(.page-column-thin) {
   width: 30%;
   margin-right: 1%;
   float: left;
 }
 
-.page-column-wide {
+:global(.page-column-wide) {
   width: 69%;
   float: left;
 }

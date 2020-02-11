@@ -12,11 +12,9 @@ import { IntermediateData } from '../../store/signUpProgress/types';
 import { change as changeTitle } from '../../store/document/title/actions';
 import { SignUpPayload } from '../../store/auth/types';
 import BaseProps from '../../typing/BaseProps';
-import cn from '../../helpers/cn';
+import cn from 'classnames';
 import I18N from '../../helpers/i18n';
 import localKeyset from './i18n';
-
-import './index.css';
 
 type Props =
   & ConnectedStateProps
@@ -47,7 +45,7 @@ class SignUpPage extends React.Component<Props> {
   }
 
   render() {
-    const cSignUpPage = cn('SignUpPage', this.props.className);
+    const cSignUpPage = cn(this.props.className);
 
     let currentStepComponent;
 

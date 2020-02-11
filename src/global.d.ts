@@ -15,3 +15,15 @@ declare module '*.png';
 declare module '*.jpeg';
 declare module '*.jpg';
 declare module '*.svg';
+
+/*
+  Instructions for TypeScript to use 'any'
+  for all css imports
+*/
+declare module '*.css' {
+  interface ClassNames {
+    [className: string]: string
+  }
+  const classNames: ClassNames;
+  export = classNames;
+}

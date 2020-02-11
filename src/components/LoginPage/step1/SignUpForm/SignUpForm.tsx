@@ -15,17 +15,17 @@ import Button from '../../../Button';
 import BaseProps from '../../../../typing/BaseProps';
 import { Option, SubmitValues } from './types';
 import ValuesState from './types';
-import cn from '../../../../helpers/cn';
+import cn from 'classnames';
 import monthLength, { monthSequence } from './monthsMeta';
 import toFixedNumString from '../../../../helpers/toFixedNumString';
 import I18N from '../../../../helpers/i18n';
 import globalKeyset from '../../../../i18n';
 import localKeyset from './i18n';
 
-import './index.css';
+import css from './SignUpForm.css';
 
 interface Props extends BaseProps {
-  onSubmit: (data : SubmitValues) => void;
+  onSubmit: (data: SubmitValues) => void;
 };
 
 const FormikSelect = ({
@@ -101,12 +101,12 @@ for (let i = 2019; i > 1919; i--) {
 }
 
 const SignUpForm = (props: Props & FormikProps<ValuesState>) => {
-  const cSignUpForm = cn('SignUpForm', props.className);
+  const cSignUpForm = cn(css.SignUpForm, props.className);
 
   return (
     <div className={cSignUpForm}>
-      <h3 className="SignUpForm-Title">{I18N(localKeyset, 'title')}</h3>
-      <h5 className="SignUpForm-Subtitle">{I18N(localKeyset, 'subtitle')}</h5>
+      <h3 className={css.Title}>{I18N(localKeyset, 'title')}</h3>
+      <h5 className={css.Subtitle}>{I18N(localKeyset, 'subtitle')}</h5>
 
       <Form>
         <Field
@@ -121,12 +121,12 @@ const SignUpForm = (props: Props & FormikProps<ValuesState>) => {
           component={FormikInput}
         />
 
-        <div className="SignUpForm-Birthday">
+        <div className={css.Birthday}>
           <Field
             name="day"
             placeholder={I18N(localKeyset, 'birthday-day')}
             component={FormikSelect}
-            className="SignUpForm-DaySelect"
+            className={css.DaySelect}
             options={dayOptions}
           />
 
@@ -134,7 +134,7 @@ const SignUpForm = (props: Props & FormikProps<ValuesState>) => {
             name="month"
             placeholder={I18N(localKeyset, 'birthday-month')}
             component={FormikSelect}
-            className="SignUpForm-MonthSelect"
+            className={css.MonthSelect}
             options={monthOptions}
           />
 
@@ -142,12 +142,12 @@ const SignUpForm = (props: Props & FormikProps<ValuesState>) => {
             name="year"
             placeholder={I18N(localKeyset, 'birthday-year')}
             component={FormikSelect}
-            className="SignUpForm-YearSelect"
+            className={css.YearSelect}
             options={yearOptions}
           />
         </div>
 
-        <Button type="submit">
+        <Button className={css.Submit} type="submit">
           {I18N(localKeyset, 'continue-sign-up')}
         </Button>
       </Form>
@@ -167,10 +167,10 @@ const SignUpSchema = Yup.object().shape({
 
   day: Yup.string()
     .required(),
-  
+
   month: Yup.string()
     .required(),
-  
+
   year: Yup.string()
     .required()
 });
@@ -198,7 +198,7 @@ const SignUpFormWithFormik = withFormik<Props, ValuesState>({
       lastName: values.lastName,
       birthday: date
     };
-    
+
     props.onSubmit(submittingData);
   }
 

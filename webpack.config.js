@@ -30,7 +30,13 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              esModule: true,
+            }
+          }
         ],
       },
       {
@@ -45,6 +51,7 @@ module.exports = {
     contentBase: path.join(__dirname, 'public'),
     compress: true,
     port: 3000,
+    open: false,
     historyApiFallback: true,
   }
 };

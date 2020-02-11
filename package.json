@@ -6,6 +6,7 @@
     "@types/node": "12.7.4",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
+    "classnames": "^2.2.6",
     "connected-react-router": "^6.5.2",
     "firebase": "^7.2.0",
     "formik": "^1.5.8",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
+    "@types/classnames": "^2.2.9",
     "@types/react-redux": "^7.1.4",
     "@types/react-router-dom": "^4.3.5",
     "@types/yup": "^0.26.24",
