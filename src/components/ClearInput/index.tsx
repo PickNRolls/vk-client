@@ -1,22 +1,22 @@
 import * as React from 'react';
 
-import BaseProps from '../../typing/BaseProps';
-import cn from '../../helpers/cn';
+import BaseProps from 'typing/BaseProps';
+import cn from 'classnames';
 
-import './index.css';
+import css from './ClearInput.css';
 
 interface Props extends BaseProps {
-  type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
-  placeholder?: React.InputHTMLAttributes<HTMLInputElement>['placeholder'];
+  type?: string;
+  placeholder?: string;
 
   onChange?(event: React.ChangeEvent<HTMLInputElement>, value: string): void;
 
   input?: {
-    className: React.HTMLAttributes<HTMLInputElement>['className'];
+    className: string;
   };
 
   button?: {
-    className: React.HTMLAttributes<HTMLButtonElement>['className'];
+    className: string;
   };
 };
 
@@ -49,15 +49,11 @@ class ClearInput extends React.Component<Props, State> {
   }
 
   render() {
-    const cClearInput = cn('ClearInput', this.props.className);
+    const cClearInput = cn(css.ClearInput, this.props.className);
     const { type = 'text', placeholder, input, button } = this.props;
 
-    const inputClassName = input && input.className
-      ? input.className + ' ClearInput-Input'
-      : 'ClearInput-Input';
-    const buttonClassName = button && button.className
-      ? button.className + ' ClearInput-Button'
-      : 'ClearInput-Button';
+    const inputClassName = cn(input && input.className, css.Input);
+    const buttonClassName = cn(button && button.className, css.Button);
 
     return (
       <div className={cClearInput}>

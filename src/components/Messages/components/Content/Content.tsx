@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-import Dialog from '../../Dialog';
-import MessageGroup from '../../MessageGroup';
-import Preloader from '../../Preloader';
+import Dialog from 'components/Dialog';
+import MessageGroup from 'components/MessageGroup';
+import Preloader from 'components/Preloader';
 
-import { IElementsProps } from '..';
-import User from '../../../typing/User';
-import Message from '../../../typing/Message';
+import { types, css } from 'components/Messages';
+import User from 'typing/User';
+import Message from 'typing/Message';
 
-interface Props extends IElementsProps {
+interface Props extends types.ElementsProps {
   user: User;
   interlocutors: User[];
   loading: boolean;
@@ -82,8 +82,8 @@ class MessagesContent extends React.Component<Props, State> {
     // }
 
     const defaultContent = (
-      <div className="Messages-Content">
-        <ul className="Messages-Dialogs">
+      <div className={css.Content}>
+        <ul className={css.Dialogs}>
           {/* {
             interlocutors.map(interlocutor => {
               const { list } = user.connections[interlocutor.id].messages;
@@ -108,7 +108,7 @@ class MessagesContent extends React.Component<Props, State> {
         </ul>
 
         {
-          loading && <Preloader className="Messages-Preloader" />
+          loading && <Preloader className={css.Preloader} />
         }
       </div>
     );

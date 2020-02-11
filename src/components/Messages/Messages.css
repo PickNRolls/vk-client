@@ -5,7 +5,7 @@
   padding-top: 50px;
 }
 
-.Messages-Header {
+.Header {
   width: 554px;
   height: 65px;
   border-top: 15px solid #edeef0;
@@ -18,39 +18,39 @@
   z-index: 9;
 }
 
-.Messages-HeaderWrap {
+.HeaderWrap {
   height: 100%;
   border-radius: 4px 4px 0 0;
   box-shadow: 0 0 0 1px #e3e4e8;
   background: #fff;
 }
 
-.Messages-Dialog {
+.Dialog {
   height: 71px;
   padding-left: 20px;
 }
 
-.Messages-DialogsItem {
+.DialogsItem {
   overflow: hidden;
 }
 
-.Messages-DialogsItem:hover {
+.DialogsItem:hover {
   border-top: 1px solid #e7e8ec;
 }
 
-.Messages-DialogsItem:hover + .Messages-DialogsItem {
+.DialogsItem:hover + .DialogsItem {
   border-top: 1px solid #e7e8ec;
 }
 
-.Messages-DialogsItem:hover .Dialog {
+.DialogsItem:hover .Dialog {
   margin-top: -1px;
 }
 
-.Messages-DialogsItem:hover + .Messages-DialogsItem .Dialog {
+.DialogsItem:hover + .DialogsItem .Dialog {
   margin-top: -1px;
 }
 
-.Messages-HeaderInDialog {
+.HeaderInDialog {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -59,12 +59,12 @@
   border-radius: 4px 4px 0 0;
 }
 
-.Messages-HeaderDefault {
+.HeaderDefault {
   height: 100%;
   border-radius: 4px 4px 0 0;
 }
 
-.Messages-InterlocutorInfo {
+.InterlocutorInfo {
   text-align: center;
   padding-top: 2px;
   left: 49%;
@@ -72,24 +72,24 @@
   position: absolute;
 }
 
-.Messages-InterlocutorName {
+.InterlocutorName {
   display: block;
   color: #222;
   font-weight: 500;
 }
 
-.Messages-InterlocutorStatus {
+.InterlocutorStatus {
   font-size: 12px;
   color: #939393;
 }
 
-.Messages-InterlocutorToken {
+.InterlocutorToken {
   width: 30px;
   height: 30px;
   margin-right: 15px;
 }
 
-.Messages-BackButton {
+.BackButton {
   display: block;
   width: 148px;
   height: 100%;
@@ -105,7 +105,7 @@
   outline: none;
 }
 
-.Messages-BackButton::before {
+.BackButton::before {
   content: '';
   display: block;
   width: 20px;
@@ -118,41 +118,41 @@
   left: 10px;
 }
 
-.Messages-BackButton:hover {
+.BackButton:hover {
   background: linear-gradient(90deg, #f0f2f5 50%, #fff);
 }
 
-.Messages-Search {
+.Search {
   width: 100%;
   height: 100%;
 }
 
-.Messages-SearchInput {
+.SearchInput {
   padding-left: 41px;
 }
 
-.Messages-Content {
+.Content {
   min-height: calc(100vh - 150px);
   background: #fff;
 }
 
-.Messages-List {
+.List {
   padding: 15px 4px 0;
 }
 
-.Messages-Group {
+.Group {
   margin-bottom: 5px;
 }
 
-.Messages .Messages-Group:last-child {
+.Messages .Group:last-child {
   padding-bottom: 48px;
 }
 
-.Messages-Preloader {
+.Preloader {
   padding-top: 30px;
 }
 
-.Messages-Footer {
+.Footer {
   width: 552px;
   height: 46px;
   background: #fff;

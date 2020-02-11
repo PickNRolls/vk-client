@@ -1,6 +1,11 @@
-type Language = 'russian' | 'english' | 'german' | 'french';
+export enum Language {
+  Russian = 'russian',
+  English = 'english',
+  German = 'german',
+  French = 'french',
+}
 
-export interface UserAdditionalInfo {
+export interface AdditionalInfo {
   birthday: string;
   languages?: Language[];
 }
@@ -11,10 +16,10 @@ export default interface User {
   firstName: string;
   lastName: string;
   age: number;
-  additionalInfo: UserAdditionalInfo;
+  additionalInfo: AdditionalInfo;
   online: true | Date;
   avatar?: string;
   status?: string;
   gender?: boolean;
   friends?: string[];
-};
+}

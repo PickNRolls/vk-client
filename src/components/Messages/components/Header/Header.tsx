@@ -1,16 +1,15 @@
 import * as React from 'react';
 
-import withType from '../../../hocs/tokens/withType';
-import Token from '../../Token';
-import ClearInput from '../../ClearInput';
+import withType from 'hocs/tokens/withType';
+import Token from 'components/Token';
+import ClearInput from 'components/ClearInput';
 
-import { IElementsProps } from '..';
-import I18N from '../../../helpers/i18n';
-import localKeyset from '../i18n';
+import { types, keyset as localKeyset, css } from 'components/Messages';
+import I18N from 'helpers/i18n';
 
 const TextToken = withType('text', Token);
 
-interface Props extends IElementsProps {
+interface Props extends types.ElementsProps {
   onBack(): void;
 };
 
@@ -20,18 +19,18 @@ const HeaderContent: React.FC<Props> = props => {
   if (state === 'in dialog' && interlocutor) {
     const inDialogContent = (
       <>
-        <button className="Messages-BackButton" onClick={() => props.onBack()}>
+        <button className={css.BackButton} onClick={() => props.onBack()}>
           {I18N(localKeyset, 'go-back')}
         </button>
 
-        <div className="Messages-InterlocutorInfo">
+        <div className={css.InterlocutorInfo}>
           <TextToken
             goToPage={{
               target: '_blank'
             }}
             user={interlocutor}
           />
-          <span className="Messages-InterlocutorStatus">
+          <span className={css.InterlocutorStatus}>
             {interlocutor.online instanceof Date
               ? interlocutor.online.toLocaleTimeString(navigator.language, {
                 hour: '2-digit',
@@ -48,27 +47,27 @@ const HeaderContent: React.FC<Props> = props => {
           }}
           size={30}
           user={interlocutor}
-          className="Messages-InterlocutorToken"
+          className={css.InterlocutorToken}
         />
       </>
     );
 
     return (
-      <div className="Messages-HeaderInDialog">
+      <div className={css.HeaderInDialog}>
         {inDialogContent}
       </div>
     );
   }
 
   return (
-    <div className="Messages-HeaderDefault">
+    <div className={css.HeaderDefault}>
       <ClearInput
         type="text"
-        className="Messages-Search"
+        className={css.Search}
         placeholder={I18N(localKeyset, 'search')}
 
         input={{
-          className: "Messages-SearchInput"
+          className: css.SearchInput,
         }}
       />
     </div>

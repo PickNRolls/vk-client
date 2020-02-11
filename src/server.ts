@@ -1,4 +1,4 @@
-import User from "./typing/User";
+import User, { Language } from 'typing/User';
 
 interface UsersHash {
   [uid: string]: User;
@@ -16,7 +16,7 @@ const users: UsersHash = {
     online: true,
     additionalInfo: {
       birthday: '19.03.2001',
-      languages: ['russian', 'english']
+      languages: [Language.Russian, Language.English]
     },
     friends: ['00000001', '00000002'],
     // connections: {
@@ -38,7 +38,7 @@ const users: UsersHash = {
     online: new Date(),
     additionalInfo: {
       birthday: '07.04.2001',
-      languages: ['russian']
+      languages: [Language.Russian]
     },
     friends: [],
     // connections: {
@@ -241,7 +241,7 @@ const users: UsersHash = {
     online: true,
     additionalInfo: {
       birthday: '17.12.2001',
-      languages: ['russian', 'english']
+      languages: [Language.Russian, Language.English]
     },
     friends: [],
     // connections: {

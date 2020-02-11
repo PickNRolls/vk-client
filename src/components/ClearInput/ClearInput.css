@@ -2,7 +2,7 @@
   position: relative;
 }
 
-.ClearInput-Input {
+.Input {
   width: 100%;
   height: 100%;
   font-size: 13px;
@@ -11,7 +11,7 @@
   outline: none;
 }
 
-.ClearInput-Button {
+.Button {
   width: 45px;
   height: 100%;
   border: none;
@@ -26,7 +26,7 @@
   outline: none;
 }
 
-.ClearInput-Button::-webkit-input-placeholder {color: #a2a2b1;}
-.ClearInput-Button::-moz-placeholder {color:#a2a2b1;}
-.ClearInput-Button:-moz-placeholder {color:#a2a2b1;}
-.ClearInput-Button:-ms-input-placeholder {color:#a2a2b1;}
+.Button::-webkit-input-placeholder {color: #a2a2b1;}
+.Button::-moz-placeholder {color:#a2a2b1;}
+.Button:-moz-placeholder {color:#a2a2b1;}
+.Button:-ms-input-placeholder {color:#a2a2b1;}
