@@ -1,12 +1,14 @@
 import * as React from 'react';
-import './index.css';
+import cn from 'classnames';
+import css from './Logo.css';
 
 interface Props {
   className?: string;
 };
 
 const Logo: React.FC<Props> = props => {
-  const cLogo = 'Logo' + (props.className ? ' ' + props.className : '');
+  const cLogo = cn(css.Logo, props.className);
+
   return (
     <div className={cLogo}></div>
   );

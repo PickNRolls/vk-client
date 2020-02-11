@@ -7,9 +7,9 @@ import Settings from './Settings';
 import { AppState } from '../../store';
 import UserState from '../../store/user/types';
 
-import cn from '../../helpers/cn';
+import cn from 'classnames';
 
-import './index.css';
+import css from './AppHeader.css';
 
 type Props =
   & ConnectedStateProps;
@@ -30,12 +30,12 @@ class AppHeader extends React.Component<Props, State> {
       isUserLoggedIn
     } = this.props;
 
-    const cAppHeader = cn('AppHeader');
+    const cAppHeader = cn(css.AppHeader);
 
     return (
       <header className={cAppHeader}>
-        <div className="container AppHeader-Container">
-          <Logo className="AppHeader-Logo" />
+        <div className={cn('container', css.Container)}>
+          <Logo className={css.Logo} />
 
           {isUserLoggedIn && <Settings user={user} />}
         </div>

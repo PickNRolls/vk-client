@@ -1,15 +1,15 @@
-.SideNav-Item {
+.Item {
   max-width: 157px;
   height: 28px;
   padding-left: 6px;
   border-radius: 2px;
 }
 
-.SideNav-Item:hover {
+.Item:hover {
   background: #e1e5eb;
 }
 
-.SideNav-ItemLink {
+.ItemLink {
   display: flex;
   align-items: center;
   width: 100%;
@@ -17,18 +17,18 @@
   color: #285473;
 }
 
-.SideNav-ItemIcon {
+.ItemIcon {
   width: 16px;
   height: 16px;
   margin-right: 10px;
   opacity: .6;
 }
 
-.SideNav-ItemIcon img {
+.ItemIcon img {
   max-width: 100%;
   max-height: 100%;
 }
 
-.SideNav-ItemText {
+.ItemText {
   height: 17px;
 }

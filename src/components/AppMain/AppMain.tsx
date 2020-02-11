@@ -12,7 +12,7 @@ import UserPage from '../UserPage';
 import MessagesPage from '../MessagesPage';
 import FriendsPage from '../FriendsPage';
 
-import './index.css';
+import css from './AppMain.css';
 
 type Props =
   & BaseProps
@@ -20,17 +20,17 @@ type Props =
 
 const AppMain: React.FC<Props> = props => {
   return (
-    <main className="AppMain">
+    <main className={css.AppMain}>
       <div className="container clearfix">
         {
           !props.isUserLoggedIn && <Redirect to="/login" />
         }
 
         <SideNav
-          className="AppMain-SideNav"
+          className={css.SideNav}
         />
 
-        <div className="AppMain-Content">
+        <div className={css.Content}>
           <Switch>
             <Route path="/login" render={() => {
               return !props.isUserLoggedIn ?
