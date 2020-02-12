@@ -8,7 +8,7 @@ import UserPageInfo from 'components/UserPageInfo';
 
 import UserState from 'store/user/types';
 import User from 'typing/User';
-import API from 'api';
+import API from 'firebaseApi';
 import cn from 'classnames';
 import { AppState, AppActions, } from 'store';
 import { change as changeTitle, } from 'store/document/title/actions';
