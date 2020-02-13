@@ -10,18 +10,18 @@ import css from './AppHeader.css';
 
 interface Props {
   user: User;
-};
+}
 
 const AppHeaderSettings: React.FC<Props> = props => {
   const {
-    user
+    user,
   } = props;
 
   return (
     <Dropdown
       className={css.Dropdown}
       render={payload => {
-        const { switcher, content } = payload;
+        const { switcher, content, } = payload;
         const Switcher = switcher.Component;
         const Content = content.Component;
 
@@ -31,7 +31,7 @@ const AppHeaderSettings: React.FC<Props> = props => {
               {user.firstName}
             </span>
             <span
-              style={{ backgroundImage: `url(${user.avatar})` }}
+              style={{ backgroundImage: `url(${user.avatar})`, }}
               className={css.DropdownPhoto}
             />
             <span className={css.DropdownArrow} />

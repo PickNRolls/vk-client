@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import cn from 'classnames';
 
-import { Option } from './types';
+import { Option, } from './types';
 import SelectOption from './Option';
 
 import css from './Select.css';
@@ -17,25 +17,25 @@ export interface Props {
   onFocus?: (value: string) => void;
   onBlur?: (value: string) => void;
   onChange?: (value: string) => void;
-};
+}
 
 interface State {
   value: string,
   expanded: boolean;
-};
+}
 
 class FormSelect extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
       value: this.props.value || '',
-      expanded: false
+      expanded: false,
     };
   }
 
   handleSelectClick = () => {
     this.setState({
-      expanded: !this.state.expanded
+      expanded: !this.state.expanded,
     });
   }
 
@@ -43,46 +43,46 @@ class FormSelect extends React.Component<Props, State> {
     event.stopPropagation();
     this.setState({
       value,
-      expanded: false
+      expanded: false,
     });
 
-    const { onChange } = this.props;
+    const { onChange, } = this.props;
     onChange && onChange(value);
   }
 
   handleFocusEvent = (event: React.FocusEvent) => {
     const {
       onBlur,
-      onFocus
+      onFocus,
     } = this.props;
 
-    const { value } = this.state;
+    const { value, } = this.state;
 
     switch (event.type) {
-      case 'focus': {
-        onFocus && onFocus(value);
-        break;
-      }
+    case 'focus': {
+      onFocus && onFocus(value);
+      break;
+    }
 
-      case 'blur': {
-        this.setState({
-          expanded: false
-        });
-        onBlur && onBlur(value);
-        break;
-      }
+    case 'blur': {
+      this.setState({
+        expanded: false,
+      });
+      onBlur && onBlur(value);
+      break;
+    }
 
-      default: break;
+    default: break;
     }
   }
 
   mixPlaceholderToOptions() {
-    const { options } = this.props;
+    const { options, } = this.props;
     if (options[0].value === '') return;
 
     this.props.options.unshift({
       value: '',
-      text: this.props.placeholder
+      text: this.props.placeholder,
     });
   }
 
@@ -98,7 +98,7 @@ class FormSelect extends React.Component<Props, State> {
     const cFormSelect = cn(css.Select, this.props.className, {
       [css.Select_expanded]: this.state.expanded,
       [css.Select_filled]: this.state.value.length !== 0,
-      [css.Select_error]: !!this.props.error
+      [css.Select_error]: !!this.props.error,
     });
 
     const selectedOption = this.props.options.find(option => (
@@ -140,6 +140,6 @@ class FormSelect extends React.Component<Props, State> {
       </div>
     );
   }
-};
+}
 
 export default FormSelect;

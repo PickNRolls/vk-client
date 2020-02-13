@@ -2,7 +2,7 @@ import * as React from 'react';
 
 interface OwnActiveProps {
   isActive: boolean;
-};
+}
 
 interface State {
   isActive: boolean;
@@ -13,13 +13,13 @@ const withClickHandler = <P extends OwnActiveProps>(UnwrappedComponent: React.Co
     constructor(props: P) {
       super(props);
       this.state = {
-        isActive: props.isActive
+        isActive: props.isActive,
       };
     }
 
     handleClick = (event: React.MouseEvent) => {
       this.setState({
-        isActive: !this.state.isActive
+        isActive: !this.state.isActive,
       });
     }
 

@@ -5,7 +5,7 @@ import css from './UserPageAvatar.css';
 interface Props {
   className?: string;
   imageUrl?: string;
-};
+}
 
 const UserPageAvatar: React.FC<Props> = props => {
   const cUserPageAvatar = cn(css.UserPageAvatar, props.className);

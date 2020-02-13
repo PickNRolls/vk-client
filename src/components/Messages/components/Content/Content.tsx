@@ -4,7 +4,7 @@ import Dialog from 'components/Dialog';
 import MessageGroup from 'components/MessageGroup';
 import Preloader from 'components/Preloader';
 
-import { types, css } from 'components/Messages';
+import { types, css, } from 'components/Messages';
 import User from 'typing/User';
 import Message from 'typing/Message';
 
@@ -15,11 +15,11 @@ interface Props extends types.ElementsProps {
 
   onDialogOpen(user: User): void;
   onDialogRemove(uid: string): void;
-};
+}
 
 interface State {
 
-};
+}
 
 class MessagesContent extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -41,7 +41,7 @@ class MessagesContent extends React.Component<Props, State> {
       user,
       loading,
       interlocutor,
-      interlocutors
+      interlocutors,
     } = this.props;
 
     // if (state === 'in dialog' && interlocutor) {
@@ -115,6 +115,6 @@ class MessagesContent extends React.Component<Props, State> {
 
     return defaultContent;
   }
-};
+}
 
 export default MessagesContent;

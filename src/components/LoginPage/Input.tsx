@@ -3,7 +3,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 import css from './Input.css';
-import { FieldProps } from 'formik';
+import { FieldProps, } from 'formik';
 
 export interface Props {
   error?: string;
@@ -16,33 +16,33 @@ export interface Props {
   onFocus?: (value: string) => void;
   onChange?: (value: string) => void;
   onBlur?: (value: string) => void;
-};
+}
 
 interface State {
   value: string;
-};
+}
 
 export class FormInput extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      value: this.props.value || ''
+      value: this.props.value || '',
     };
   }
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { onChange } = this.props;
-    const { value } = event.target;
+    const { onChange, } = this.props;
+    const { value, } = event.target;
 
     this.setState({
-      value
+      value,
     });
 
     onChange && onChange(value);
   }
 
   handleBlur = (event: React.FocusEvent) => {
-    const { onBlur } = this.props;
+    const { onBlur, } = this.props;
 
     onBlur && onBlur(this.state.value);
   }
@@ -50,31 +50,31 @@ export class FormInput extends React.Component<Props, State> {
   handleFocusEvents = (event: React.FocusEvent) => {
     const {
       onBlur,
-      onFocus
+      onFocus,
     } = this.props;
 
-    const { value } = this.state;
+    const { value, } = this.state;
 
     switch (event.type) {
-      case 'focus': {
-        onFocus && onFocus(value);
-        break;
-      }
+    case 'focus': {
+      onFocus && onFocus(value);
+      break;
+    }
 
-      case 'blur': {
-        onBlur && onBlur(value);
-        break;
-      }
+    case 'blur': {
+      onBlur && onBlur(value);
+      break;
+    }
 
-      default: break;
+    default: break;
     }
   }
 
   render() {
     const cFormInput = cn(css.InputWrapper, this.props.className, {
-      [css.InputWrapper_error]: !!this.props.error
+      [css.InputWrapper_error]: !!this.props.error,
     });
-    const { placeholder } = this.props;
+    const { placeholder, } = this.props;
 
     return (
       <span className={cFormInput} onFocus={this.handleFocusEvents}>
@@ -94,11 +94,11 @@ export class FormInput extends React.Component<Props, State> {
       </span>
     );
   }
-};
+}
 
 const FormikInput = ({
   field,
-  form: { touched, errors, setFieldTouched, setFieldValue, isValid },
+  form: { touched, errors, setFieldTouched, setFieldValue, isValid, },
   ...props
 }: FieldProps & Props) => {
   return <FormInput

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import withOutsideClick from 'react-click-outside';
 import Item from './Item';
-import Switcher, { Props as SwitcherProps } from './Switcher';
-import Content, { Props as ContentProps } from './Content';
+import Switcher, { Props as SwitcherProps, } from './Switcher';
+import Content, { Props as ContentProps, } from './Content';
 import cn from 'classnames';
 import css from './Dropdown.css';
 
@@ -15,24 +15,24 @@ interface RenderArgument {
     Component: React.ComponentType<ContentProps>,
     onClick: (event: React.MouseEvent) => void,
   }
-};
+}
 
 type RenderFunc = (argument: RenderArgument) => React.ReactNode;
 
 interface Props {
   render: RenderFunc;
   className?: string;
-};
+}
 
 interface State {
   expanded: boolean;
-};
+}
 
 class Dropdown extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: false,
     };
   }
 
@@ -51,13 +51,13 @@ class Dropdown extends React.Component<Props, State> {
 
   toggle = () => {
     this.setState({
-      expanded: !this.state.expanded
+      expanded: !this.state.expanded,
     });
   }
 
   collapse = () => {
     this.setState({
-      expanded: false
+      expanded: false,
     });
   }
 
@@ -81,11 +81,11 @@ class Dropdown extends React.Component<Props, State> {
           content: {
             Component: Content,
             onClick: this.handleContentClick,
-          }
+          },
         })}
       </div>
     );
   }
-};
+}
 
 export default withOutsideClick(Dropdown);

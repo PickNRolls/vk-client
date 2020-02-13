@@ -5,7 +5,7 @@ import Main from './components/AppMain';
 
 interface AppProps {
 
-};
+}
 
 type Props = AppProps;
 

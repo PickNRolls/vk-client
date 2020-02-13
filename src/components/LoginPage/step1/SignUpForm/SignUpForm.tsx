@@ -4,18 +4,18 @@ import {
   FormikProps,
   Form,
   Field,
-  FieldProps
+  FieldProps,
 } from 'formik';
 import * as Yup from 'yup';
 
 import FormikInput from '../../Input';
-import Select, { Props as SelectProps } from './Select';
+import Select, { Props as SelectProps, } from './Select';
 import Button from '../../../Button';
 
-import { Option, SubmitValues } from './types';
+import { Option, SubmitValues, } from './types';
 import ValuesState from './types';
 import cn from 'classnames';
-import monthLength, { monthSequence } from './monthsMeta';
+import monthLength, { monthSequence, } from './monthsMeta';
 import toFixedNumString from '../../../../helpers/toFixedNumString';
 import I18N from '../../../../helpers/i18n';
 import globalKeyset from '../../../../i18n';
@@ -26,11 +26,11 @@ import css from './SignUpForm.css';
 interface Props {
   onSubmit: (data: SubmitValues) => void;
   className?: string;
-};
+}
 
 const FormikSelect = ({
   field,
-  form: { touched, errors, setFieldTouched, setFieldValue, isValid },
+  form: { touched, errors, setFieldTouched, setFieldValue, isValid, },
   ...props
 }: FieldProps & SelectProps) => {
   return <Select
@@ -46,25 +46,25 @@ const FormikSelect = ({
       }
 
       switch (field.name) {
-        case 'day': {
-          setFieldValue(field.name, toFixedNumString(value, 2));
-          break;
-        }
+      case 'day': {
+        setFieldValue(field.name, toFixedNumString(value, 2));
+        break;
+      }
 
-        case 'month': {
-          setFieldValue(field.name, toFixedNumString(
-            monthSequence.findIndex(month => month === value) + 1,
-            2
-          ));
-          break;
-        }
+      case 'month': {
+        setFieldValue(field.name, toFixedNumString(
+          monthSequence.findIndex(month => month === value) + 1,
+          2
+        ));
+        break;
+      }
 
-        case 'year': {
-          setFieldValue(field.name, value);
-          break;
-        }
+      case 'year': {
+        setFieldValue(field.name, value);
+        break;
+      }
 
-        default: break;
+      default: break;
       }
     }}
     placeholder={props.placeholder}
@@ -80,7 +80,7 @@ const dayOptions: Option[] = [];
 for (let i = 1; i <= 31; i++) {
   dayOptions.push({
     value: i.toString(),
-    text: i.toString()
+    text: i.toString(),
   });
 }
 
@@ -88,7 +88,7 @@ const monthOptions: Option[] = Object.keys(monthLength).map(month => {
   const firstLetter = I18N(globalKeyset, month)[0];
   return {
     value: month,
-    text: firstLetter.toUpperCase() + I18N(globalKeyset, month).slice(1)
+    text: firstLetter.toUpperCase() + I18N(globalKeyset, month).slice(1),
   };
 });
 
@@ -96,7 +96,7 @@ const yearOptions: Option[] = [];
 for (let i = 2019; i > 1919; i--) {
   yearOptions.push({
     value: i.toString(),
-    text: i.toString()
+    text: i.toString(),
   });
 }
 
@@ -172,7 +172,7 @@ const SignUpSchema = Yup.object().shape({
     .required(),
 
   year: Yup.string()
-    .required()
+    .required(),
 });
 
 const SignUpFormWithFormik = withFormik<Props, ValuesState>({
@@ -182,13 +182,13 @@ const SignUpFormWithFormik = withFormik<Props, ValuesState>({
       lastName: '',
       day: '',
       month: '',
-      year: ''
+      year: '',
     };
   },
 
   validationSchema: SignUpSchema,
 
-  handleSubmit(values, { props }) {
+  handleSubmit(values, { props, }) {
     const date = new Date(
       `${values.year}-${values.month}-${values.day}`
     );
@@ -196,11 +196,11 @@ const SignUpFormWithFormik = withFormik<Props, ValuesState>({
     const submittingData = {
       firstName: values.firstName,
       lastName: values.lastName,
-      birthday: date
+      birthday: date,
     };
 
     props.onSubmit(submittingData);
-  }
+  },
 
 })(SignUpForm);
 

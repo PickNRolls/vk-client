@@ -19,11 +19,11 @@ export interface Props {
   className?: string;
 
   onClick?(event: React.MouseEvent<HTMLDivElement>): void;
-};
+}
 
 interface State {
 
-};
+}
 
 class Message extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -32,22 +32,22 @@ class Message extends React.Component<Props, State> {
   }
 
   handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    const { onClick } = this.props;
+    const { onClick, } = this.props;
     onClick && onClick(event);
   }
 
   render() {
     const propsClass = cn(this.props.className, 'clearfix');
     const cMessage = cn(css.Message, propsClass, {
-      [css.Message_active]: this.props.isActive
+      [css.Message_active]: this.props.isActive,
     });
-    const { data, author } = this.props;
+    const { data, author, } = this.props;
 
     return (
       <div className={cMessage} onClick={this.handleClick}>
         <Token
           goToPage={{
-            target: '_blank'
+            target: '_blank',
           }}
           size={36}
           user={author}
@@ -57,7 +57,7 @@ class Message extends React.Component<Props, State> {
         <div className={css.Top}>
           <TextToken
             goToPage={{
-              target: '_blank'
+              target: '_blank',
             }}
             user={author}
             value={author.firstName}
@@ -66,7 +66,7 @@ class Message extends React.Component<Props, State> {
           <div className={css.Date}>
             {data.date.toLocaleTimeString(navigator.language, {
               hour: '2-digit',
-              minute: '2-digit'
+              minute: '2-digit',
             })}
           </div>
         </div>
@@ -77,6 +77,6 @@ class Message extends React.Component<Props, State> {
       </div>
     );
   }
-};
+}
 
 export default withClickHandler<Props>(Message);

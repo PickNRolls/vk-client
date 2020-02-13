@@ -40,6 +40,16 @@ module.exports = {
         'semi': [
             'error',
             'always'
+        ],
+        'comma-dangle': [
+            'error',
+            {
+                'arrays': 'always',
+                'objects': 'always',
+                'imports': 'always',
+                'exports': 'always',
+                'functions': 'never',
+            }
         ]
     },
     'settings': {

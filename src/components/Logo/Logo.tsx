@@ -4,7 +4,7 @@ import css from './Logo.css';
 
 interface Props {
   className?: string;
-};
+}
 
 const Logo: React.FC<Props> = props => {
   const cLogo = cn(css.Logo, props.className);

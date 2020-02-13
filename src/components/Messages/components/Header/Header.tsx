@@ -4,17 +4,17 @@ import withType from 'hocs/tokens/withType';
 import Token from 'components/Token';
 import ClearInput from 'components/ClearInput';
 
-import { types, keyset as localKeyset, css } from 'components/Messages';
+import { types, keyset as localKeyset, css, } from 'components/Messages';
 import I18N from 'helpers/i18n';
 
 const TextToken = withType('text', Token);
 
 interface Props extends types.ElementsProps {
   onBack(): void;
-};
+}
 
 const HeaderContent: React.FC<Props> = props => {
-  const { state, interlocutor } = props;
+  const { state, interlocutor, } = props;
 
   if (state === 'in dialog' && interlocutor) {
     const inDialogContent = (
@@ -26,7 +26,7 @@ const HeaderContent: React.FC<Props> = props => {
         <div className={css.InterlocutorInfo}>
           <TextToken
             goToPage={{
-              target: '_blank'
+              target: '_blank',
             }}
             user={interlocutor}
           />
@@ -34,7 +34,7 @@ const HeaderContent: React.FC<Props> = props => {
             {interlocutor.online instanceof Date
               ? interlocutor.online.toLocaleTimeString(navigator.language, {
                 hour: '2-digit',
-                minute: '2-digit'
+                minute: '2-digit',
               })
               : 'Online'
             }
@@ -43,7 +43,7 @@ const HeaderContent: React.FC<Props> = props => {
 
         <Token
           goToPage={{
-            target: '_blank'
+            target: '_blank',
           }}
           size={30}
           user={interlocutor}

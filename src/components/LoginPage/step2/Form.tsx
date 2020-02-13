@@ -3,7 +3,7 @@ import {
   withFormik,
   FormikProps,
   Form,
-  Field
+  Field,
 } from 'formik';
 import * as Yup from 'yup';
 
@@ -17,7 +17,7 @@ import Button from 'components/Button';
 
 interface Props {
   onSubmit: (data: ValuesState) => void;
-};
+}
 
 const SignUpForm = (props: Props & FormikProps<ValuesState>) => {
   return (
@@ -51,22 +51,22 @@ const SignUpStep2Schema = Yup.object().shape({
 
   password: Yup.string()
     .min(8, I18N(globalKeyset, 'minLength'))
-    .required(I18N(globalKeyset, 'required'))
+    .required(I18N(globalKeyset, 'required')),
 });
 
 const SignUpFormWithFormik = withFormik<Props, ValuesState>({
   mapPropsToValues() {
     return {
       email: '',
-      password: ''
+      password: '',
     };
   },
 
   validationSchema: SignUpStep2Schema,
 
-  handleSubmit(values, { props }) {
+  handleSubmit(values, { props, }) {
     props.onSubmit(values);
-  }
+  },
 })(SignUpForm);
 
 export default SignUpFormWithFormik;

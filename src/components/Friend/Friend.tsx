@@ -19,7 +19,7 @@ type Props = OwnProps;
 
 interface State {
 
-};
+}
 
 class Friend extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -32,7 +32,7 @@ class Friend extends React.Component<Props, State> {
 
     const user = {
       ...this.props,
-      uniqId: undefined
+      uniqId: undefined,
     };
 
     return (
@@ -52,6 +52,6 @@ class Friend extends React.Component<Props, State> {
       </div>
     );
   }
-};
+}
 
 export default Friend;

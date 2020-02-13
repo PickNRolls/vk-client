@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import { connect, } from 'react-redux';
+import { Dispatch, } from 'redux';
 
 import Preloader from 'components/Preloader';
 import UserPageAvatar from 'components/UserPageAvatar';
@@ -10,8 +10,8 @@ import UserState from 'store/user/types';
 import User from 'typing/User';
 import API from 'api';
 import cn from 'classnames';
-import { AppState, AppActions } from 'store';
-import { change as changeTitle } from 'store/document/title/actions';
+import { AppState, AppActions, } from 'store';
+import { change as changeTitle, } from 'store/document/title/actions';
 
 import css from './UserPage.css';
 
@@ -25,22 +25,22 @@ type Props = {
 interface State {
   user: User | null;
   loadingUser: boolean;
-};
+}
 
 class UserPage extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
       user: null,
-      loadingUser: true
+      loadingUser: true,
     };
   }
 
   async loadUser() {
-    const { uid, appUser } = this.props;
+    const { uid, appUser, } = this.props;
 
     this.setState({
-      loadingUser: true
+      loadingUser: true,
     });
 
     let user;
@@ -56,7 +56,7 @@ class UserPage extends React.Component<Props, State> {
 
     this.setState({
       user,
-      loadingUser: false
+      loadingUser: false,
     });
     this.props.changeTitle(`${user.fullName}`);
   }
@@ -74,8 +74,8 @@ class UserPage extends React.Component<Props, State> {
   render() {
     const propsClass = cn(this.props.className, 'clearfix');
     const cUserPage = cn(css.UserPage, propsClass);
-    const { loadingUser } = this.state;
-    let { user } = this.state;
+    const { loadingUser, } = this.state;
+    let { user, } = this.state;
 
     if (loadingUser) {
       return (
@@ -101,22 +101,22 @@ class UserPage extends React.Component<Props, State> {
       </div>
     );
   }
-};
+}
 
 interface ConnectedStateProps {
   appUser: UserState;
-};
+}
 
 interface ConnectedDispatchProps {
   changeTitle: (title: string) => void;
 }
 
 const mapStateToProps = (state: AppState) => ({
-  appUser: state.user
+  appUser: state.user,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<AppActions>) => ({
-  changeTitle: (title: string) => changeTitle(title)
+  changeTitle: (title: string) => changeTitle(title),
 });
 
 export default connect(

@@ -16,11 +16,11 @@ interface Props {
 
   onOpen(user: User): void;
   onRemove(uid: string): void;
-};
+}
 
 interface State {
 
-};
+}
 
 class Dialog extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -46,15 +46,15 @@ class Dialog extends React.Component<Props, State> {
     const {
       user,
       userOfToken,
-      lastMessage
+      lastMessage,
     } = this.props;
-    const { fullName } = userOfToken;
+    const { fullName, } = userOfToken;
 
     return (
       <div className={cDialog} onClick={this.handleOpen}>
         <Token
           onClick={this.handleTokenClick}
-          goToPage={{ target: '_blank'}}
+          goToPage={{ target: '_blank',}}
           user={userOfToken}
           className={css.Photo}
         />
@@ -67,7 +67,7 @@ class Dialog extends React.Component<Props, State> {
               {
                 lastMessage.date.toLocaleTimeString(navigator.language, {
                   hour: '2-digit',
-                  minute: '2-digit'
+                  minute: '2-digit',
                 })
               }
             </div>
@@ -95,6 +95,6 @@ class Dialog extends React.Component<Props, State> {
       </div>
     );
   }
-};
+}
 
 export default Dialog;

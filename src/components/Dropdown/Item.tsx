@@ -3,7 +3,7 @@ import css from './Dropdown.css';
 
 interface Props {
 
-};
+}
 
 const DropdownItem: React.FC<Props> = props => {
   return (

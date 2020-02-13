@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { connect, } from 'react-redux';
 
 import Logo from 'components/Logo';
 import Settings from './Settings';
 
-import { AppState } from 'store';
+import { AppState, } from 'store';
 import UserState from 'store/user/types';
 
 import cn from 'classnames';
@@ -16,7 +16,7 @@ type Props =
 
 interface State {
 
-};
+}
 
 class AppHeader extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -27,7 +27,7 @@ class AppHeader extends React.Component<Props, State> {
   render() {
     const {
       user,
-      isUserLoggedIn
+      isUserLoggedIn,
     } = this.props;
 
     const cAppHeader = cn(css.AppHeader);
@@ -42,16 +42,16 @@ class AppHeader extends React.Component<Props, State> {
       </header>
     );
   }
-};
+}
 
 interface ConnectedStateProps {
   isUserLoggedIn: boolean;
   user: UserState;
-};
+}
 
 const mapStateToProps = (state: AppState) => ({
   isUserLoggedIn: state.auth.isUserLoggedIn,
-  user: state.user
+  user: state.user,
 });
 
 export default connect(

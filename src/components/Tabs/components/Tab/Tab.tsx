@@ -20,11 +20,11 @@ class Tab extends React.Component<Props> {
     const {
       text,
       count,
-      active
+      active,
     } = this.props;
 
     const cTabsItem = cn(css.Item, undefined, {
-      active
+      active,
     });
 
     return (
@@ -41,6 +41,6 @@ class Tab extends React.Component<Props> {
       </div>
     );
   }
-};
+}
 
 export default Tab;
