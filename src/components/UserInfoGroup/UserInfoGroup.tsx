@@ -10,11 +10,11 @@ interface Props {
   title: string;
   isPageMine: boolean;
   className?: string;
-};
+}
 
 interface State {
 
-};
+}
 
 class UserInfoGroup extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -49,6 +49,6 @@ class UserInfoGroup extends React.Component<Props, State> {
       </div>
     );
   }
-};
+}
 
 export default UserInfoGroup;

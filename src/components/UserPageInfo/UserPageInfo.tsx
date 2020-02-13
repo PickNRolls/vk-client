@@ -15,28 +15,28 @@ interface Props {
   user: User;
   isPageMine: boolean;
   className?: string;
-};
+}
 
 interface State {
   expanded: boolean;
-};
+}
 
 class UserPageInfo extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: false,
     };
   }
 
   handleExpandClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     this.setState({
-      expanded: !this.state.expanded
+      expanded: !this.state.expanded,
     });
   }
 
   render() {
-    const { user, isPageMine } = this.props;
+    const { user, isPageMine, } = this.props;
     const cUserPageInfo = cn(css.UserPageInfo, this.props.className);
 
     return (
@@ -51,12 +51,12 @@ class UserPageInfo extends React.Component<Props, State> {
         </div>
 
         {
-        user.status
-          ? <span className={css.Status}>
+          user.status
+            ? <span className={css.Status}>
               {user.status}
             </span>
 
-          : null
+            : null
         }
 
 
@@ -75,8 +75,8 @@ class UserPageInfo extends React.Component<Props, State> {
 
         {this.state.expanded
           ? (
-          <div className={css.Details}>
-            {user.additionalInfo.languages &&
+            <div className={css.Details}>
+              {user.additionalInfo.languages &&
               <UserInfoGroup
                 isPageMine={isPageMine}
                 title={I18N(localKeyset, 'basic-info')}
@@ -86,20 +86,20 @@ class UserPageInfo extends React.Component<Props, State> {
                   value={user.additionalInfo.languages.map(lang => I18N(globalKeyset, lang)).join(', ')}
                 />
               </UserInfoGroup>
-            }
+              }
 
-            <UserInfoGroup
-              isPageMine={isPageMine}
-              title={I18N(localKeyset, 'education-info')}
-              className={css.Group}
-            />
-          </div>
+              <UserInfoGroup
+                isPageMine={isPageMine}
+                title={I18N(localKeyset, 'education-info')}
+                className={css.Group}
+              />
+            </div>
           )
           : null
         }
       </div>
     );
   }
-};
+}
 
 export default UserPageInfo;

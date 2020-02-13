@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import TabItem from './components/Tab';
 
-import { Tab } from './types';
+import { Tab, } from './types';
 import cn from 'classnames';
 
 import css from './Tabs.css';
@@ -12,17 +12,17 @@ interface Props {
   className?: string;
 
   onChange: (value: string) => void;
-};
+}
 
 interface State {
   currentTab: string;
-};
+}
 
 class Tabs extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      currentTab: props.items[0].value
+      currentTab: props.items[0].value,
     };
   }
   
@@ -30,14 +30,14 @@ class Tabs extends React.Component<Props, State> {
     this.props.onChange(value);
 
     this.setState({
-      currentTab: value
+      currentTab: value,
     });
   }
 
   render() {
     const cTabs = cn(css.Tabs, this.props.className);
-    const { items } = this.props;
-    const { currentTab } = this.state;
+    const { items, } = this.props;
+    const { currentTab, } = this.state;
 
     return (
       <ul className={cTabs}>
@@ -56,6 +56,6 @@ class Tabs extends React.Component<Props, State> {
       </ul>
     );
   }
-};
+}
 
 export default Tabs;

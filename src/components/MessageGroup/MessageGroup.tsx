@@ -14,11 +14,11 @@ export interface Props {
   interlocutor: User;
   messages: MessageInterface[];
   className?: string;
-};
+}
 
 interface State {
 
-};
+}
 
 class MessageGroup extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -28,7 +28,7 @@ class MessageGroup extends React.Component<Props, State> {
 
   render() {
     const cMessageGroup = cn(css.MessageGroup, this.props.className);
-    const { messages, user, interlocutor } = this.props;
+    const { messages, user, interlocutor, } = this.props;
 
     const author = messages[0].authorId === user.id
       ? user
@@ -56,6 +56,6 @@ class MessageGroup extends React.Component<Props, State> {
       </div>
     );
   }
-};
+}
 
 export default MessageGroup;

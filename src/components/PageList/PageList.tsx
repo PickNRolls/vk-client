@@ -5,7 +5,7 @@ import Tabs from 'components/Tabs';
 import {
   HeaderProp,
   HeaderTabProp,
-  ItemProps
+  ItemProps,
 } from './types';
 import cn from 'classnames';
 
@@ -19,7 +19,7 @@ interface Props<P> {
   listProps?: {
     className?: string;
   }
-};
+}
 
 type State = {};
 
@@ -40,53 +40,53 @@ class PageList<P extends ItemProps> extends React.Component<Props<P>, State> {
   }
 
   render() {
-    const { props } = this;
+    const { props, } = this;
     const cPageList = cn('PageList', props.className);
 
     let Header;
     switch (props.header.type) {
-      default:
-      case 'tabs': {
-        const {
-          tabs,
-          button
-        } = props.header;
+    default:
+    case 'tabs': {
+      const {
+        tabs,
+        button,
+      } = props.header;
 
-        Header = (
-          <header className={css.Header}>
-            <Tabs items={tabs} onChange={this.handleTabsChange} />
+      Header = (
+        <header className={css.Header}>
+          <Tabs items={tabs} onChange={this.handleTabsChange} />
 
-            <button
-              className={css.HeaderButton}
-              onClick={this.handleHeaderButtonClick}
-              >
-              {button.text}
-            </button>
-          </header>
-        );
+          <button
+            className={css.HeaderButton}
+            onClick={this.handleHeaderButtonClick}
+          >
+            {button.text}
+          </button>
+        </header>
+      );
 
-        break;
-      }
+      break;
+    }
 
-      case 'text': {
-        const {
-          text,
-          count
-        } = props.header;
+    case 'text': {
+      const {
+        text,
+        count,
+      } = props.header;
 
-        Header = (
-          <header className={css.Header}>
-            <span className={css.HeaderText}>
-              {text}
-            </span>
-            <span className={css.HeaderCount}>
-              {count !== 0 ? count : ''}
-            </span>
-          </header>
-        );
+      Header = (
+        <header className={css.Header}>
+          <span className={css.HeaderText}>
+            {text}
+          </span>
+          <span className={css.HeaderCount}>
+            {count !== 0 ? count : ''}
+          </span>
+        </header>
+      );
 
-        break;
-      }
+      break;
+    }
     }
 
     const Component = props.itemComponent;
@@ -105,7 +105,7 @@ class PageList<P extends ItemProps> extends React.Component<Props<P>, State> {
       </div>
     );
   }
-};
+}
 
 export default PageList;
 

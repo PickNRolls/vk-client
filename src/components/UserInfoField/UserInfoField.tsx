@@ -11,7 +11,7 @@ export interface Props {
 }
 interface State {
 
-};
+}
 
 const UserInfoField: React.FC<Props> = props => {
   const cUserInfoField = cn(css.UserInfoField, props.className);

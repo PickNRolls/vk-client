@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { withRouter, RouteProps } from 'react-router';
-import { Dispatch } from 'redux';
-import { connect } from 'react-redux';
+import { withRouter, RouteProps, } from 'react-router';
+import { Dispatch, } from 'redux';
+import { connect, } from 'react-redux';
 
-import { AppState, AppActions } from '../../store';
+import { AppState, AppActions, } from '../../store';
 import UserState from '../../store/user/types';
-import { change as changeTitle } from '../../store/document/title/actions';
+import { change as changeTitle, } from '../../store/document/title/actions';
 import Messages from '../Messages';
 
 import User from '../../typing/User';
@@ -25,14 +25,14 @@ type Props =
 interface State {
   interlocutors: User[];
   loadingDialogs: boolean;
-};
+}
 
 class MessagesPage extends React.Component<Props & RouteProps, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
       interlocutors: [],
-      loadingDialogs: true
+      loadingDialogs: true,
     };
   }
 
@@ -74,22 +74,22 @@ class MessagesPage extends React.Component<Props & RouteProps, State> {
       </div>
     );
   }
-};
+}
 
 interface ConnectedStateProps {
   user: UserState;
-};
+}
 
 interface ConnectedDispatchProps {
   changeTitle: (title: string) => void;
 }
 
 const mapStateToProps = (state: AppState) => ({
-  user: state.user
+  user: state.user,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<AppActions>) => ({
-  changeTitle
+  changeTitle,
 });
 
 export default withRouter(connect(

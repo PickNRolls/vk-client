@@ -13,11 +13,11 @@ export interface Props {
   className?: string;
 
   onClick?(event: React.MouseEvent<HTMLDivElement>): void;
-};
+}
 
 interface State {
 
-};
+}
 
 class SimpleMessage extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -26,7 +26,7 @@ class SimpleMessage extends React.Component<Props, State> {
   }
 
   handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    const { onClick } = this.props;
+    const { onClick, } = this.props;
     onClick && onClick(event);
   }
 
@@ -41,6 +41,6 @@ class SimpleMessage extends React.Component<Props, State> {
       </div>
     );
   }
-};
+}
 
 export default withClickHandler<Props>(SimpleMessage);

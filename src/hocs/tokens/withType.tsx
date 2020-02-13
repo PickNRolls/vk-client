@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-import { OwnProps as TokenProps, css } from 'components/Token';
+import { OwnProps as TokenProps, css, } from 'components/Token';
 
 const withType = <P extends TokenProps>
   (type: 'text' | 'photo', Token: React.ComponentType<P>) => (
@@ -10,7 +10,7 @@ const withType = <P extends TokenProps>
         const className = cn(this.props.className, css.TextToken);
 
         if (type === 'text') {
-          let { value, user } = this.props;
+          let { value, user, } = this.props;
           if (!value) {
             value = user.fullName;
           }
@@ -30,6 +30,6 @@ const withType = <P extends TokenProps>
         );
       }
     }
-);
+  );
 
 export default withType;

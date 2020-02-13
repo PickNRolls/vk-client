@@ -5,7 +5,7 @@ interface Props {
   value: string;
   text: string;
   onClick: (event: React.MouseEvent<HTMLLIElement>, value: string) => void;
-};
+}
 
 class Option extends React.Component<Props> {
   handleClick = (event: React.MouseEvent<HTMLLIElement>) => {
@@ -19,6 +19,6 @@ class Option extends React.Component<Props> {
       </li>
     );
   }
-};
+}
 
 export default Option;

@@ -13,33 +13,33 @@ interface Props {
   interlocutors: User[];
   loading: boolean;
   className?: string;
-};
+}
 
 interface State {
   state: 'default' | 'in dialog';
   interlocutor?: User;
-};
+}
 
 class Messages extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
       state: 'default',
-      interlocutor: undefined
+      interlocutor: undefined,
     };
   }
 
   handleDialogOpen = (user: User) => {
     this.setState({
       state: 'in dialog',
-      interlocutor: user
+      interlocutor: user,
     });
   }
 
   handleDialogExit = () => {
     this.setState({
       state: 'default',
-      interlocutor: undefined
+      interlocutor: undefined,
     });
   }
 
@@ -52,9 +52,9 @@ class Messages extends React.Component<Props, State> {
     const {
       user,
       interlocutors,
-      loading
+      loading,
     } = this.props;
-    const { state, interlocutor } = this.state;
+    const { state, interlocutor, } = this.state;
 
     return (
       <div className={cMessages}>
@@ -82,6 +82,6 @@ class Messages extends React.Component<Props, State> {
       </div>
     );
   }
-};
+}
 
 export default Messages;

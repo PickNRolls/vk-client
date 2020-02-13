@@ -7,7 +7,7 @@ import css from './Preloader.css';
 interface Props {
   ms?: number;
   className?: string;
-};
+}
 
 const Preloader: React.FC<Props> = props => {
   const cPreloader = cn(css.Preloader, props.className);

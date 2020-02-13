@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
 
 import User from 'typing/User';
 import cn from 'classnames';
@@ -16,11 +16,11 @@ export interface Props {
   className?: string;
 
   onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
-};
+}
 
 interface State {
 
-};
+}
 
 class Token extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -29,14 +29,14 @@ class Token extends React.Component<Props, State> {
   }
 
   handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    const { onClick } = this.props
+    const { onClick, } = this.props;
     onClick && onClick(event);
   }
 
   render() {
-    const { user, goToPage, size = 50 } = this.props;
+    const { user, goToPage, size = 50, } = this.props;
     const cToken = cn(css.Token, this.props.className, {
-      disable: !goToPage
+      disable: !goToPage,
     });
 
     let target = typeof goToPage === 'object' ? goToPage.target : undefined;
@@ -47,18 +47,18 @@ class Token extends React.Component<Props, State> {
         to={`/id${user.id}`}
         target={target}
         className={cToken}
-        >
+      >
         <span
           className={css.Image}
           style={{
             backgroundImage: `url(${user.avatar})`,
-            backgroundSize: `${size}px`
+            backgroundSize: `${size}px`,
           }}
         />
         {this.props.children}
       </Link>
     );
   }
-};
+}
 
 export default Token;

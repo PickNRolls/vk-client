@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Switch, Route, Redirect, } from 'react-router-dom';
+import { connect, } from 'react-redux';
 
-import { AppState } from 'store';
+import { AppState, } from 'store';
 import UserState from 'store/user/types';
 
 import SignUpPage from 'components/LoginPage';
@@ -61,11 +61,11 @@ const AppMain: React.FC<Props> = props => {
 interface ConnectedStateProps {
   isUserLoggedIn: boolean;
   user: UserState;
-};
+}
 
 const mapStateToProps = (state: AppState) => ({
   isUserLoggedIn: state.auth.isUserLoggedIn,
-  user: state.user
+  user: state.user,
 });
 
 

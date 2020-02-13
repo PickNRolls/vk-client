@@ -6,14 +6,14 @@ export interface Props {
   className?: string;
   children?: React.ReactNode;
   onClick?: () => void;
-};
+}
 
-const Switcher: React.FC<Props> = ({ children, className, onClick }) => {
+const Switcher: React.FC<Props> = ({ children, className, onClick, }) => {
   return (
     <div
       onClick={onClick}
       className={cn(css.Switcher, className)}
-      >
+    >
       {children}
     </div>
   );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
 
 import User from 'typing/User';
 import cn from 'classnames';
@@ -10,14 +10,14 @@ import iconGroups from './assets/groups.png';
 import iconMessages from './assets/messages.png';
 import iconFriends from './assets/friends.png';
 import css from './SideNav.css';
-import { connect } from 'react-redux';
-import { AppState } from 'store';
+import { connect, } from 'react-redux';
+import { AppState, } from 'store';
 
 interface INavItem {
   text: string;
   url: string;
   icon: string;
-};
+}
 
 interface OwnProps {
   className?: string;
@@ -31,28 +31,28 @@ class SideNav extends React.Component<Props> {
       {
         text: 'Моя страница',
         url: `/id${uid}`,
-        icon: iconMyPage
+        icon: iconMyPage,
       },
       {
         text: 'Новости',
-        url: `/feed`,
-        icon: iconFeed
+        url: '/feed',
+        icon: iconFeed,
       },
       {
         text: 'Сообщения',
-        url: `/messages`,
-        icon: iconMessages
+        url: '/messages',
+        icon: iconMessages,
       },
       {
         text: 'Друзья',
-        url: `/friends`,
-        icon: iconFriends
+        url: '/friends',
+        icon: iconFriends,
       },
       {
         text: 'Сообщества',
-        url: `/groups`,
-        icon: iconGroups
-      }
+        url: '/groups',
+        icon: iconGroups,
+      },
     ];
   }
 
@@ -80,11 +80,11 @@ class SideNav extends React.Component<Props> {
       </nav>
     );
   }
-};
+}
 
 interface ConnectedStateProps {
   user: User;
-};
+}
 
 const mapStateToProps = (state: AppState) => ({
   user: state.user,
