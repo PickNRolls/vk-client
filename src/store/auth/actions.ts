@@ -15,7 +15,7 @@ import {
   SIGN_UP_FAIL,
 } from './types';
 import incNumString from 'helpers/incNumString';
-import API from 'api';
+import API from 'firebaseApi';
 
 const db = firebase.firestore();
 
