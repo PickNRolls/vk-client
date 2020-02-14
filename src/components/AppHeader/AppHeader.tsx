@@ -4,15 +4,13 @@ import { connect, } from 'react-redux';
 import Logo from 'components/Logo';
 import Settings from './Settings';
 
-import { AppState, } from 'store';
-import UserState from 'store/user/types';
-
 import cn from 'classnames';
 
 import css from './AppHeader.css';
 
-type Props =
-  & ConnectedStateProps;
+interface Props {
+  
+}
 
 interface State {
 
@@ -25,11 +23,6 @@ class AppHeader extends React.Component<Props, State> {
   }
 
   render() {
-    const {
-      user,
-      isUserLoggedIn,
-    } = this.props;
-
     const cAppHeader = cn(css.AppHeader);
 
     return (
@@ -37,23 +30,18 @@ class AppHeader extends React.Component<Props, State> {
         <div className={cn('container', css.Container)}>
           <Logo className={css.Logo} />
 
-          {isUserLoggedIn && <Settings user={user} />}
+          <Settings user={{
+            fullName: ',.1.1.,',
+            lastName: 'uoeu',
+            age: 123,
+            firstName: 'mi',
+            avatar: 'uoe',
+            id: '123123',
+          }} />
         </div>
       </header>
     );
   }
 }
 
-interface ConnectedStateProps {
-  isUserLoggedIn: boolean;
-  user: UserState;
-}
-
-const mapStateToProps = (state: AppState) => ({
-  isUserLoggedIn: state.auth.isUserLoggedIn,
-  user: state.user,
-});
-
-export default connect(
-  mapStateToProps
-)(AppHeader);
+export default AppHeader;

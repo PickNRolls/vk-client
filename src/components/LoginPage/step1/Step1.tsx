@@ -6,9 +6,6 @@ import { connect, } from 'react-redux';
 import SignUpForm from './SignUpForm';
 
 import { SubmitValues, } from './SignUpForm/types';
-import { IntermediateData, } from 'store/signUpProgress/types';
-import { AppActions, } from 'store';
-import { saveIntermediateData, } from 'store/signUpProgress/actions';
 import css from '../LoginPage.css';
 
 interface OwnProps {
@@ -16,12 +13,10 @@ interface OwnProps {
 }
 
 type Props =
-  & OwnProps
-  & ConnectedDispatchProps;
+  & OwnProps;
 
 class SignUpPageStep1 extends React.Component<Props> {
   handleSubmit = (submittingData: SubmitValues) => {
-    this.props.saveData(submittingData);
     this.handleFinish();
   }
 
@@ -40,15 +35,4 @@ class SignUpPageStep1 extends React.Component<Props> {
   }
 }
 
-interface ConnectedDispatchProps {
-  saveData: (data: IntermediateData) => void;
-}
-
-const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>) => ({
-  saveData: bindActionCreators(saveIntermediateData, dispatch),
-});
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(SignUpPageStep1);
+export default SignUpPageStep1;

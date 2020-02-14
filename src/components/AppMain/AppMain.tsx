@@ -1,9 +1,6 @@
 import * as React from 'react';
-import { Switch, Route, Redirect, } from 'react-router-dom';
+import { Switch, Route, Redirect, RouteProps } from 'react-router-dom';
 import { connect, } from 'react-redux';
-
-import { AppState, } from 'store';
-import UserState from 'store/user/types';
 
 import SignUpPage from 'components/LoginPage';
 import SideNav from 'components/SideNav';
@@ -13,15 +10,20 @@ import FriendsPage from 'components/FriendsPage';
 
 import css from './AppMain.css';
 
+interface OwnProps {
+
+}
+
 type Props =
-  & ConnectedStateProps;
+  & OwnProps
+  & RouteProps;
 
 const AppMain: React.FC<Props> = props => {
   return (
     <main className={css.AppMain}>
       <div className="container clearfix">
         {
-          !props.isUserLoggedIn && <Redirect to="/login" />
+          true && <Redirect to="/login" />
         }
 
         <SideNav
@@ -31,9 +33,9 @@ const AppMain: React.FC<Props> = props => {
         <div className={css.Content}>
           <Switch>
             <Route path="/login" render={() => {
-              return !props.isUserLoggedIn ?
+              return true ?
                 <SignUpPage /> :
-                <Redirect to={`/id${props.user.id}`} />;
+                <Redirect to={`/id000000000`} />;
             }} />
 
             <Route path="/id:id" render={routerProps => {
@@ -46,8 +48,8 @@ const AppMain: React.FC<Props> = props => {
               return <MessagesPage {...routerProps} />;
             }} />
 
-            <Route path="/friends" render={() => {
-              return <FriendsPage />;
+            <Route path="/friends" render={props => {
+              return <FriendsPage {...props} />;
             }} />
 
             <Route path="/groups" />
@@ -58,17 +60,4 @@ const AppMain: React.FC<Props> = props => {
   );
 };
 
-interface ConnectedStateProps {
-  isUserLoggedIn: boolean;
-  user: UserState;
-}
-
-const mapStateToProps = (state: AppState) => ({
-  isUserLoggedIn: state.auth.isUserLoggedIn,
-  user: state.user,
-});
-
-
-export default connect(
-  mapStateToProps
-)(AppMain);
+export default AppMain;

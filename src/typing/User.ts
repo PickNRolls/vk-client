@@ -16,8 +16,8 @@ export default interface User {
   firstName: string;
   lastName: string;
   age: number;
-  additionalInfo: AdditionalInfo;
-  online: true | Date;
+  additionalInfo?: AdditionalInfo;
+  online?: true | Date;
   avatar?: string;
   status?: string;
   gender?: boolean;

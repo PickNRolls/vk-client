@@ -10,21 +10,16 @@ import I18N from '../../../helpers/i18n';
 import localKeyset from './i18n';
 
 import css from './Step2.css';
-import { IntermediateData, } from '../../../store/signUpProgress/types';
-import { saveIntermediateData, } from '../../../store/signUpProgress/actions';
-import { AppActions, } from '../../../store';
 
 interface OwnProps {
   onFinish: (step: 2) => void;
 }
 
 type Props =
-  & OwnProps
-  & ConnectedDispatchProps;
+  & OwnProps;
 
 class SignUpPageStep2 extends React.Component<Props> {
   handleSubmit = (values: SubmitValues) => {
-    this.props.saveData(values);
     this.handleFinish();
   }
 
@@ -45,15 +40,4 @@ class SignUpPageStep2 extends React.Component<Props> {
   }
 }
 
-interface ConnectedDispatchProps {
-  saveData: (data: IntermediateData) => void;
-}
-
-const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>) => ({
-  saveData: bindActionCreators(saveIntermediateData, dispatch),
-});
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(SignUpPageStep2);
+export default SignUpPageStep2;

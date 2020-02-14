@@ -7,8 +7,6 @@ import FriendsPageWide from 'components/FriendsPageWide';
 
 import { Category, } from './types';
 import User from 'typing/User';
-import UserState from 'store/user/types';
-import { AppState, } from 'store';
 
 import cn from 'classnames';
 
@@ -18,7 +16,7 @@ interface OwnProps {
   className?: string;
 }
 
-type Props = OwnProps & ConnectedStateProps & RouteChildrenProps;
+type Props = OwnProps & RouteChildrenProps;
 
 
 interface State {
@@ -77,14 +75,4 @@ class FriendsPage extends React.Component<Props, State> {
   }
 }
 
-interface ConnectedStateProps {
-  user: UserState;
-}
-
-const mapStateToProps = (state: AppState) => ({
-  user: state.user,
-});
-
-export default withRouter(connect(
-  mapStateToProps
-)(FriendsPage));
+export default FriendsPage;

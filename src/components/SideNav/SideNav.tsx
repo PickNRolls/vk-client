@@ -11,7 +11,6 @@ import iconMessages from './assets/messages.png';
 import iconFriends from './assets/friends.png';
 import css from './SideNav.css';
 import { connect, } from 'react-redux';
-import { AppState, } from 'store';
 
 interface INavItem {
   text: string;
@@ -23,7 +22,7 @@ interface OwnProps {
   className?: string;
 }
 
-type Props = OwnProps & ConnectedStateProps;
+type Props = OwnProps;
 
 class SideNav extends React.Component<Props> {
   _getItems(uid: string): INavItem[] {
@@ -58,7 +57,7 @@ class SideNav extends React.Component<Props> {
 
   render() {
     const cSideNav = cn(css.SideNav, this.props.className);
-    const items = this._getItems(this.props.user.id);
+    const items = this._getItems('00000000');
     return (
       <nav className={cSideNav}>
         <ul className={css.List}>
@@ -82,12 +81,4 @@ class SideNav extends React.Component<Props> {
   }
 }
 
-interface ConnectedStateProps {
-  user: User;
-}
-
-const mapStateToProps = (state: AppState) => ({
-  user: state.user,
-});
-
-export default connect(mapStateToProps)(SideNav);
+export default SideNav;

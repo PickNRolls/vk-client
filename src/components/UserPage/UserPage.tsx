@@ -6,21 +6,16 @@ import Preloader from 'components/Preloader';
 import UserPageAvatar from 'components/UserPageAvatar';
 import UserPageInfo from 'components/UserPageInfo';
 
-import UserState from 'store/user/types';
 import User from 'typing/User';
 import API from 'firebaseApi';
 import cn from 'classnames';
-import { AppState, AppActions, } from 'store';
-import { change as changeTitle, } from 'store/document/title/actions';
 
 import css from './UserPage.css';
 
-type Props = {
-    uid: string;
-    className?: string;
-  }
-  & ConnectedStateProps
-  & ConnectedDispatchProps;
+interface Props {
+  uid: string;
+  className?: string;
+}
 
 interface State {
   user: User | null;
@@ -37,28 +32,27 @@ class UserPage extends React.Component<Props, State> {
   }
 
   async loadUser() {
-    const { uid, appUser, } = this.props;
+    // const { uid, } = this.props;
 
-    this.setState({
-      loadingUser: true,
-    });
+    // this.setState({
+    //   loadingUser: true,
+    // });
 
-    let user;
-    if (uid === appUser.id) {
-      user = appUser;
-    } else {
-      user = await API.user.find(uid);
-    }
+    // let user;
+    // if (uid === appUser.id) {
+    //   user = appUser;
+    // } else {
+    //   user = await API.user.find(uid);
+    // }
 
-    if (user === null) {
-      throw new Error('user === null');
-    }
+    // if (user === null) {
+    //   throw new Error('user === null');
+    // }
 
-    this.setState({
-      user,
-      loadingUser: false,
-    });
-    this.props.changeTitle(`${user.fullName}`);
+    // this.setState({
+    //   user,
+    //   loadingUser: false,
+    // });
   }
 
   componentDidMount() {
@@ -94,7 +88,7 @@ class UserPage extends React.Component<Props, State> {
         </div>
         <div className="page-column-wide">
           <UserPageInfo
-            isPageMine={user.id === this.props.appUser.id}
+            isPageMine={true}
             user={user}
           />
         </div>
@@ -103,23 +97,4 @@ class UserPage extends React.Component<Props, State> {
   }
 }
 
-interface ConnectedStateProps {
-  appUser: UserState;
-}
-
-interface ConnectedDispatchProps {
-  changeTitle: (title: string) => void;
-}
-
-const mapStateToProps = (state: AppState) => ({
-  appUser: state.user,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch<AppActions>) => ({
-  changeTitle: (title: string) => changeTitle(title),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UserPage);
+export default UserPage;

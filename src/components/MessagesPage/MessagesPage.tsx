@@ -3,9 +3,6 @@ import { withRouter, RouteProps, } from 'react-router';
 import { Dispatch, } from 'redux';
 import { connect, } from 'react-redux';
 
-import { AppState, AppActions, } from '../../store';
-import UserState from '../../store/user/types';
-import { change as changeTitle, } from '../../store/document/title/actions';
 import Messages from '../Messages';
 
 import User from '../../typing/User';
@@ -18,9 +15,7 @@ interface OwnProps {
 }
 
 type Props =
-  & OwnProps
-  & ConnectedStateProps
-  & ConnectedDispatchProps;
+  & OwnProps;
 
 interface State {
   interlocutors: User[];
@@ -40,8 +35,6 @@ class MessagesPage extends React.Component<Props & RouteProps, State> {
     //   const {
     //     user
     //   } = this.props;
-
-    this.props.changeTitle(I18N(localKeyset, 'page-title'));
 
     //   const interlocutorsId = Object.keys(user.connections).filter(uid =>
     //     user.connections[uid].messages.list.length
@@ -63,7 +56,13 @@ class MessagesPage extends React.Component<Props & RouteProps, State> {
       <div className={cMessagesPage}>
         <div className="page-column-wide">
           <Messages
-            user={this.props.user}
+            user={{
+              firstName: 'misha',
+              lastName: 'mish',
+              fullName: 'mish misha',
+              age: 12,
+              id: '0012313',
+            }}
             interlocutors={this.state.interlocutors}
             loading={!!this.state.loadingDialogs}
           />
@@ -76,23 +75,4 @@ class MessagesPage extends React.Component<Props & RouteProps, State> {
   }
 }
 
-interface ConnectedStateProps {
-  user: UserState;
-}
-
-interface ConnectedDispatchProps {
-  changeTitle: (title: string) => void;
-}
-
-const mapStateToProps = (state: AppState) => ({
-  user: state.user,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch<AppActions>) => ({
-  changeTitle,
-});
-
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MessagesPage));
+export default MessagesPage;
